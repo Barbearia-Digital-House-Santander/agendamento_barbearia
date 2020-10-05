@@ -8,12 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
-@Getter
-@Setter
+@Data
 public class Agenda {
 	
 	@Id
@@ -41,6 +39,11 @@ public class Agenda {
     @Column(name="telefone", nullable=false)
 	private String telefone;
 	
+    @Column(name="nomeFunc", nullable = true)
+	private String nomeFunc;
+    
+    // cancelamentos 
+    
     @Column(name="numProc", nullable=false)
 	private String numProcCancelamento;
     
