@@ -1,0 +1,235 @@
+<!doctype html>
+<html class="no-js" lang="br" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Barber HTML-5 Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+   <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" th:href="@{css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="css/slicknav.css" th:href="@{css/slicknav.css}" >
+    <link rel="stylesheet" href="css/animate.min.css" th:href="@{css/animate.min.css}">
+    <link rel="stylesheet" href="css/magnific-popup.css" th:href="@{css/magnific-popup.css}">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" th:href="@{css/fontawesome-all.min.css}">
+    <link rel="stylesheet" href="css/themify-icons.css" th:href="@{css/themify-icons.css}">
+    <link rel="stylesheet" href="css/themify-icons.css" th:href="@{css/themify-icons.css}">
+    <link rel="stylesheet" href="css/slick.css" th:href="@{css/slick.css}">
+    <link rel="stylesheet" href="css/nice-select.css" th:href="@{css/nice-select.css}">
+    <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css"}>
+</head>
+    <!--? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!--? Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="index.html"><img src="img/logo/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="about.html">Sobre</a></li>
+                                            <li><a href="servicos.html">Serviços</a></li>
+                                            <li><a href="galeria.html">Galeria</a></li> -->
+                                            <li class="active"><a href="contact.html">Contato</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="header-right-btn f-right d-none d-lg-block ml-30"  >
+                                    <a href="menuAgenda.html" class="btn header-btn" >Agendamento</a>
+                               </div>
+                                <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                                    <a href="login.html" class="btn header-btn">Sou Funcionário</a>
+                                </div>
+                            </div>
+                        </div>   
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70 text-center">
+                                <h2>Acessar Serviço</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+        <!--?  Contact Area start  -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <form class="form-contact contact_form" method="post" id="contactForm" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Matrícula ou E-mail do Funcionário'" placeholder="Matrícula ou E-mail do Funcionário">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="senha" id="senha" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Senha'" placeholder="Senha">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="button button-contactForm boxed-btn">Acessar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1">
+                        <div class="media contact-info">
+                            <div class="media-body">
+                                <h3>Em casos de problemas com o acesso:</h3>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                            <div class="media-body">
+                                <h3>+55 61 35698-4598</h3>
+                                <p>De segunda a sexta, das 8h até 19h</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-email"></i></span>
+                            <div class="media-body">
+                                <h3>support@barbearia.com</h3>
+                                <p>Melhor opção diante do COVID-19</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Area End -->
+    </main>
+    <footer>
+        <!--? Footer Start-->
+        <div class="footer-area section-bg" data-background="img/gallery/footer_bg.png">
+            <div class="container">
+                <div class="footer-top footer-padding">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-8">
+                            <div class="single-footer-caption mb-50">
+                                <!-- logo -->
+                                <div class="footer-logo">
+                                    <a href="index.html"><img src="img/logo/logo2_footer.png" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                            <a href="#"><p class="info1">Para saber mais entre em contato conosco, oferecemos vários serviços estéticos.</p></a>      
+                                    </div>
+                                </div>
+                                <div class="footer-number">
+                                    <h4><span>+61 </span>9 9856 4488</h4>
+                                    <p>barbeariaSantander@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-4 col-md-2 col-sm-2">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>RECEBA INFORMAÇÕES E PROMOÇÕES!</h4>
+                                    <div class="footer-pera">
+                                        <p class="info1">Inscreva-se para receber as novidades e promoções diariamente:</p>
+                                    </div>
+                                </div>
+         
+                                <!-- Form -->
+                                <div class="footer-form">
+                                  
+                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative mail_part" novalidate="true">
+                                            <input type="email" name="EMAIL" id="newsletter-form-email" placeholder=" Digite seu e-mail para receber promoções e novidades... " class="placeholder hide-on-focus" onfocus="this.placeholder = 'Digite seu e-mail para receber promoções e novidades...'" onblur="this.placeholder = 'Digite seu e-mail para receber promoções e novidades...'">
+                                            <div class="form-icon">
+                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm">Enviar</button>
+                                            </div>
+                                            <div class="mt-10 info"></div>
+                                        </form>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <!-- JS here -->
+
+    <script src="./js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="./js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js" th:src="@{/./js/bootstrap.min.js}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="./js/jquery.slicknav.min.js" th:src="@{/./js/jquery.slicknav.min.js}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="./js/owl.carousel.min.js"></script>
+    <script src="./js/slick.min.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="./js/wow.min.js"></script>
+    <script src="./js/animated.headline.js"></script>
+    
+    <!-- Nice-select, sticky -->
+    <script src="./js/jquery.nice-select.min.js"></script>
+    <script src="./js/jquery.sticky.js"></script>
+    <script src="./js/jquery.magnific-popup.js"></script>
+
+    <!-- contact js -->
+    <script src="./js/contact.js" th:src="@{/./js/contact.js" ></script>
+    <script src="./js/jquery.form.js" th:src="@{></script>
+    <script src="./js/jquery.validate.min.js" th:src="@{/./js/jquery.validate.min.js}"></script>
+    <script src="./js/mail-script.js" th:src="@{/./js/mail-script.js}"></script>
+    <script src="./js/jquery.ajaxchimp.min.js" th:src="@{/./js/jquery.ajaxchimp.min.js}" ></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="./js/plugins.js" th:src="@{/./js/plugins.js}"></script>
+    <script src="./js/main.js" th:src="@{/./js/main.js}"></script>
+
+    </body>
+</html>
