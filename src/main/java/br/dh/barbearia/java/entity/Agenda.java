@@ -47,8 +47,8 @@ public class Agenda {
     @Column(name="numProc", nullable=false)
 	private String numProcCancelamento;
     
-    @Column(name="temCancelamento", nullable=true)
-  	private  String temCancelamento;
+    @Column(name="cancelado", nullable=true)
+  	private  String cancelado;
 	
     @Column(name="dataCancelamento", nullable=true)
 	private Date dataCancelamento;
