@@ -1,6 +1,6 @@
 package br.dh.barbearia.java.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,16 +18,19 @@ public class Agenda {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idAgendamento;
 	
+	@Column(name="cpf", nullable=false)
+	private String cpf;
+	
     @Column(name="nome", nullable=false)
 	private String nome;
 
 	@Column(name="servico", nullable=false)
 	private String servico;
 	
-    @Column(name="dataAgendamento", nullable=false)
-	private Date dataAgendamento;
+    @Column(name="dataAgendamento")
+	private LocalDate dataAgendamento;
 	
-    @Column(name="horaAgendamento", nullable=false)
+    @Column(name="horaAgendamento")
 	private String horaAgendamento;
 	
     @Column(name="genero", nullable=false)
@@ -51,6 +54,6 @@ public class Agenda {
   	private  String cancelado;
 	
     @Column(name="dataCancelamento", nullable=true)
-	private Date dataCancelamento;
+	private LocalDate dataCancelamento;
 
 }

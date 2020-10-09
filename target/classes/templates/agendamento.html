@@ -69,46 +69,47 @@
                 <div class="card-body">
                     <h2 class="title">AGENDAMENTO</h2>
                     <form method="POST">
+                    
+                     <div class="input-group">
+                            <input class="input--style-3" type="text" placeholder="CPF"  maxlength="11" name="cpf">
+                        </div>
                         <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Nome do Cliente" name="nome">
+                            <input class="input--style-3" type="text" placeholder="Nome" name="nome">
                         </div>
                         
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="gender">
+                                <select name="servico">
                                     <option disabled="disabled" selected="selected">Serviços</option>
-                                    <option>Corte de Cabelo</option>
-                                    <option>Barba</option>
-                                    <option>Pintura</option>
-                                    <option>Alisamento</option>
+                                    <option value="Corte de Cabelo">Corte de Cabelo</option>
+                                    <option value="Barba">Barba</option>
+                                    <option value ="Pintura">Pintura</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
                    
                         <div class="input-group">
-                            <input class="input--style-3 js-datepicker" type="text" placeholder="Data do Agendamento" name="data">
+                            <input class="input--style-3 js-datepicker" type="text" placeholder="Data do Agendamento" name="dataAgendamento">
                             <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                         </div>
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="gender">
+                                <select name="horaAgendamento">
                                     <option disabled="disabled" selected="selected">Horários Disponíveis</option>
-                                    <option>08:30</option>
-                                    <option>10:00</option>
-                                    <option>15:20</option>
-                                    <option>16:00</option>
+                                    <option value="08:30">08:30</option>
+                                    <option value="10:00">10:00</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="gender">
+                                <select name="genero">
                                     <option disabled="disabled" selected="selected">Gênero</option>
-                                    <option>Homem</option>
-                                    <option>Mulher</option>
-                                    <option>Outro</option>
+                                    <option value="Homem">Homem</option>
+                                    <option value="Mulher"> Mulher</option>
+                                    <option value="Outro">Outro</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
@@ -117,7 +118,7 @@
                             <input class="input--style-3" type="email" placeholder="E-mail" name="email">
                         </div>
                         <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Telefone/Celular" name="phone">
+                            <input class="input--style-3" type="text" placeholder="Telefone/Celular" name="telefone" id="telefone" maxlength="14" onkeypress="mascara(this)">
                         </div>
                         <div class="p-t-10">
                             <button class="btn btn--pill btn--green" type="submit">Agendar</button>
@@ -186,8 +187,22 @@
     <script src="./js/plugins.js" th:src="@{/./js/plugins.js}"></script>
     <script src="./js/main.js" th:src="@{/./js/main.js}"></script>
 
-
-
+	<script type="text/javascript">
+	function mascaracpf(cpf){
+		cpf.mask("999.999.999-99");
+	};
+	        function mascara(telefone){ 
+	            if(telefone.value.length == 0)
+	                telefone.value = '(' + telefone.value; 
+	            if(telefone.value.length == 3)
+	                telefone.value = telefone.value + ') '; 
+	 
+	            if(telefone.value.length == 9)
+	                telefone.value = telefone.value + '-';
+	  
+	}
+	        
+	    </script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>

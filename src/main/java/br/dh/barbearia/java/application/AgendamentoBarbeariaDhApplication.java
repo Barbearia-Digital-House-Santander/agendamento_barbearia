@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EntityScan(basePackages = { "br.dh.barbearia.java.entity" })
 @EnableJpaRepositories(basePackages = { "br.dh.barbearia.java.repository" })
+@ComponentScan(basePackages = {"br.dh.barbearia.java.controller", "br.dh.barbearia.java.service"})
 
 @SpringBootApplication
 public class AgendamentoBarbeariaDhApplication extends SpringBootServletInitializer{
