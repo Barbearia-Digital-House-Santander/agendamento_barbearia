@@ -6,4 +6,7 @@ public class Constantes {
 		
 		public static String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"; 
 
+		public static String SIM ="SIM";
+		
+		public static String NAO ="NÃO";
 }

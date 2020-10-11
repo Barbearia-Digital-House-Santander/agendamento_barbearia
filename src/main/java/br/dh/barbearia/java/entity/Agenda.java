@@ -47,8 +47,8 @@ public class Agenda {
     
     // cancelamentos 
     
-    @Column(name="numProc", nullable=false)
-	private String numProcCancelamento;
+    @Column(name="chave_de_cancelamento", nullable=false)
+	private String chaveDeCancelamento;
     
     @Column(name="cancelado", nullable=true)
   	private  String cancelado;

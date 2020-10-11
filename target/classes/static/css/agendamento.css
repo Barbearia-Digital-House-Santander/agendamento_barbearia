@@ -170,13 +170,10 @@ h6 {
 }
 
 .bg-gra-01 {
-  background: -webkit-gradient(linear, left bottom, left top, from(#050011), to(#050011));
-  background: -webkit-linear-gradient(bottom, #050011 0%,#050011 100%);
-  background: -moz-linear-gradient(bottom, #050011 0%, #050011 100%);
-  background: -o-linear-gradient(bottom, #050011 0%, #050011 100%);
-  background: linear-gradient(to top, #050011 0%, #050011 100%);
+ 
+  background: url("../img/gallery/bg-heading-03.jpg") top left/cover no-repeat;
 }
-
+ 
 /* ==========================================================================
    #SPACING
    ========================================================================== */
@@ -387,7 +384,7 @@ input {
 }
 
 .rs-select2 .select2-container {
-  width: 250px !important;
+  width: 620px !important;
   outline: none;
 }
 
@@ -408,7 +405,7 @@ input {
 
 .rs-select2 .select2-container .select2-selection--single .select2-selection__arrow {
   height: 34px;
-  left: 240px;
+  left: 630px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -495,11 +492,11 @@ input {
   display: table;
 }
 
-.card-3 .card-heading {
+/*.card-3 .card-heading {
   background: url("../img/gallery/bg-heading-03.jpg") top left/cover no-repeat;
   display: table-cell;
   width: 50%;
-}
+}*/
 
 .card-3 .card-body {
   padding: 57px 65px;
