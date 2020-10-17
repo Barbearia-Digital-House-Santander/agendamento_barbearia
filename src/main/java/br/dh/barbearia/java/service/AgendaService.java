@@ -1,6 +1,7 @@
 package br.dh.barbearia.java.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import br.dh.barbearia.java.commun.Constantes;
 import br.dh.barbearia.java.commun.DataUtils;
+import br.dh.barbearia.java.commun.GeneratorPDF;
 import br.dh.barbearia.java.commun.RandomCommun;
 import br.dh.barbearia.java.entity.Agenda;
 import br.dh.barbearia.java.repository.AgendaRepository;
@@ -31,7 +33,7 @@ public class AgendaService {
 	}
 	
 	public String salvarMarcacaoNaAgenda(String cpf, String nome, String servico, Date dataAgendamento, String horaAgendamento,
-  		  String genero, String email, String chaveDeCancelamento,String telefone) {
+  		  String genero, String email,String telefone) {
 
 		  Agenda agenda = new Agenda();
 		  agenda.setCpf(cpf);
@@ -47,7 +49,8 @@ public class AgendaService {
 		  agenda.setChaveDeCancelamento(geradorAleatorio());
 		  
 		  agendaRepository.save(agenda);
-		return "redirect:/mensagem/agendamento/ok";
+	
+          return "redirect:/barbearia/notificacaoAgendamentoOK";
 	}
 	
 	public String atualizarMarcacaoNaAgenda(String chaveDeCancelamento) {
@@ -68,10 +71,29 @@ public class AgendaService {
 			  agenda.setCancelado(Constantes.SIM);
 			  agenda.setDataCancelamento(LocalDate.now());
 			  agendaRepository.save(agenda);
-	          return "redirect:/mensagem/cancelamento/ok";
+	          return "";
 		  }
 		  else {
 			  return "redirect:/mensagem/cancelamento/falha";
         }
+	}
+	
+	public String agendamentoOK(String ok, String recibo) {
+		 Agenda dados = buscarUltimosDadosPeloId();
+		 if(recibo.equals("recibo")) {
+			  GeneratorPDF.geraPDFagendamentoOK(dados);
+		  }
+		  return "index";
+	}
+		
+	private Agenda buscarUltimosDadosPeloId(){
+		List<Agenda> dados = agendaRepository.findAll();
+		ArrayList<Long> i = new ArrayList<Long>();
+		Integer cont = -1;
+		for(Agenda a : dados) {
+		    cont++;
+		 }
+		
+		return dados.get(cont);
 	}
 }

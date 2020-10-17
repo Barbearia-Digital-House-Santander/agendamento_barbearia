@@ -7,15 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Entity
+@Table(name="agenda")
 @Data
 public class Agenda {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id_agendamento")
 	private Long idAgendamento;
 	
 	@Column(name="cpf", nullable=false)
@@ -27,10 +30,10 @@ public class Agenda {
 	@Column(name="servico", nullable=false)
 	private String servico;
 	
-    @Column(name="dataAgendamento")
+    @Column(name="data_agendamento")
 	private LocalDate dataAgendamento;
 	
-    @Column(name="horaAgendamento")
+    @Column(name="hora_agendamento")
 	private String horaAgendamento;
 	
     @Column(name="genero", nullable=false)
@@ -42,7 +45,7 @@ public class Agenda {
     @Column(name="telefone", nullable=false)
 	private String telefone;
 	
-    @Column(name="nomeFunc", nullable = true)
+    @Column(name="nome_func", nullable = true)
 	private String nomeFunc;
     
     // cancelamentos 
@@ -50,10 +53,10 @@ public class Agenda {
     @Column(name="chave_de_cancelamento", nullable=false)
 	private String chaveDeCancelamento;
     
-    @Column(name="cancelado", nullable=true)
+    @Column(name="cancelado")
   	private  String cancelado;
 	
-    @Column(name="dataCancelamento", nullable=true)
+    @Column(name="data_cancelamento", nullable=true)
 	private LocalDate dataCancelamento;
 
 }

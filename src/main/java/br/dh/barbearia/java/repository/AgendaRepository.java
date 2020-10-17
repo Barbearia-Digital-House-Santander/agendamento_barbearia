@@ -9,4 +9,6 @@ import br.dh.barbearia.java.entity.Agenda;
 public interface AgendaRepository extends JpaRepository<Agenda, Long>{
 	
 	List<Agenda> findByChaveDeCancelamento(String chaveDeCancelamento);
+	
+	List<Agenda> findAll();
 }

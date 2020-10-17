@@ -25,9 +25,9 @@ public class AgendaController {
 	  
 	  @RequestMapping(value = "/agendamento", method = RequestMethod.POST)
       public String adicionaAgenda(String cpf, String nome, String servico, Date dataAgendamento, String horaAgendamento,
-    		  String genero, String email, String chaveDeCancelamento,String telefone) {
+    		  String genero, String email, String telefone) {
 		  
-          return agendaService.salvarMarcacaoNaAgenda( cpf,  nome,  servico,  dataAgendamento,  horaAgendamento, genero,  email,  chaveDeCancelamento, telefone);
+          return agendaService.salvarMarcacaoNaAgenda( cpf,  nome,  servico,  dataAgendamento,  horaAgendamento, genero,  email,  telefone);
       }
 	  
 	  @RequestMapping(value = "/agendamento", method = RequestMethod.GET)
@@ -43,6 +43,16 @@ public class AgendaController {
 	  @RequestMapping(value = "/cancelamento", method = RequestMethod.GET)
       public String abrirPaginaCancelamento() {
             return "cancelamento";
+      }
+	  
+	  @RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.POST)
+      public String AgendamentoOK(String ok, String recibo) {
+		 return agendaService.agendamentoOK(ok, recibo);
+      }
+	
+	  @RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.GET)
+      public String abrirPaginaAgendamentoOK() {
+            return "notificacaoAgendamentoOK";
       }
 	  
 }
