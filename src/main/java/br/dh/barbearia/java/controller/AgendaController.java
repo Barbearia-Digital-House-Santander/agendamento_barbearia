@@ -54,5 +54,16 @@ public class AgendaController {
       public String abrirPaginaAgendamentoOK() {
             return "notificacaoAgendamentoOK";
       }
+	
+	
+	  @RequestMapping(value = "/menuAgenda", method = RequestMethod.GET)
+      public String abrirMenuAgenda() {
+            return "menuAgenda";
+      }
+	  
+	  @RequestMapping(value = "/ajuda", method = RequestMethod.GET)
+      public String abrirPaginaAjuda() {
+            return "ajuda";
+      }
 	  
 }
