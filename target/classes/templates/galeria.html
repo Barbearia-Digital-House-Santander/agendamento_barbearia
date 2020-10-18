@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> Barber HTML-5 Template </title>
+    <title> Barbearia - Galeria</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -31,7 +31,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="img/logo/loder.png" alt="">
+                    <img th:src="@{/img/logo/loder.png}" alt="">
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img src="img/logo/logo.png" alt=""></a>
+                                <a href="index.html"><img th:src="@{/img/logo/logo.png}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -54,20 +54,20 @@
                                 <!-- Main-menu -->
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
-                                        <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">Sobre</a></li>
-                                            <li><a href="servicos.html">Serviços</a></li>
-                                            <li class="active"><a href="galeria.html">Galeria</a></li>
-                                            <li><a href="contact.html">Contato</a></li>
+                                         <ul id="navigation">
+                                            <li><a href="index">Home</a></li>
+                                            <li ><a href="sobre">Sobre</a></li>
+                                            <li><a href="servicos">Serviços</a></li>
+                                            <li class="active"><a href="galeria">Galeria</a></li>
+                                            <li><a href="contato">Contato</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="agendamento.html" class="btn header-btn">Agendamento</a>
+                                    <a href="menuAgenda" class="btn header-btn">Agendamento</a>
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="login.html" class="btn header-btn">Sou Funcionário</a>
+                                    <a href="login" class="btn header-btn">Sou Funcionário</a>
                                 </div>
                             </div>
                         </div>   
@@ -103,25 +103,25 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="box snake mb-30">
-                            <div class="gallery-img " style="background-image: url(img/gallery/gallery1.png);"></div>
+                            <div class="gallery-img "  th:style="'background-image: url(' + @{/img/gallery/gallery1.png} + ');'"></div>
                             <div class="overlay"></div>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-6 col-sm-6">
                         <div class="box snake mb-30">
-                            <div class="gallery-img " style="background-image: url(img/gallery/gallery2.png);"></div>
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery2.png} + ');'"></div>
                             <div class="overlay"></div>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-6 col-sm-6">
                         <div class="box snake mb-30">
-                            <div class="gallery-img " style="background-image: url(img/gallery/gallery3.png);"></div>
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery3.png} + ');'"></div>
                             <div class="overlay"></div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="box snake mb-30">
-                            <div class="gallery-img " style="background-image: url(img/gallery/gallery4.png);"></div>
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery4.png} + ');'"></div>
                             <div class="overlay"></div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
     </main>
     <footer>
         <!--? Footer Start-->
-        <div class="footer-area section-bg" data-background="img/gallery/footer_bg.png">
+        <div class="footer-area section-bg" th:data-background="@{/img/gallery/footer_bg.png}">
             <div class="container">
                 <div class="footer-top footer-padding">
                     <div class="row d-flex justify-content-between">
@@ -140,7 +140,7 @@
                             <div class="single-footer-caption mb-50">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="img/logo/logo2_footer.png" alt=""></a>
+                                    <a href="index.html"><img th:src="@{/img/logo/logo2_footer.png}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -202,40 +202,40 @@
 
     <!-- JS here -->
 
-    <script src="./js/vendor/modernizr-3.5.0.min.js"></script>
+     <script src="./js/vendor/modernizr-3.5.0.min.js" th:src="@{/./js/vendor/modernizr-3.5.0.min.js}"></script>
     <!-- Jquery, Popper, Bootstrap -->
-    <script src="./js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="./js/popper.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/vendor/jquery-1.12.4.min.js" th:src="@{/./js/vendor/jquery-1.12.4.min.js}"></script>
+    <script src="./js/popper.min.js" th:src="@{/./js/popper.min.js}"></script>
+    <script src="./js/bootstrap.min.js" th:src="@{/./js/bootstrap.min.js}"></script>
     <!-- Jquery Mobile Menu -->
-    <script src="./js/jquery.slicknav.min.js"></script>
+    <script src="./js/jquery.slicknav.min.js" th:src="@{/./js/jquery.slicknav.min.js}"></script>
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="./js/owl.carousel.min.js"></script>
-    <script src="./js/slick.min.js"></script>
+    <script src="./js/owl.carousel.min.js" th:src="@{/./js/owl.carousel.min.js}"></script>
+    <script src="./js/slick.min.js" th:src="@{/./js/slick.min.js}"></script>
     <!-- One Page, Animated-HeadLin -->
-    <script src="./js/wow.min.js"></script>
-    <script src="./js/animated.headline.js"></script>
-    <script src="./js/jquery.magnific-popup.js"></script>
+    <script src="./js/wow.min.js" th:src="@{/./js/wow.min.js}"></script>
+    <script src="./js/animated.headline.js" th:src="@{/./js/animated.headline.js}"></script>
+    <script src="./js/jquery.magnific-popup.js" th:src="@{/./js/jquery.magnific-popup.js}"></script>
 
     <!-- Date Picker -->
-    <script src="./js/gijgo.min.js"></script>
+    <script src="./js/gijgo.min.js" th:src="@{/./js/gijgo.min.js}"></script>
     <!-- Nice-select, sticky -->
-    <script src="./js/jquery.nice-select.min.js"></script>
-    <script src="./js/jquery.sticky.js"></script>
+    <script src="./js/jquery.nice-select.min.js" th:src="@{/./js/jquery.nice-select.min.js}"></script>
+    <script src="./js/jquery.sticky.js" th:src="@{/./js/jquery.sticky.js}"></script>
     
     <!-- counter , waypoint,Hover Direction -->
-    <script src="./js/jquery.counterup.min.js"></script>
-    <script src="./js/waypoints.min.js"></script>
-    <script src="./js/jquery.countdown.min.js"></script>
-    <script src="./js/hover-direction-snake.min.js"></script>
+    <script src="./js/jquery.counterup.min.js" th:src="@{/./js/jquery.counterup.min.js}"></script>
+    <script src="./js/waypoints.min.js" th:src="@{/./js/waypoints.min.js}"></script>
+    <script src="./js/jquery.countdown.min.js" th:src="@{/./js/jquery.countdown.min.js}"></script>
+    <script src="./js/hover-direction-snake.min.js" th:src="@{/./js/hover-direction-snake.min.js}"></script>
 
     <!-- contact js -->
-    <script src="./js/contact.js"></script>
-    <script src="./js/jquery.form.js"></script>
-    <script src="./js/jquery.validate.min.js"></script>
-    <script src="./js/mail-script.js"></script>
-    <script src="./js/jquery.ajaxchimp.min.js"></script>
+    <script src="./js/contact.js" th:src="@{/./js/contact.js}"></script>
+    <script src="./js/jquery.form.js" th:src="@{/./js/jquery.form.js}"></script>
+    <script src="./js/jquery.validate.min.js" th:src="@{/./js/jquery.validate.min.js}"></script>
+    <script src="./js/mail-script.js" th:src="@{/./js/mail-script.js}"></script>
+    <script src="./js/jquery.ajaxchimp.min.js" th:src="@{/./js/jquery.ajaxchimp.min.js}"></script>
     
     <!-- Jquery Plugins, main Jquery -->	
     <script src="./js/plugins.js" th:src="@{/./js/plugins.js}"></script>
