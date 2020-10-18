@@ -1,0 +1,449 @@
+<!doctype html>
+<html class="no-js"lang="br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Barber HTML-5 Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
+
+	<!-- CSS here -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="css/owl.carousel.min.css" th:href="@{/css/owl.carousel.min.css}">
+	<link rel="stylesheet" href="css/slicknav.css" th:href="@{/css/slicknav.css}">
+    <link rel="stylesheet" href="css/flaticon.css" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" href="css/gijgo.css" th:href="@{/css/gijgo.css}">
+    <link rel="stylesheet" href="css/animate.min.css" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" href="css/animated-headline.css" th:href="@{/css/animated-headline.css}">
+	<link rel="stylesheet" href="css/magnific-popup.css" th:href="@{/css/magnific-popup.css}">
+	<link rel="stylesheet" href="css/fontawesome-all.min.css" th:href="@{/css/fontawesome-all.min.css}">
+	<link rel="stylesheet" href="css/themify-icons.css" th:href="@{/css/themify-icons.css}">
+	<link rel="stylesheet" href="css/slick.css" th:href="@{/css/slick.css}">
+	<link rel="stylesheet" href="css/nice-select.css" th:href="@{/css/nice-select.css}">
+	<link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img  th:src="@{/img/logo/loder.png}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!--? Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="index.html"><img  th:src="@{/img/logo/logo.png}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="index">Home</a></li>
+                                            <li class="active"><a href="about">Sobre</a></li>
+                                            <li><a href="servicos">Serviços</a></li>
+                                          <li><a href="galeria">Galeria</a></li>
+                                            <li><a href="contact">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="header-right-btn f-right d-none d-lg-block ml-30"  >
+                                    <a href="menuAgenda.html" class="btn header-btn" >Agendamento</a>
+                               </div>
+                               <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                                <a href="login.html" class="btn header-btn">Sou Funcionário</a>
+                            </div>
+                            </div>
+                        </div>   
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70 text-center">
+                                <h2>Sobre Nós</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+        <!--? About Area Start -->
+        <section class="about-area section-padding30 position-relative">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-11">
+                        <!-- about-img -->
+                        <div class="about-img ">
+                            <img  th:src="@{/img/gallery/about.png}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-caption">
+                            <!-- Section Tittle -->
+                            <div class="section-tittle section-tittle3 mb-35">
+                                <span>Sobre nossa empresa</span>
+                                <h2>Projeto inovador com tecnologia e eficiência no atendimento!</h2>
+                            </div>
+                            <p class="mb-30 pera-bottom">Em pleno século XXI, quem gosta de enfrentar filas? Pois é! Nossa empresa chegou para te ajudar a evitar isso. Aqui você agenda seu horário e é atendido sem filas e sem espera. Porque seu tempo é muito valioso para nós. Agende seu horário hoje mesmo!</p>
+                            <p class="pera-top mb-50">Chega de passar por toda aquela chatice esperando para ser atendido. Vem logo com a gente!</p>
+                            <img  th:src="@{/img/gallery/signature.png}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- About Shape -->
+            <div class="about-shape">
+                <img  th:src="@{/img/gallery/about-shape.png}" alt="">
+            </div>
+        </section>
+        <!-- About-2 Area End -->
+        <!--? Services Area Start -->
+        <section class="service-area pb-170">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row d-flex justify-content-center">
+                    <div class="col-xl-7 col-lg-8 col-md-11 col-sm-11">
+                        <div class="section-tittle text-center mb-90">
+                            <span>Serviços Profissionais</span>
+                            <h2>Os melhores serviços que oferecemos</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- Section caption -->
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="services-caption text-center mb-30">
+                            <div style="display: flex;justify-content: center;">
+                                <div class="div-services">
+                                    <img th:src="@{/img/servicos/cabelo01.png}" alt="cabelo" width="100%" height="100%">
+                                </div>
+                            </div> 
+                            <div class="service-cap">
+                                <h4><a href="#">Corte de cabelo com estilo</a></h4>
+                                <p>Seu cabelo estiloso e elegante.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="services-caption active text-center mb-30">
+                            <div style="display: flex;justify-content: center;">
+                                <div class="div-services">
+                                    <img th:src="@{/img/servicos/penteado01.png}" alt="peanteado" width="100%" height="100%">
+                                </div>
+                            </div> 
+                            <div class="service-cap">
+                                <h4><a href="#">Penteado sofisticado</a></h4>
+                                <p>Penteados que estão em alta.</p>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="services-caption text-center mb-30">
+                            <div  style="display: flex;justify-content: center;">
+                                <div class="div-services">
+                                    <img th:src="@{/img/servicos/barba01.png}" alt="barba" width="100%" height="100%">
+                                </div>
+                            </div> 
+                            <div class="service-cap">
+                                <h4><a href="#">Barba estilosa</a></h4>
+                                <p>Sua barba muito bem feita.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Area End -->
+        <!--? Team Start -->
+        <div class="team-area pb-180">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-8 col-md-11 col-sm-11">
+                        <div class="section-tittle text-center mb-100">
+                            <span>Time de Profissionais</span>
+                            <h2>Nossos melhores especialistas em cabelo</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row team-active dot-style">
+                    <!-- single Tem -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
+                        <div class="single-team mb-80 text-center">
+                            <div class="team-img">
+                                <img  th:src="@{/img/gallery/team1.png}" alt="">
+                            </div>
+                            <div class="team-caption">
+                                <span>Barbeiro Profissional Master<span>
+                                <h3><a href="#">Guy C. Pulido bks</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
+                        <div class="single-team mb-80 text-center">
+                            <div class="team-img">
+                                <img th:src="@{/img/gallery/team2.png}" alt="">
+                            </div>
+                            <div class="team-caption">
+                                <span>Expecialista em Coloração</span>
+                                <h3><a href="#">Steve L. Nolan</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
+                        <div class="single-team mb-80 text-center">
+                            <div class="team-img">
+                                <img  th:src="@{/img/gallery/team3.png}" alt="">
+                            </div>
+                            <div class="team-caption">
+                                <span>Barbeiro Profissional Master</span>
+                                <h3><a href="#">Edgar P. Mathis</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
+                        <div class="single-team mb-80 text-center">
+                            <div class="team-img">
+                                <img  th:src="@{/img/gallery/team2.png}" alt="">
+                            </div>
+                            <div class="team-caption">
+                                <span>Barbeiro Profissional Master</span>
+                                <h3><a href="#">Edgar P. Mathis</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+        <!-- Best Pricing Area Start -->
+        <div class="best-pricing section-padding2 position-relative">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="section-tittle mb-50">
+                        	<span>Nossos Melhores Preços</span>
+                            <h2>Oferecemos o Melhor Preço<br> da Cidade!</h2>
+                        </div>
+                        <!-- Pricing  -->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="pricing-list">
+                                    <ul>
+                                       <li>Penteado. . . . . . . . . . . . . . . . . . . . . . . . . . . . . <span>R$25</span></li>
+                                        <li>Penteado + Coloração. . . . . . . . . . . . . . . . . <span>R$65</span></li>
+                                        <li>Penteado + Pintura. . . . . . . . . . . . . . . . . . . . <span>R$65</span></li>
+                                        <li>Penteado Semi-Permanente. . . . . . . . . . . . . .<span>R$65</span></li>
+                                        <li>Corte + Penteado. . . . . . . . . . . . . . . . . . . . . . <span>R$63</span></li>
+                                        <li>Corte + Penteado + Coloração. . . . . . . . . . <span>R$100</span></li>
+                                        <li>Corte + Penteado + Pintura. . . . . . . . . . . . . <span>R$100</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="pricing-list">
+                                    <ul>
+                                        <li>Corte de Cabelo . . . . . . . . . . . . . . . . . . . . . . . <span>R$25</span></li>
+                                        <li>Barbear (Zero). . . . . . . . . . . . . . . . . . . . . . . . .<span>R$65</span></li>
+                                        <li>Corte de Barba. . . . . . . . . . . . . . . . . . . . . . . . <span>R$65</span></li>
+                                        <li>Corte de Cabelo + Corte de Barba. . . .  . . . .<span>R$65</span></li>
+                                        <li>Corte de Cabelo + Barbear. . . . . . . . . . . . . . <span>R$63</span></li>
+                                        <li>Limpeza. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . <span>R$100</span></li>
+                                   </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- pricing img -->
+            <div class="pricing-img">
+                <img class="pricing-img1" th:src="@{/img/gallery/pricing1.png}" alt="">
+                <img class="pricing-img2" th:src="@{/img/gallery/pricing2.png}" alt="">
+            </div>
+        </div>
+        <!-- Best Pricing Area End -->
+        <!--? Gallery Area Start -->
+        <div class="gallery-area section-padding30">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-7 col-md-9 col-sm-10">
+                        <div class="section-tittle text-center mb-100">
+                               <span>Nossa Galeria de Fotos</span>
+                            <h2>algumas imagens da nossa barbearia</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="box snake mb-30">
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery1.png} + ');'"></div>
+                            <div class="overlay"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6">
+                        <div class="box snake mb-30">
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery2.png} + ');'"></div>
+                            <div class="overlay"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6">
+                        <div class="box snake mb-30">
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery3.png} + ');'"></div>
+                            <div class="overlay"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="box snake mb-30">
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery4.png} + ');'"></div>
+                            <div class="overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Gallery Area End -->
+
+
+    </main>
+    <footer>
+        <!--? Footer Start-->
+        <div class="footer-area section-bg" th:data-background="@{/img/gallery/footer_bg.png}">
+            <div class="container">
+                <div class="footer-top footer-padding">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-8">
+                            <div class="single-footer-caption mb-50">
+                                <!-- logo -->
+                                <div class="footer-logo">
+                                    <a href="index.html"><img  th:src="@{/img/logo/logo2_footer.png}" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                            <a href="#"><p class="info1">Para saber mais entre em contato conosco, oferecemos vários serviços estéticos.</p></a>      
+                                    </div>
+                                </div>
+                                <div class="footer-number">
+                                    <h4><span>+61 </span>9 9856 4488</h4>
+                                    <p>barbeariaSantander@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-4 col-md-2 col-sm-2">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>RECEBA INFORMAÇÕES E PROMOÇÕES!</h4>
+                                    <div class="footer-pera">
+                                        <p class="info1">Inscreva-se para receber as novidades e promoções diariamente:</p>
+                                    </div>
+                                </div>
+         
+                                <!-- Form -->
+                                <div class="footer-form">
+                                  
+                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative mail_part" novalidate="true">
+                                            <input type="email" name="EMAIL" id="newsletter-form-email" placeholder=" Digite seu e-mail para receber promoções e novidades... " class="placeholder hide-on-focus" onfocus="this.placeholder = 'Digite seu e-mail para receber promoções e novidades...'" onblur="this.placeholder = 'Digite seu e-mail para receber promoções e novidades...'">
+                                            <div class="form-icon">
+                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm">Enviar</button>
+                                            </div>
+                                            <div class="mt-10 info"></div>
+                                        </form>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-9 col-lg-8">
+                            <div class="footer-copy-right">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <!-- JS here -->
+
+    <script src="./js/vendor/modernizr-3.5.0.min.js" th:src="@{/./js/vendor/modernizr-3.5.0.min.js}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="./js/vendor/jquery-1.12.4.min.js" th:src="@{/./js/vendor/jquery-1.12.4.min.js}"></script>
+    <script src="./js/popper.min.js" th:src="@{/./js/popper.min.js}"></script>
+    <script src="./js/bootstrap.min.js" th:src="@{/./js/bootstrap.min.js}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="./js/jquery.slicknav.min.js" th:src="@{/./js/jquery.slicknav.min.js}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="./js/owl.carousel.min.js" th:src="@{/./js/owl.carousel.min.js}"></script>
+    <script src="./js/slick.min.js" th:src="@{/./js/slick.min.js}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="./js/wow.min.js" th:src="@{/./js/wow.min.js}"></script>
+    <script src="./js/animated.headline.js" th:src="@{/./js/animated.headline.js}"></script>
+    <script src="./js/jquery.magnific-popup.js" th:src="@{/./js/jquery.magnific-popup.js}"></script>
+
+    <!-- Date Picker -->
+    <script src="./js/gijgo.min.js" th:src="@{/./js/gijgo.min.js}"></script>
+    <!-- Nice-select, sticky -->
+    <script src="./js/jquery.nice-select.min.js" th:src="@{/./js/jquery.nice-select.min.js}"></script>
+    <script src="./js/jquery.sticky.js" th:src="@{/./js/jquery.sticky.js}"></script>
+    
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="./js/jquery.counterup.min.js" th:src="@{/./js/jquery.counterup.min.js}"></script>
+    <script src="./js/waypoints.min.js" th:src="@{/./js/waypoints.min.js}"></script>
+    <script src="./js/jquery.countdown.min.js" th:src="@{/./js/jquery.countdown.min.js}"></script>
+    <script src="./js/hover-direction-snake.min.js" th:src="@{/./js/hover-direction-snake.min.js}"></script>
+
+    <!-- contact js -->
+    <script src="./js/contact.js" th:src="@{/./js/contact.js}"></script>
+    <script src="./js/jquery.form.js" th:src="@{/./js/jquery.form.js}"></script>
+    <script src="./js/jquery.validate.min.js" th:src="@{/./js/jquery.validate.min.js}"></script>
+    <script src="./js/mail-script.js" th:src="@{/./js/mail-script.js}"></script>
+    <script src="./js/jquery.ajaxchimp.min.js" th:src="@{/./js/jquery.ajaxchimp.min.js}"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="./js/plugins.js" th:src="@{/./js/plugins.js}"></script>
+    <script src="./js/main.js" th:src="@{/./js/main.js}"></script>
+    
+    </body>
+</html>
