@@ -27,4 +27,9 @@ public class TemplateController {
       public String abrirPaginaSobre() {
             return "sobre";
       }
+	  
+	  @RequestMapping(value = "/login", method = RequestMethod.GET)
+      public String abrirPaginaLogin() {
+            return "login";
+      }
 }
