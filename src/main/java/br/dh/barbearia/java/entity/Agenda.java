@@ -59,4 +59,110 @@ public class Agenda {
     @Column(name="data_cancelamento", nullable=true)
 	private LocalDate dataCancelamento;
 
+	public Long getIdAgendamento() {
+		return idAgendamento;
+	}
+
+	public void setIdAgendamento(Long idAgendamento) {
+		this.idAgendamento = idAgendamento;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getServico() {
+		return servico;
+	}
+
+	public void setServico(String servico) {
+		this.servico = servico;
+	}
+
+	public LocalDate getDataAgendamento() {
+		return dataAgendamento;
+	}
+
+	public void setDataAgendamento(LocalDate dataAgendamento) {
+		this.dataAgendamento = dataAgendamento;
+	}
+
+	public String getHoraAgendamento() {
+		return horaAgendamento;
+	}
+
+	public void setHoraAgendamento(String horaAgendamento) {
+		this.horaAgendamento = horaAgendamento;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getNomeFunc() {
+		return nomeFunc;
+	}
+
+	public void setNomeFunc(String nomeFunc) {
+		this.nomeFunc = nomeFunc;
+	}
+
+	public String getChaveDeCancelamento() {
+		return chaveDeCancelamento;
+	}
+
+	public void setChaveDeCancelamento(String chaveDeCancelamento) {
+		this.chaveDeCancelamento = chaveDeCancelamento;
+	}
+
+	public String getCancelado() {
+		return cancelado;
+	}
+
+	public void setCancelado(String cancelado) {
+		this.cancelado = cancelado;
+	}
+
+	public LocalDate getDataCancelamento() {
+		return dataCancelamento;
+	}
+
+	public void setDataCancelamento(LocalDate dataCancelamento) {
+		this.dataCancelamento = dataCancelamento;
+	}
+
+    
+    
 }
