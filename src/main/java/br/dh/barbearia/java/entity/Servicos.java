@@ -19,8 +19,11 @@ public class Servicos {
 	
     @Column(name="nome", nullable=false)
 	private String nome;
-
-    @Column(name="nr_categoria", nullable=false)
+    
+    @Column(name="descricao")
+	private String descricao;
+    
+    @Column(name="categoria", nullable=false)
     private int numeroCategoria;
     
 
