@@ -7,22 +7,22 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="../static/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 
 	<!-- CSS here -->
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{../static/css/bootstrap.min.css}">
-	<link rel="stylesheet" href="../static/css/owl.carousel.min.css" th:href="@{../static/css/owl.carousel.min.css}">
-	<link rel="stylesheet" href="../static/css/slicknav.css" th:href="@{../static/css/flaticon.css}">
-    <link rel="stylesheet" href="../static/css/flaticon.css" th:href="@{../static/css/flaticon.css}">
-    <link rel="stylesheet" href="../static/css/gijgo.css" th:href="@{../static/css/gijgo.css}">
-    <link rel="stylesheet" href="../static/css/animate.min.css" th:href="@{../static/css/animate.min.css}">
-    <link rel="stylesheet" href="../static/css/animated-headline.css" th:href="@{../static/css/animated-headline.css}" >
-	<link rel="stylesheet" href="../static/css/magnific-popup.css" th:href="@{../static/css/magnific-popup.css}">
-	<link rel="stylesheet" href="../static/css/fontawesome-all.min.css" th:href="@{../static/css/fontawesome-all.min.css}">
-	<link rel="stylesheet" href="../static/css/themify-icons.css" th:href="@{../static/css/themify-icons.css}">
-	<link rel="stylesheet" href="../static/css/slick.css" th:href="@{../static/css/slick.css}">
-	<link rel="stylesheet" href="../static/css/nice-select.css" th:href="@{../static/css/nice-select.css}">
-	<link rel="stylesheet" href="../static/css/style.css" th:href="@{../static/css/style.css}">
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="css/owl.carousel.min.css" th:href="@{/css/owl.carousel.min.css}">
+	<link rel="stylesheet" href="css/slicknav.css" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" href="css/flaticon.css" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" href="css/gijgo.css" th:href="@{/css/gijgo.css}">
+    <link rel="stylesheet" href="css/animate.min.css" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" href="css/animated-headline.css" th:href="@{/css/animated-headline.css}" >
+	<link rel="stylesheet" href="css/magnific-popup.css" th:href="@{/css/magnific-popup.css}">
+	<link rel="stylesheet" href="css/fontawesome-all.min.css" th:href="@{/css/fontawesome-all.min.css}">
+	<link rel="stylesheet" href="css/themify-icons.css" th:href="@{/css/themify-icons.css}">
+	<link rel="stylesheet" href="css/slick.css" th:href="@{/css/slick.css}">
+	<link rel="stylesheet" href="css/nice-select.css" th:href="@{/css/nice-select.css}">
+	<link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -31,7 +31,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img th:src="@{../static/img/logo/loder.png}" alt="">
+                    <img th:src="@{/img/logo/loder.png}" alt="">
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img th:src="@{../static/img/logo/logo.png}" alt=""></a>
+                                <a href="index.html"><img th:src="@{/img/logo/logo.png}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -55,11 +55,11 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                          <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li ><a href="sobre.html">Sobre</a></li>
-                                            <li><a href="servicos.html">Serviços</a></li>
-                                            <li class="active"><a href="galeria.html">Galeria</a></li>
-                                            <li><a href="contato.html">Contato</a></li>
+                                            <li><a href="index">Home</a></li>
+                                            <li ><a href="sobre">Sobre</a></li>
+                                            <li><a href="servicos">Serviços</a></li>
+                                            <li class="active"><a href="galeria">Galeria</a></li>
+                                            <li><a href="contato">Contato</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -103,25 +103,25 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="box snake mb-30">
-                            <div class="gallery-img "  th:style="'background-image: url(' + @{../static/img/gallery/gallery1.png} + ');'"></div>
+                            <div class="gallery-img "  th:style="'background-image: url(' + @{/img/gallery/gallery1.png} + ');'"></div>
                             <div class="overlay"></div>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-6 col-sm-6">
                         <div class="box snake mb-30">
-                            <div class="gallery-img " th:style="'background-image: url(' + @{../static/img/gallery/gallery2.png} + ');'"></div>
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery2.png} + ');'"></div>
                             <div class="overlay"></div>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-6 col-sm-6">
                         <div class="box snake mb-30">
-                            <div class="gallery-img " th:style="'background-image: url(' + @{../static/img/gallery/gallery3.png} + ');'"></div>
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery3.png} + ');'"></div>
                             <div class="overlay"></div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="box snake mb-30">
-                            <div class="gallery-img " th:style="'background-image: url(' + @{../static/img/gallery/gallery4.png} + ');'"></div>
+                            <div class="gallery-img " th:style="'background-image: url(' + @{/img/gallery/gallery4.png} + ');'"></div>
                             <div class="overlay"></div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
     </main>
     <footer>
         <!--? Footer Start-->
-        <div class="footer-area section-bg" th:data-background="@{../static/img/gallery/footer_bg.png}">
+        <div class="footer-area section-bg" th:data-background="@{/img/gallery/footer_bg.png}">
             <div class="container">
                 <div class="footer-top footer-padding">
                     <div class="row d-flex justify-content-between">
@@ -140,7 +140,7 @@
                             <div class="single-footer-caption mb-50">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img th:src="@{../static/img/logo/logo2_footer.png}" alt=""></a>
+                                    <a href="index.html"><img th:src="@{/img/logo/logo2_footer.png}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -202,43 +202,43 @@
 
     <!-- JS here -->
 
-     <script src="../static/js/vendor/modernizr-3.5.0.min.js" th:src="@{../static/js/vendor/modernizr-3.5.0.min.js}"></script>
+     <script src="./js/vendor/modernizr-3.5.0.min.js" th:src="@{/./js/vendor/modernizr-3.5.0.min.js}"></script>
     <!-- Jquery, Popper, Bootstrap -->
-    <script src="../static/js/vendor/jquery-1.12.4.min.js" th:src="@{../static/js/vendor/jquery-1.12.4.min.js}"></script>
-    <script src="../static/js/popper.min.js" th:src="@{../static/js/popper.min.js}"></script>
-    <script src="../static/js/bootstrap.min.js" th:src="@{../static/js/bootstrap.min.js}"></script>
+    <script src="./js/vendor/jquery-1.12.4.min.js" th:src="@{/./js/vendor/jquery-1.12.4.min.js}"></script>
+    <script src="./js/popper.min.js" th:src="@{/./js/popper.min.js}"></script>
+    <script src="./js/bootstrap.min.js" th:src="@{/./js/bootstrap.min.js}"></script>
     <!-- Jquery Mobile Menu -->
-    <script src="../static/js/jquery.slicknav.min.js" th:src="@{../static/js/jquery.slicknav.min.js}"></script>
+    <script src="./js/jquery.slicknav.min.js" th:src="@{/./js/jquery.slicknav.min.js}"></script>
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="../static/js/owl.carousel.min.js" th:src="@{../static/js/owl.carousel.min.js}"></script>
-    <script src="../static/js/slick.min.js" th:src="@{../static/js/slick.min.js}"></script>
+    <script src="./js/owl.carousel.min.js" th:src="@{/./js/owl.carousel.min.js}"></script>
+    <script src="./js/slick.min.js" th:src="@{/./js/slick.min.js}"></script>
     <!-- One Page, Animated-HeadLin -->
-    <script src="../static/js/wow.min.js" th:src="@{../static/js/wow.min.js}"></script>
-    <script src="../static/js/animated.headline.js" th:src="@{../static/js/animated.headline.js}"></script>
-    <script src="../static/js/jquery.magnific-popup.js" th:src="@{../static/js/jquery.magnific-popup.js}"></script>
+    <script src="./js/wow.min.js" th:src="@{/./js/wow.min.js}"></script>
+    <script src="./js/animated.headline.js" th:src="@{/./js/animated.headline.js}"></script>
+    <script src="./js/jquery.magnific-popup.js" th:src="@{/./js/jquery.magnific-popup.js}"></script>
 
     <!-- Date Picker -->
-    <script src="../static/js/gijgo.min.js" th:src="@{../static/js/gijgo.min.js}"></script>
+    <script src="./js/gijgo.min.js" th:src="@{/./js/gijgo.min.js}"></script>
     <!-- Nice-select, sticky -->
-    <script src="../static/js/jquery.nice-select.min.js" th:src="@{../static/js/jquery.nice-select.min.js}"></script>
-    <script src="../static/js/jquery.sticky.js" th:src="@{../static/js/jquery.sticky.js}"></script>
+    <script src="./js/jquery.nice-select.min.js" th:src="@{/./js/jquery.nice-select.min.js}"></script>
+    <script src="./js/jquery.sticky.js" th:src="@{/./js/jquery.sticky.js}"></script>
     
     <!-- counter , waypoint,Hover Direction -->
-    <script src="../static/js/jquery.counterup.min.js" th:src="@{../static/js/jquery.counterup.min.js}"></script>
-    <script src="../static/js/waypoints.min.js" th:src="@{../static/js/waypoints.min.js}"></script>
-    <script src="../static/js/jquery.countdown.min.js" th:src="@{../static/js/jquery.countdown.min.js}"></script>
-    <script src="../static/js/hover-direction-snake.min.js" th:src="@{../static/js/hover-direction-snake.min.js}"></script>
+    <script src="./js/jquery.counterup.min.js" th:src="@{/./js/jquery.counterup.min.js}"></script>
+    <script src="./js/waypoints.min.js" th:src="@{/./js/waypoints.min.js}"></script>
+    <script src="./js/jquery.countdown.min.js" th:src="@{/./js/jquery.countdown.min.js}"></script>
+    <script src="./js/hover-direction-snake.min.js" th:src="@{/./js/hover-direction-snake.min.js}"></script>
 
     <!-- contact js -->
-    <script src="../static/js/contact.js" th:src="@{../static/js/contact.js}"></script>
-    <script src="../static/js/jquery.form.js" th:src="@{../static/js/jquery.form.js}"></script>
-    <script src="../static/js/jquery.validate.min.js" th:src="@{../static/js/jquery.validate.min.js}"></script>
-    <script src="../static/js/mail-script.js" th:src="@{../static/js/mail-script.js}"></script>
-    <script src="../static/js/jquery.ajaxchimp.min.js" th:src="@{../static/js/jquery.ajaxchimp.min.js}"></script>
+    <script src="./js/contact.js" th:src="@{/./js/contact.js}"></script>
+    <script src="./js/jquery.form.js" th:src="@{/./js/jquery.form.js}"></script>
+    <script src="./js/jquery.validate.min.js" th:src="@{/./js/jquery.validate.min.js}"></script>
+    <script src="./js/mail-script.js" th:src="@{/./js/mail-script.js}"></script>
+    <script src="./js/jquery.ajaxchimp.min.js" th:src="@{/./js/jquery.ajaxchimp.min.js}"></script>
     
     <!-- Jquery Plugins, main Jquery -->	
-    <script src="../static/js/plugins.js" th:src="@{../static/js/plugins.js}"></script>
-    <script src="../static/js/main.js" th:src="@{../static/js/main.js}"></script>
+    <script src="./js/plugins.js" th:src="@{/./js/plugins.js}"></script>
+    <script src="./js/main.js" th:src="@{/./js/main.js}"></script>
     </body>
 </html>
