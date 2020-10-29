@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="br" xmlns:th="http://www.thymeleaf.org" >
+
   <head>
     <title>Agendamento</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">   
@@ -54,15 +55,14 @@
         </div>
         <div class="item">
           <p >Serviço</p>
-          <select class="selectt">
-<!--             <option selected value="" disabled selected></option> -->
-            <option value="b" >Beef</option>
-            <option value="ch">Chicken</option>
-            <option value="v">Vegetarian</option>
-            <option value="n">None</option>
-          </select>
-        </div>
 
+		<select name="servicos">
+        <option th:each="servicos : ${ls}"
+                th:value="${servicos.idServico}"
+                th:selected="${servicos.idServico == selecionado.idServico}"
+                th:text="${servicos.nome}" />
+    	</select>
+        </div>     				 
         <div class="btn-block">
           <button type="submit" >Agendar</button>
         </div>

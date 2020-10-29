@@ -1,23 +1,33 @@
 package br.dh.barbearia.java.controller;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServlet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.dh.barbearia.java.entity.Servicos;
 import br.dh.barbearia.java.repository.AgendaRepository;
 import br.dh.barbearia.java.service.AgendaService;
+import br.dh.barbearia.java.service.ServicosService;
 
 @Controller
 @RequestMapping("/barbearia")
-public class AgendaController {
+public class AgendaController  extends HttpServlet {
 	  
 	  @Resource
 	  private AgendaService agendaService;
+	  
+	  @Resource
+	  private ServicosService servicosService;
 
       @Autowired
       public AgendaController( AgendaRepository agendaRepository) {
@@ -31,8 +41,11 @@ public class AgendaController {
       }
 	  
 	  @RequestMapping(value = "/agendamento", method = RequestMethod.GET)
-      public String abrirPaginaAgendamento() {
-            return "agendamento";
+      public String abrirPaginaAgendamento(Model model) {
+		  List<Servicos> ls = servicosService.buscarServicosDisponiveis();		  
+		  model.addAttribute("ls", ls);
+		  model.addAttribute("selecionado", new Servicos(100, "Selecione o serviço"));
+          return "agendamento";
       }
 	  
 	  @RequestMapping(value = "/cancelamento", method = RequestMethod.POST)
@@ -66,4 +79,14 @@ public class AgendaController {
             return "ajuda";
       }
 	  
+	  ///selects pelo banco
+//	  
+//	  @GetMapping("/agendamento")
+		public String index(Model model) {
+		  
+			
+			model.addAttribute( "selecionado");
+
+			return "agendamento";
+		}
 }
