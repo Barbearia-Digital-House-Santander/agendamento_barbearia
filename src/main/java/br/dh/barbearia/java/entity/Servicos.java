@@ -26,7 +26,7 @@ public class Servicos {
 	private String descricao;
     
     @Column(name="categoria", nullable=false)
-    private int numeroCategoria;
+    private int idCategoria;
     
     public Servicos() {
     	

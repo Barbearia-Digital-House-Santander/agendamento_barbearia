@@ -11,15 +11,23 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="categoria")
+@Table(name = "categoria")
 public class Categoria {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_categoria")
-	private Long idCategoria;
-	
-    @Column(name="nome", nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_categoria")
+	private Integer idCategoria;
+
+	@Column(name = "nome", nullable = false)
 	private String nome;
-    
+
+	public Categoria() {
+
+	}
+
+	public Categoria(Integer idCategoria, String nome) {
+		this.idCategoria = idCategoria;
+		this.nome = nome;
+	}
 }

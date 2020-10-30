@@ -54,20 +54,31 @@
           </div>
         </div>
         <div class="item">
-          <p >Serviço</p>
-
-		<select name="servicos">
-        <option th:each="servicos : ${ls}"
-                th:value="${servicos.idServico}"
-                th:selected="${servicos.idServico == selecionado.idServico}"
-                th:text="${servicos.nome}" />
-    	</select>
-        </div>     				 
+         			<p>Categoria</p>
+					<select name="categoria">
+			        <option
+			        		th:each="categoria : ${listaCat}"
+			                th:value="${categoria.idCategoria}"
+			                th:selected="${categoria.idCategoria == selecionado.idCategoria}"
+			                th:text="${categoria.nome}" 
+			                onclick="selecionarServico(this)"/>
+			    	</select>
+  		 </div>
+   		 <div class="item" th:name="servs" id="servs" style="display: none;" >
+			        <p>Serviço</p>
+					<select name="servicos" >
+			        <option th:each="servicos : ${ls}"
+			                th:value="${servicos.idServico}"
+			                th:selected="${servicos.idServico == selecionado.idServico}"
+			                th:text="${servicos.nome}" />
+			    	</select>
+        </div>   
         <div class="btn-block">
           <button type="submit" >Agendar</button>
         </div>
       </form>
     </div>
     <script src="js/mascaras.js" th:src="@{/js/mascaras.js}"></script>
+    <script src="js/selects.js" th:src="@{/js/selects.js}"></script>
   </body>
 </html>
