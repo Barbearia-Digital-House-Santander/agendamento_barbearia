@@ -1,18 +1,28 @@
 package br.dh.barbearia.java.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServlet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.dh.barbearia.java.entity.Categoria;
 import br.dh.barbearia.java.entity.Servicos;
@@ -22,7 +32,7 @@ import br.dh.barbearia.java.service.ServicosService;
 
 @Controller
 @RequestMapping("/barbearia")
-public class AgendaController extends HttpServlet {
+public class AgendaController {
 
 	@Resource
 	private AgendaService agendaService;
@@ -38,10 +48,11 @@ public class AgendaController extends HttpServlet {
 	}
 
 	@RequestMapping(value = "/agendamento", method = RequestMethod.POST)
-	public String adicionaAgenda(String cpf, String nome, String servico, Date dataAgendamento, String horaAgendamento,
+	public String adicionaAgenda(String cpf, String nome, String servico, String dataAgendamento, String horaAgendamento,
 			String genero, String email, String telefone) {
 
-		return agendaService.salvarMarcacaoNaAgenda(cpf, nome, servico, dataAgendamento, horaAgendamento, genero, email,
+		LocalDate data = LocalDate.parse(dataAgendamento);
+		return agendaService.salvarMarcacaoNaAgenda(cpf, nome, servico, data, horaAgendamento, genero, email,
 				telefone);
 	}
 
@@ -62,9 +73,24 @@ public class AgendaController extends HttpServlet {
 		return "cancelamento";
 	}
 
-	@RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.POST)
-	public String AgendamentoOK(String ok, String recibo) {
-		return agendaService.agendamentoOK(ok, recibo);
+	@ResponseBody
+	@RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.POST, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<byte[]> AgendamentoOK(String ok, String recibo) throws IOException {
+		
+		HttpHeaders headers = new HttpHeaders();
+
+	    headers.setContentType(MediaType.parseMediaType("application/pdf"));
+	    String filename = agendaService.agendamentoOK(ok, recibo);
+	    Path filePath = Paths.get(System.getProperty("user.dir") + "/recibo/" + filename);
+
+	    headers.add("Content-Disposition", "attachment; filename=" + filename);
+
+	    headers.setContentDispositionFormData(filename, filename);
+	    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+	    byte[] pdfBytes = Files.readAllBytes(filePath);
+		ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(pdfBytes, headers, HttpStatus.OK);
+		
+	    return response;
 	}
 
 	@RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.GET)

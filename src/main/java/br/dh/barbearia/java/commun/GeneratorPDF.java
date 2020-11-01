@@ -17,14 +17,13 @@ import br.dh.barbearia.java.entity.Agenda;
 public class GeneratorPDF {
 
 
-    public static void geraPDFagendamentoOK (Agenda dadosCliente){
+    public static String geraPDFagendamentoOK (Agenda dadosCliente){
            // criação do documento
           Document document = new Document();
           PdfPTable table = new PdfPTable(1);
-          String arquivoPDF = "C:\\Users\\loren\\Downloads\\PDF_BarbeariaAgendamento.pdf";
+          String filename = "PDF_BarbeariaAgendamento.pdf";
+          String arquivoPDF = System.getProperty("user.dir") + "/recibo/" + filename;
           try {
-
-        	  
               PdfWriter.getInstance(document, new FileOutputStream(arquivoPDF));
               document.open();
 
@@ -46,8 +45,9 @@ public class GeneratorPDF {
               table.addCell(chave);   
               table.addCell(notifica);  
               
-          document.add(table);
-          document.close();
+	          document.add(table);
+	          document.close();
+	          return filename;
           
           }
           catch(DocumentException de) {
@@ -57,6 +57,7 @@ public class GeneratorPDF {
               System.err.println(ioe.getMessage());
           }
           document.close();
+          return "";
       }
     
 

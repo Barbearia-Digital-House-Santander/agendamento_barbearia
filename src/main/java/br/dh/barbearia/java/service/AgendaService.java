@@ -32,14 +32,14 @@ public class AgendaService {
 		return agendaRepository.findByChaveDeCancelamento(chaveDeCancelamento);
 	}
 	
-	public String salvarMarcacaoNaAgenda(String cpf, String nome, String servico, Date dataAgendamento, String horaAgendamento,
+	public String salvarMarcacaoNaAgenda(String cpf, String nome, String servico, LocalDate dataAgendamento, String horaAgendamento,
   		  String genero, String email,String telefone) {
 
 		  Agenda agenda = new Agenda();
 		  agenda.setCpf(cpf);
 		  agenda.setNome(nome);
 		  agenda.setServico(servico);
-		  agenda.setDataAgendamento(DataUtils.DataSemHoras(dataAgendamento));
+		  agenda.setDataAgendamento(dataAgendamento);
 		  agenda.setHoraAgendamento(horaAgendamento);
 		  agenda.setGenero(genero);
 		  agenda.setEmail(email);
@@ -81,17 +81,14 @@ public class AgendaService {
 	public String agendamentoOK(String ok, String recibo) {
 		 Agenda dados = buscarUltimosDadosPeloId();
 		 if(recibo.equals("recibo")) {
-			  GeneratorPDF.geraPDFagendamentoOK(dados);
+			  return GeneratorPDF.geraPDFagendamentoOK(dados);
 		  }
 		  return "index";
 	}
 		
 	private Agenda buscarUltimosDadosPeloId(){
 		List<Agenda> dados = agendaRepository.findAll();
-		ArrayList<Long> i = new ArrayList<Long>();
-		Integer cont = -1;
-		for(Agenda a : dados) {
-		    cont++;
+		return dados.get(dados.size()-1);
 		 }
 		
 		return dados.get(cont);
