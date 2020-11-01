@@ -72,7 +72,22 @@ public class AgendaController {
 	public String abrirPaginaCancelamento() {
 		return "cancelamento";
 	}
-
+	
+	@RequestMapping(value = "/cancelamentoEfetuado", method = RequestMethod.GET)
+	public String cancelamentoEfetuado() {
+		return "cancelamentoEfetuado";
+	}
+	
+	@RequestMapping(value = "/cancelamento/falha", method = RequestMethod.GET)
+	public String cancelamentoFalha() {
+		return "falha";
+	}
+	
+	@RequestMapping(value = "/cancelamento/falha", method = RequestMethod.POST)
+	public String retornarCancelamento() {
+		return "cancelamento";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.POST, produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<byte[]> AgendamentoOK(String ok, String recibo) throws IOException {

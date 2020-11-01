@@ -1,8 +1,6 @@
 package br.dh.barbearia.java.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import br.dh.barbearia.java.commun.Constantes;
-import br.dh.barbearia.java.commun.DataUtils;
 import br.dh.barbearia.java.commun.GeneratorPDF;
 import br.dh.barbearia.java.commun.RandomCommun;
 import br.dh.barbearia.java.entity.Agenda;
@@ -47,7 +44,6 @@ public class AgendaService {
 		  
 		  agenda.setCancelado(Constantes.NAO);
 		  agenda.setChaveDeCancelamento(geradorAleatorio());
-		  
 		  agendaRepository.save(agenda);
 	
           return "redirect:/barbearia/notificacaoAgendamentoOK";
@@ -71,10 +67,10 @@ public class AgendaService {
 			  agenda.setCancelado(Constantes.SIM);
 			  agenda.setDataCancelamento(LocalDate.now());
 			  agendaRepository.save(agenda);
-	          return "";
+	          return "cancelamentoEfetuado";
 		  }
 		  else {
-			  return "redirect:/mensagem/cancelamento/falha";
+			  return "redirect:/barbearia/cancelamento/falha";
         }
 	}
 	
@@ -89,8 +85,6 @@ public class AgendaService {
 	private Agenda buscarUltimosDadosPeloId(){
 		List<Agenda> dados = agendaRepository.findAll();
 		return dados.get(dados.size()-1);
-		 }
-		
-		return dados.get(cont);
 	}
+	
 }
