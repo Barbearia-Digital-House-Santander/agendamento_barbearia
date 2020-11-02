@@ -32,4 +32,8 @@ public class TemplateController {
       public String abrirPaginaLogin() {
             return "login";
       }
+	  @RequestMapping(value = "/index", method = RequestMethod.GET)
+      public String abrirPaginaIndex() {
+            return "index";
+      }
 }
