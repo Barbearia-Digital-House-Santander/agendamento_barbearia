@@ -36,4 +36,8 @@ public class TemplateController {
       public String abrirPaginaIndex() {
             return "index";
       }
+	  @RequestMapping(value = "/adm", method = RequestMethod.GET)
+      public String abrirPaginaAdm() {
+            return "adm";
+      }
 }
