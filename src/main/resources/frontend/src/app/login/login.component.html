@@ -1,0 +1,168 @@
+<!doctype html>
+<html class="no-js" lang="br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> DIGITAL HOUSE BARBER-Login </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <style type="text/css">
+        @import url('../assets/css/style.css');
+        @import url('../assets/css/magnific-popup.css');
+        @import url('../assets/css/themify-icons.css');
+        @import url('../assets/css/gijgo.css');
+        @import url('../assets/css/animate.min.css');
+        @import url('../assets/css/slicknav.css');
+        @import url('../assets/css/bootstrap.min.css');
+        @import url('../assets/css/fontawesome-all.min.css');
+        @import url('../assets/css/flaticon.css');
+        @import url('../assets/css/slick.css');
+        @import url('../assets/css/nice-select.css');
+        @import url('../assets/css/owl.carousel.min.css');
+        @import url('../assets/css/animated-headline.css');
+        @import url('../assets/css/divservices.css');
+        @import url('../../assets/css/login.css');
+        @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+     </style>
+</head>
+<body>
+   <app-pre-carregamento></app-pre-carregamento>
+    <app-header></app-header>
+    
+    <main>
+        <!--? slider Area Start-->
+        <div class="slider-area position-relative fix">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider slider-height d-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-9 col-md-11 col-sm-10">
+                                <div class="hero__caption">
+                                    <img data-animation="fadeInUp" data-delay="0.2s" src="../../assets/img/logo/teste.png" width="240" height="180">
+                                    <span data-animation="fadeInUp" data-delay="0.2s">Digital House Barber</span>
+                                    <h1 data-animation="fadeInUp" data-delay="0.5s"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>          
+                </div>
+                <!-- Single Slider -->
+                
+            </div>
+            <!-- stroke Text -->
+            
+             <!-- Arrow -->
+             <div class="thumb-content-box">
+                
+            </div>
+        </div>
+        <!-- slider Area End-->
+    </main>
+    <main>
+        <div class="container-fluid" >
+            <div class="row">
+                <div class="col-lg-6 col-md-6 d-none d-md-block image-container">
+
+                </div>
+                <div class="col-lg-6 col-md-6 form-container">
+                    <div class="col-lg-8 col-md-12 col-sm-9 col-xs-12 form-box text-center">
+                        <div class="logo mb-3">
+                            <img src="../../assets/img/logo/logo.png" alt="" width="150px">
+                        </div>
+                        <div class="heading mb-4">
+                            <h4>Entre com sua conta</h4>
+                        </div>
+                        <form method="POST" action="login/autentica.php">
+                            <div class="form-input">
+                                <span><i class="fa fa-envelope"></i></span>
+                                <input type="text" name="usu-email" id="usu-email" autofocus="autofocus" placeholder="Digite seu e-mail"
+                                required>
+                            </div>
+                            <div class="form-input">
+                                <span><i class="fa fa-lock"></i></span>
+                                <input type="password" name="usu-senha" id="usu-senha" placeholder="Digite sua senha"
+                                required>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6 d-flex">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="" id="cb1"
+                                        class="custom-control-input">
+                                        <label for="cb1" class="custom-control-label text-white">Lembrar</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <a class="forget-link" href="forget.hmtl">Esqueceu a senha</a>
+                                </div>
+                            </div>
+                            <div class="text-left mb-3">
+                                <button type="submit" class="btns">Login</button>
+                            </div>
+                            <div class="text-center mb-2">
+                                <div class="mb-3" style="color:#777">
+                                Ou entre com</div>
+                                <a href=""class="btns btn-social btn-facebook">Facebook</a>
+                                <a href=""class="btns btn-social btn-google">Google</a>
+                                <a href=""class="btns btn-social btn-twitter">Twitter</a>
+                            </div>
+                            <div style="color:#777">Não é cadastrado
+                                <a href="register.html" class="register-link">Registre-se aqui</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <app-footer></app-footer>
+        <!-- Scroll Up -->
+        <div id="back-top" >
+            <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+        </div>
+    
+        <!-- JS here -->
+ 
+    <script src="../assets/js/vendor/modernizr-3.5.0.min.js" th:src="@{../assets/js/vendor/modernizr-3.5.0.min.js}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="../assets/js/vendor/jquery-1.12.4.min.js" th:src="@{../assets/js/vendor/jquery-1.12.4.min.js}"></script>
+    <script src="../assets/js/popper.min.js" th:src="@{../assets/js/popper.min.js}"></script>
+    <script src="../assets/js/bootstrap.min.js" th:src="@{../assets/js/bootstrap.min.js}"></script>>
+    <!-- Jquery Mobile Menu -->
+    <script src="../assets/js/jquery.slicknav.min.js" th:src="@{../assets/js/jquery.slicknav.min.js}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="../assets/js/owl.carousel.min.js" th:src="@{../assets/js/owl.carousel.min.js}"></script>
+    <script src="../assets/js/slick.min.js" th:src="@{../assets/js/slick.min.js}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="../assets/js/wow.min.js" th:src="@{../assets/js/wow.min.js}"></script>
+    <script src="../assets/js/animated.headline.js" th:src="@{../assets/js/animated.headline.js}"></script>
+    <script src="../assets/js/jquery.magnific-popup.js" th:src="@{../assets/js/jquery.magnific-popup.js}"></script>
+
+    <!-- Date Picker -->
+    <script src="../assets/js/gijgo.min.js" th:src="@{../assets/js/gijgo.min.js}"></script>
+    <!-- Nice-select, sticky -->
+    <script src="../assets/js/jquery.nice-select.min.js" th:src="@{../assets/js/jquery.nice-select.min.js}"></script>
+    <script src="../assets/js/jquery.sticky.js" th:src="@{../assets/js/jquery.sticky.js}"></script>
+    
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="../assets/js/jquery.counterup.min.js" th:src="@{../assets/js/jquery.counterup.min.js}"></script>
+    <script src="../assets/js/waypoints.min.js" th:src="@{../assets/js/waypoints.min.js}"></script>
+    <script src="../assets/js/jquery.countdown.min.js" th:src="@{../assets/js/jquery.countdown.min.js}"></script>
+    <script src="../assets/js/hover-direction-snake.min.js" th:src="@{../assets/js/hover-direction-snake.min.js}"></script>
+
+    <!-- contact js -->
+    <script src="../assets/js/contact.js" th:src="@{../assets/js/contact.js}"></script>
+    <script src="../assets/js/jquery.form.js" th:src="@{../assets/js/jquery.form.js}"></script>
+    <script src="../assets/js/jquery.validate.min.js" th:src="@{../assets/js/jquery.validate.min.js}"></script>
+    <script src="../assets/js/mail-script.js" th:src="@{../assets/js/mail-script.js}"></script>
+    <script src="../assets/js/jquery.ajaxchimp.min.js" th:src="@{../assets/js/jquery.ajaxchimp.min.js}"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="../assets/js/plugins.js" th:src="@{../assets/js/plugins.js}"></script>
+    <script src="../assets/js/main.js" th:src="@{../assets/js/main.js}"></script>
+        </body>
+</html>
