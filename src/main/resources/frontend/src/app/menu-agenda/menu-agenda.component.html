@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Barbearia - Agendamento</title>
+    <meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- CSS here -->
+		<style type="text/css">
+			@import url('../assets/css/style.css');
+			@import url('../assets/css/magnific-popup.css');
+			@import url('../assets/css/slicknav.css');
+			@import url('../assets/css/bootstrap.min.css');
+			@import url('../assets/css/fontawesome-all.min.css');
+			@import url('../assets/css/templatemo-style.css');
+		
+		 </style>
+	
+	<!-- google web font css -->
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<!-- Icons-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	
+    <app-pre-carregamento></app-pre-carregamento>
+    <app-header></app-header>
+
+<!-- home section -->
+<div id="home">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-3"></div>
+			<div class="col-md-7 col-sm-9" >
+				<h1 style="color:#fff; -webkit-text-stroke-width: 2px; /* largura da borda */
+				-webkit-text-stroke-color: #000; /* cor da borda */">Gerencie sua marcação</h1>
+				<h3 style="color:#fff;-webkit-text-stroke-width: 2px; /* largura da borda */
+				-webkit-text-stroke-color: #000; /* cor da borda */">em nossa barbearia on-line</h3>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- divider section -->
+<div class="divider">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-6">
+				<a href="agendamento">
+				<div class="divider-wrapper divider-one">
+					<i class="fa fa-calendar"></i>
+					<h2 style="color:#fff;">Agende</h2>
+					<p style="color:#fff;">Marque já a sua hora em nossa barbearia, teremos o prazer de atende-lo(la)!</p>
+				</div></a>
+			</div>
+	
+			<div class="col-md-4 col-sm-6">
+				<a href="cancelamento">
+				<div class="divider-wrapper divider-three">
+					<i class="fa fa-times"></i>
+					<h2 style="color:#fff;">Cancele</h2>
+					<p style="color:#fff;">Não vai poder comparecer ou quer marcar para outro dia? Cancele sua marcação aqui e remarque no botão ao lado.</p>
+				</div></a>
+			</div>
+
+			<div class="col-md-4 col-sm-12">
+				<a href="ajuda" target="_blank">
+				<div class="divider-wrapper divider-two">
+					<i class="fa fa-info"></i>
+					<h2 style="color:#fff;">Preciso de ajuda</h2>
+					<p style="color:#fff;">Leia nossa caderneta, se não for suficiente, entre em contato conosco, será um prazer ajudar você!.</p>
+				</div></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- footer section -->
+<app-footer></app-footer>
+
+<!-- javascript js -->	
+<script src="../../assets/js/jquery.js" th:src="@{/../../assets/js/jquery.js}"></script>
+<script src="../../assets/js/bootstrap.min.js" th:src="@{/../../assets/js/bootstrap.min.js}" ></script>	
+<script src="../../assets/js/nivo-lightbox.min.js" th:src="@{/../../assets/js/nivo-lightbox.min.js}"></script>
+<script src="../../assets/js/custom.js" th:src="@{/../../assets/js/custom.js}"></script>
+ <!-- Jquery Mobile Menu -->
+ <script src="../../assets/js/jquery.slicknav.min.js" th:src="@{/../../assets/js/jquery.slicknav.min.js}" ></script>
+
+</body>
+</html>
