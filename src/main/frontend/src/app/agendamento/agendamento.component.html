@@ -60,12 +60,12 @@
         <div class="item">
          			<p>Categoria</p>
 					<select name="categoria">
-			        <!-- <option
-			        		th:each="categoria : ${listaCat}"
-			                th:value="${categoria.idCategoria}"
-			                th:selected="${categoria.idCategoria == selecionado.idCategoria}"
-			                th:text="${categoria.nome}" 
-			                onclick="selecionarServico(this)"/> -->
+			         <option
+			        		each="categoria : ${listaCat}"
+			                value="categoria.idCategoria"
+			                selected="categoria.idCategoria == selecionado.idCategoria"
+			                text="categoria.nome" 
+			                onclick="selecionarServico(this)"> 
 			    	</select>
   		 </div>
    		 <div class="item" th:name="servs" id="servs" style="display: none;" >

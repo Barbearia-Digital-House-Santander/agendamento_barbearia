@@ -1,0 +1,8 @@
+//todas rotas que começam com "api" serão redirecionadas 
+
+{
+    "/api": {
+      "target": "http://localhost:8080",
+      "secure": false
+    }
+  }
