@@ -17,7 +17,7 @@
          </a> </div>
          
     <div class="testbox">
-      <form method="post">
+      <form [formGroup]="agendamentoForm">
         <div class="banner">
           <h1>Agendamento</h1>
         </div>
@@ -26,21 +26,21 @@
         <div class="colums">
           <div class="item">
             <label for="cpf">CPF<span>*</span></label>
-             <input class="input--style-3" type="text" id="cpf" maxlength="13" name="cpf" onkeypress="mascaracpf(this)">
+             <input class="input--style-3" type="text" id="cpf" maxlength="13"  formControlName="cpf" onkeypress="mascaracpf(this)">
           </div>
           
            <div class="item">
             <label for="nome">Nome<span>*</span></label>
-             <input class="input--style-3" type="text"  name="nome">
+             <input class="input--style-3" type="text"  formControlName="nome">
           </div>
           <div class="item">
             <label for="email">E-mail<span>*</span></label>
-            <input id="email" type="text"   name="email" required/>
+            <input id="email" type="text"   formControlName="email" required/>
           </div>
           
           <div class="item">
             <label for="telefone">Telefone/Celular<span>*</span></label>
-            <input id="telefone" type="tel"   name="telefone" required maxlength="14" onkeypress="mascaratel(this)"/>
+            <input id="telefone" type="tel"   formControlName="telefone" required maxlength="14" onkeypress="mascaratel(this)"/>
           </div>
           
         </div>
@@ -48,18 +48,18 @@
           <label>Sexo</label>
           <div class="question-answer">
             <div>
-              <input type="radio" value="none" id="radio_1" name="info"/>
+              <input type="radio" value="none" id="radio_1" formControlName="sexo"/>
               <label for="radio_1" class="radio"><span>Feminino</span></label>
             </div>
             <div>
-              <input  type="radio" value="none" id="radio_2" name="info"/>
+              <input  type="radio" value="none" id="radio_2" formControlName="sexo"/>
               <label for="radio_2" class="radio"><span>Masculino</span></label>
             </div>
           </div>
         </div>
         <div class="item">
          			<p>Categoria</p>
-					<select name="categoria">
+					<select formControlName="categoria">
 			         <option
 			        		each="categoria : ${listaCat}"
 			                value="categoria.idCategoria"
@@ -70,7 +70,7 @@
   		 </div>
    		 <div class="item" th:name="servs" id="servs" style="display: none;" >
 			        <p>Serviço</p>
-					<select name="servicos" >
+					<select formControlName="servicos" >
 			        <!-- <option th:each="servicos : ${ls}"
 			                th:value="${servicos.idServico}"
 			                th:selected="${servicos.idServico == selecionado.idServico}"

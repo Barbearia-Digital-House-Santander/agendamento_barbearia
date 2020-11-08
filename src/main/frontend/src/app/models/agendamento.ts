@@ -5,7 +5,8 @@ export interface Agendamento {
     nome: string;
     email: string;
     telefone: string;
-    genero: string;
-    servico: string;
+    sexo: string;
+    categoria: string;
+    servicos: string;
 
 }

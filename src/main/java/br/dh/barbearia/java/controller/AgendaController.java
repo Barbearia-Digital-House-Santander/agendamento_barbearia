@@ -19,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -137,5 +138,10 @@ public class AgendaController {
 		ls.addAll(categoriaService.buscarCategoria());
 		model.addAttribute("listaCat", ls);
 		model.addAttribute("selecionado", new Categoria(59, "Selecione a categoria"));
+	}
+	
+	@GetMapping(value = "/categorias")
+	public List<Categoria> buscarCategorias() {
+		return categoriaService.buscarCategoria();
 	}
 }
