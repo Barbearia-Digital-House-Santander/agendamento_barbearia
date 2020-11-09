@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import br.dh.barbearia.java.entity.Categoria;
 import br.dh.barbearia.java.entity.Servicos;
@@ -33,7 +35,7 @@ import br.dh.barbearia.java.service.ServicosService;
 
 @Controller
 @RequestMapping("/barbearia")
-public class AgendaController {
+public class AgendaController implements WebMvcConfigurer{
 
 	@Resource
 	private AgendaService agendaService;
@@ -48,6 +50,12 @@ public class AgendaController {
 	public AgendaController() {
 	}
 
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**")
+			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+	}
+	
 	@RequestMapping(value = "/agendamento", method = RequestMethod.POST)
 	public String adicionaAgenda(String cpf, String nome, String servico, String dataAgendamento, String horaAgendamento,
 			String genero, String email, String telefone) {
@@ -141,7 +149,9 @@ public class AgendaController {
 	}
 	
 	@GetMapping(value = "/categorias")
-	public List<Categoria> buscarCategorias() {
-		return categoriaService.buscarCategoria();
+	public  ResponseEntity<?> buscarCategorias() {
+		List<Categoria> cat = categoriaService.buscarCategoria();
+		return ResponseEntity.ok(cat);
+		
 	}
 }
