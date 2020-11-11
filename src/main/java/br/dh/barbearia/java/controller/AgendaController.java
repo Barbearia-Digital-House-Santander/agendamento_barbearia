@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServlet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,9 +19,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -147,11 +146,21 @@ public class AgendaController implements WebMvcConfigurer{
 		model.addAttribute("listaCat", ls);
 		model.addAttribute("selecionado", new Categoria(59, "Selecione a categoria"));
 	}
+	///////////////////
+	
 	
 	@GetMapping(value = "/categorias")
 	public  ResponseEntity<?> buscarCategorias() {
 		List<Categoria> cat = categoriaService.buscarCategoria();
 		return ResponseEntity.ok(cat);
+		
+	}
+	
+	
+	@GetMapping(value = "/servicosDaCategoria/{categoria}")
+	public  ResponseEntity<?> buscarServicosDaCategoria(@PathVariable("categoria") Integer categoria) {
+		List<Servicos> servs = servicosService.listaServicosCategoria(categoria);
+		return ResponseEntity.ok(servs);
 		
 	}
 }

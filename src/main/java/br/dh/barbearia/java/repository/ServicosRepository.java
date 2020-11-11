@@ -11,4 +11,6 @@ import br.dh.barbearia.java.entity.Servicos;
 public interface ServicosRepository extends JpaRepository<Servicos, Long>{
 
 	List<Servicos> findAll();
+	
+	List<Servicos> findByIdCategoria(Integer id);
 }

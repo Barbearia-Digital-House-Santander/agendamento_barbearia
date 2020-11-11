@@ -18,4 +18,8 @@ public class ServicosService {
 	public List<Servicos> buscarServicosDisponiveis() {
 		return servicosRepository.findAll();
 	}
+
+	public List<Servicos> listaServicosCategoria(Integer id) {
+		return servicosRepository.findByIdCategoria(id);
+	}
 }
