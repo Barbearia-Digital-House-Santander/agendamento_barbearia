@@ -1,6 +1,3 @@
---
--- Estrutura da tabela `tb_produtos`
---
 
 CREATE TABLE servicos (
    id_servico bigint(20) PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -8,9 +5,8 @@ CREATE TABLE servicos (
    descricao varchar(100) NOT NULL,
    valor varchar(10) NOT NULL,
    categoria int(3) NOT NULL,
-   FOREIGN KEY (categoria) REFERENCES Categoria(id_categoria)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+   FOREIGN KEY (categoria) REFERENCES categoria(id_categoria)
+);
 INSERT INTO servicos
 VALUES (101, 'corte simples', 'aparar cabelo ou corte social', 'R$15,00',60),(102, 'corte estiloso', 'corte com design', 'R$25,00',60), 
 (103, 'barba simples', 'aparar barba ou barba social', 'R$10,00',61), (104, 'barba estilosa', 'barba com design', 'R$17,50',61),

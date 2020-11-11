@@ -60,6 +60,9 @@
         <div class="item">
          			<p>Categoria</p>
                <select class="form-control" formControlName="categorias">
+                <option *ngFor="let categoria  of categoriaList" value="001">
+                  Selecione uma categoria
+                </option>
                 <option *ngFor="let categoria  of categoriaList" value= {{categoria.id}}>
                   {{categoria.nome}}
                 </option>

@@ -1,7 +1,5 @@
 package br.dh.barbearia.java.commun;
 
-import java.awt.Desktop;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
