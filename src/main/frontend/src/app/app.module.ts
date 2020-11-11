@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Templates
 import { AppComponent } from './app.component';
@@ -33,7 +35,9 @@ import { AgendamentoService } from './services/agendamento.service';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
   providers: [AgendamentoService],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { AppService } from '../app.service';
+import { Categoria } from '../models/categoria';
 import { AgendamentoService } from '../services/agendamento.service';
 
 
@@ -14,15 +15,14 @@ import { AgendamentoService } from '../services/agendamento.service';
   styleUrls: ['./agendamento.component.css']
 })
 export class AgendamentoComponent implements OnInit {
-
-  x: any;
+  categoriaList: any[];
 
   constructor(private service: AgendamentoService) {
-    this.buscarCategorias();
+    this.agendamentoForm.get('categorias').setValue(this.buscarCategorias());
   }
 
-  teste: any;
   ngOnInit(): void {
+   
   }
 
   agendamentoForm = new FormGroup({
@@ -32,18 +32,21 @@ export class AgendamentoComponent implements OnInit {
     telefone: new FormControl('', Validators.nullValidator && Validators.required),
     sexo: new FormControl('', Validators.nullValidator && Validators.required),
     servicos: new FormControl('', Validators.nullValidator && Validators.required),
-    categoria: new FormControl('', Validators.nullValidator && Validators.required)
+    categorias: new FormControl()
   });
 
-  categorias: any[] = [];
+  
+  //categoriaList: this.buscarCategorias();
   catCount = 0;
+
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   buscarCategorias() {
-    this.service.getTodasCategorias().pipe(takeUntil(this.destroy$)).subscribe((categorias: any[]) => {
-      this.catCount = categorias.length;
-      this.categorias = categorias;
+    this.service.getTodasCategorias().pipe(takeUntil(this.destroy$)).subscribe((categoria: any[]) => {
+      this.catCount = categoria.length;
+      this.categoriaList = categoria;
+      return this.categoriaList;
     });
   }
 

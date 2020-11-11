@@ -59,14 +59,12 @@
         </div>
         <div class="item">
          			<p>Categoria</p>
-					<select formControlName="categoria">
-			         <option
-			        		each="categoria : ${listaCat}"
-			                value="categoria.idCategoria"
-			                selected="categoria.idCategoria == selecionado.idCategoria"
-			                text="categoria.nome" 
-			                onclick="selecionarServico(this)"> 
-			    	</select>
+               <select class="form-control" formControlName="categorias">
+                <option *ngFor="let categoria  of categoriaList" value= {{categoria.id}}>
+                  {{categoria.nome}}
+                </option>
+             </select>
+              
   		 </div>
    		 <div class="item" th:name="servs" id="servs" style="display: none;" >
 			        <p>Serviço</p>
