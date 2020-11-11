@@ -60,22 +60,22 @@
         <div class="item">
          			<p>Categoria</p>
                <select class="form-control" formControlName="categorias">
-                <option *ngFor="let categoria  of categoriaList" value="001">
-                  Selecione uma categoria
+                <option value= ""  ng-selected="selected">
+                  Selecione a categoria
                 </option>
-                <option *ngFor="let categoria  of categoriaList" value= {{categoria.id}}>
-                  {{categoria.nome}}
+                <option *ngFor="let categoria  of categoriaList" value= {{categoria.id}} (click)="selecionaCategoria(categoria)">
+                  {{categoria.nome}} 
                 </option>
              </select>
               
   		 </div>
-   		 <div class="item" th:name="servs" id="servs" style="display: none;" >
+   		 <div class="item"  >
 			        <p>Serviço</p>
-					<select formControlName="servicos" >
-			        <!-- <option th:each="servicos : ${ls}"
-			                th:value="${servicos.idServico}"
-			                th:selected="${servicos.idServico == selecionado.idServico}"
-			                th:text="${servicos.nome}" /> -->
+					<select formControlName="servicos"  class="form-control" >
+			        
+            <option *ngFor="let servs  of servicoList" value= {{servs.id}} (click)="selecionaServico(servs)">
+              {{servs.nome}} 
+            </option>
 			    	</select>
         </div>   
         <div class="btn-block">

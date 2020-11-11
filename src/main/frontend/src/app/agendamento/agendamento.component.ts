@@ -1,5 +1,3 @@
-import { HttpClient } from '@angular/common/http';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -16,13 +14,15 @@ import { AgendamentoService } from '../services/agendamento.service';
 })
 export class AgendamentoComponent implements OnInit {
   categoriaList: any[];
+  servicoList: any[];
+  catCount = 0;
 
   constructor(private service: AgendamentoService) {
-    this.agendamentoForm.get('categorias').setValue(this.buscarCategorias());
   }
 
   ngOnInit(): void {
-   
+    this.agendamentoForm.get('categorias').setValue(this.buscarCategorias());
+
   }
 
   agendamentoForm = new FormGroup({
@@ -31,13 +31,12 @@ export class AgendamentoComponent implements OnInit {
     email: new FormControl('', Validators.nullValidator && Validators.required),
     telefone: new FormControl('', Validators.nullValidator && Validators.required),
     sexo: new FormControl('', Validators.nullValidator && Validators.required),
-    servicos: new FormControl('', Validators.nullValidator && Validators.required),
+    servicos: new FormControl({value:'', disabled: true}, Validators.nullValidator && Validators.required),
     categorias: new FormControl()
   });
 
   
-  //categoriaList: this.buscarCategorias();
-  catCount = 0;
+  
 
 
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -53,6 +52,24 @@ export class AgendamentoComponent implements OnInit {
   ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+  }
+
+  selecionaCategoria(categoria:any){
+    const id = categoria.idCategoria;
+    this.agendamentoForm.get("categorias").setValue(id);
+    this.agendamentoForm.get("servicos").enable();
+      this.service.getServicosDaCategoria(id).pipe(takeUntil(this.destroy$)).subscribe((servs: any[]) => {
+        this.catCount = servs.length;
+        this.servicoList = servs;
+        return this.servicoList;
+      });
+  }
+
+  selecionaServico(serv:any){
+    const id = serv.idServico;
+    this.agendamentoForm.get("servicos").setValue(id);
+    //this.agendamentoForm.get("servicos").enable();
+      
   }
 }
 

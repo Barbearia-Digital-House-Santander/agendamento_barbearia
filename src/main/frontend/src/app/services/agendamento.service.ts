@@ -23,7 +23,10 @@ export class AgendamentoService {
     getTodasCategorias(){  
          
       return this.http.get(this.urlBarbearia + '/categorias',{headers: this.headers});
-      
+    }
+
+    getServicosDaCategoria(categoria:number){
+      return this.http.get(this.urlBarbearia + '/servicosDaCategoria/'+ categoria,{headers: this.headers});
     }
 
   } 
