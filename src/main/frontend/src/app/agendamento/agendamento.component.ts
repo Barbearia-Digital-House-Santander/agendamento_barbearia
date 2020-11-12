@@ -35,10 +35,6 @@ export class AgendamentoComponent implements OnInit {
     categorias: new FormControl()
   });
 
-  
-  
-
-
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   buscarCategorias() {

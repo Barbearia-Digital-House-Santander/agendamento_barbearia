@@ -29,7 +29,7 @@ public class AgendaService {
 		return agendaRepository.findByChaveDeCancelamento(chaveDeCancelamento);
 	}
 	
-	public String salvarMarcacaoNaAgenda(String cpf, String nome, String servico, LocalDate dataAgendamento, String horaAgendamento,
+	public void salvarMarcacaoNaAgenda(String cpf, String nome, String servico, LocalDate dataAgendamento, String horaAgendamento,
   		  String genero, String email,String telefone) {
 
 		  Agenda agenda = new Agenda();
@@ -46,7 +46,7 @@ public class AgendaService {
 		  agenda.setChaveDeCancelamento(geradorAleatorio());
 		  agendaRepository.save(agenda);
 	
-          return "redirect:/barbearia/notificacaoAgendamentoOK";
+        //  return "redirect:/barbearia/notificacaoAgendamentoOK";
 	}
 	
 	public String atualizarMarcacaoNaAgenda(String chaveDeCancelamento) {

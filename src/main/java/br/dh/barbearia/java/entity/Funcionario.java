@@ -1,5 +1,7 @@
 package br.dh.barbearia.java.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,11 +27,9 @@ public class Funcionario {
 	@Column(name = "nome")
 	private String nome;
 
-	@Column(name = "servico")
-	private String servico;
 
 	@Column(name = "data_nasc")
-	private int dtNascimento;
+	private LocalDate dtNascimento;
 
 	@Column(name = "genero")
 	private String genero;
@@ -52,8 +52,8 @@ public class Funcionario {
 	@Column(name = "cep")
 	private String cep;
 
-	@Column(name = "cargo")
-	private String cargo;
+	@Column(name = "categoria")
+	private String categoria;
 
 	@Column(name = "nivel_func")
 	private String nivelFunc;

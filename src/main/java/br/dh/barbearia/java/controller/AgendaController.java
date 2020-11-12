@@ -33,7 +33,7 @@ import br.dh.barbearia.java.service.CategoriaService;
 import br.dh.barbearia.java.service.ServicosService;
 
 @Controller
-@RequestMapping("/barbearia")
+@RequestMapping("/agenda")
 public class AgendaController implements WebMvcConfigurer{
 
 	@Resource
@@ -56,45 +56,15 @@ public class AgendaController implements WebMvcConfigurer{
 	}
 	
 	@RequestMapping(value = "/agendamento", method = RequestMethod.POST)
-	public String adicionaAgenda(String cpf, String nome, String servico, String dataAgendamento, String horaAgendamento,
+	public void adicionaAgenda(String cpf, String nome, String servico, String dataAgendamento, String horaAgendamento,
 			String genero, String email, String telefone) {
 
 		LocalDate data = LocalDate.parse(dataAgendamento);
-		return agendaService.salvarMarcacaoNaAgenda(cpf, nome, servico, data, horaAgendamento, genero, email,
+		 agendaService.salvarMarcacaoNaAgenda(cpf, nome, servico, data, horaAgendamento, genero, email,
 				telefone);
 	}
 
-	@RequestMapping(value = "/agendamento", method = RequestMethod.GET)
-	public String abrirPaginaAgendamento(Model model) {
-		this.selectCategoria(model);
-		this.selectServicos(model);
-		return "agendamento";
-	}
-
-	@RequestMapping(value = "/cancelamento", method = RequestMethod.POST)
-	public String atualizarAgenda(String chaveDeCancelamento) {
-		return agendaService.atualizarMarcacaoNaAgenda(chaveDeCancelamento);
-	}
-
-	@RequestMapping(value = "/cancelamento", method = RequestMethod.GET)
-	public String abrirPaginaCancelamento() {
-		return "cancelamento";
-	}
 	
-	@RequestMapping(value = "/cancelamentoEfetuado", method = RequestMethod.GET)
-	public String cancelamentoEfetuado() {
-		return "cancelamentoEfetuado";
-	}
-	
-	@RequestMapping(value = "/cancelamento/falha", method = RequestMethod.GET)
-	public String cancelamentoFalha() {
-		return "falha";
-	}
-	
-	@RequestMapping(value = "/cancelamento/falha", method = RequestMethod.POST)
-	public String retornarCancelamento() {
-		return "cancelamento";
-	}
 	
 	@ResponseBody
 	@RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.POST, produces = MediaType.APPLICATION_PDF_VALUE)
@@ -115,38 +85,6 @@ public class AgendaController implements WebMvcConfigurer{
 		
 	    return response;
 	}
-
-	@RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.GET)
-	public String abrirPaginaAgendamentoOK() {
-		return "notificacaoAgendamentoOK";
-	}
-
-	@RequestMapping(value = "/menuAgenda", method = RequestMethod.GET)
-	public String abrirMenuAgenda() {
-		return "menuAgenda";
-	}
-
-	@RequestMapping(value = "/ajuda", method = RequestMethod.GET)
-	public String abrirPaginaAjuda() {
-		return "ajuda";
-	}
-
-	/// selects pelo banco
-
-	public void selectServicos(Model model) {
-		List<Servicos> ls = new ArrayList<Servicos>(Arrays.asList(new Servicos(100,"Selecione o serviço")));
-		ls.addAll(servicosService.buscarServicosDisponiveis());
-		model.addAttribute("ls", ls);
-		model.addAttribute("selecionado", new Servicos(100, "Selecione o serviço"));
-	}
-
-	public void selectCategoria(Model model) {
-		List<Categoria> ls = new ArrayList<Categoria>(Arrays.asList(new Categoria(59,"Selecione a categoria")));
-		ls.addAll(categoriaService.buscarCategoria());
-		model.addAttribute("listaCat", ls);
-		model.addAttribute("selecionado", new Categoria(59, "Selecione a categoria"));
-	}
-	///////////////////
 	
 	
 	@GetMapping(value = "/categorias")
@@ -155,8 +93,7 @@ public class AgendaController implements WebMvcConfigurer{
 		return ResponseEntity.ok(cat);
 		
 	}
-	
-	
+		
 	@GetMapping(value = "/servicosDaCategoria/{categoria}")
 	public  ResponseEntity<?> buscarServicosDaCategoria(@PathVariable("categoria") Integer categoria) {
 		List<Servicos> servs = servicosService.listaServicosCategoria(categoria);

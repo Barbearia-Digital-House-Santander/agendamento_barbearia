@@ -17,6 +17,8 @@ import { MenuAgendaComponent } from './menu-agenda/menu-agenda.component';
 import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { LoginComponent } from './login/login.component';
 import { AgendamentoService } from './services/agendamento.service';
+import { DisplayBoardComponent } from './display-board/display-board.component';
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AgendamentoService } from './services/agendamento.service';
     HeaderComponent,
     MenuAgendaComponent,
     AgendamentoComponent,
-    LoginComponent
+    LoginComponent,
+    DisplayBoardComponent,
+    FuncionariosComponent
   ],
   imports: [
     BrowserModule,
