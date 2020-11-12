@@ -7,26 +7,21 @@ import { Categoria } from '../models/categoria';
 @Injectable({
   providedIn: 'root'
 })
-export class AgendamentoService {
+export class FuncionarioService {
 
   private headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
-  private urlAgenda:string;
-  private baseUrlService:string = '';
+  private urlFuncionario:string;
 
   constructor(private http: HttpClient) {
-    this.urlAgenda = 'http://localhost:8080/agenda';
+    this.urlFuncionario = 'http://localhost:8080/funcionario';
     this.headers.append('Content-Type', 'application/json');
    }
     
+   salvarFuncionario(user: any){
+    return this.http.post(this.urlFuncionario + '/salvaFuncionario' + user,{headers: this.headers});
+  }
 
-/**CONSULTA TODAS AS CATEGORIAS CADASTRADAS */
-    getTodasCategorias(){      
-      return this.http.get(this.urlAgenda + '/categorias',{headers: this.headers});
-    }
-
-    getServicosDaCategoria(categoria:number){
-      return this.http.get(this.urlAgenda + '/servicosDaCategoria/'+ categoria,{headers: this.headers});
-    }
-
-  } 
-    
+  getTodosFuncionarios(){      
+    return this.http.get(this.urlFuncionario + '/funcionarios',{headers: this.headers});
+  }
+}

@@ -8,13 +8,15 @@ import { HomeComponent } from '../home/home.component';
 import { MenuAgendaComponent } from '../menu-agenda/menu-agenda.component';
 import { AgendamentoComponent } from '../agendamento/agendamento.component';
 import { LoginComponent } from '../login/login.component';
+import { FuncionariosComponent } from '../funcionarios/funcionarios.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'galeria', component: GaleriaComponent },
   { path: 'agendaCentral', component: MenuAgendaComponent },
   { path: 'agendamento', component: AgendamentoComponent },
-  { path: 'login', component: LoginComponent } 
+  { path: 'login', component: LoginComponent },
+  { path: 'funcionarios', component: FuncionariosComponent }
   
 ];
 
