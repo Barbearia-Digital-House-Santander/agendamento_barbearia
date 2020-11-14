@@ -15,8 +15,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.service.FuncionariosService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Controller
+@Api(value = "Funcionarios")
 @RequestMapping("/funcionario")
 public class FuncionariosController  implements WebMvcConfigurer {
 	
@@ -29,6 +32,7 @@ public class FuncionariosController  implements WebMvcConfigurer {
 			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 	}
 	
+	@ApiOperation(value = "Cria um novo funcionário")
 	@PostMapping(value = "/salvaFuncionario/{funcionario}")
 	public void adicionaFuncionario(@PathVariable("funcionario") Funcionario func) {
 		 funcService.salvarNovoFunc(func.getCpf(), func.getNome(), func.getDtNascimento(), func.getNacionalidade(), func.getGenero(), func.getEmail(),
@@ -36,6 +40,7 @@ public class FuncionariosController  implements WebMvcConfigurer {
 	}
 	
 
+	@ApiOperation(value = "Lista todos os funcionários")
 	@GetMapping(value = "/funcionarios")
 	public  ResponseEntity<?> buscarFuncionarios() {
 		List<Funcionario> func = funcService.buscarTodosFuncionarios();

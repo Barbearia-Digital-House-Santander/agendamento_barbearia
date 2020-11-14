@@ -5,8 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +28,11 @@ import br.dh.barbearia.java.entity.Servicos;
 import br.dh.barbearia.java.service.AgendaService;
 import br.dh.barbearia.java.service.CategoriaService;
 import br.dh.barbearia.java.service.ServicosService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Controller
+@Api(value = "Agenda")
 @RequestMapping("/agenda")
 public class AgendaController implements WebMvcConfigurer{
 
@@ -55,6 +55,7 @@ public class AgendaController implements WebMvcConfigurer{
 			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 	}
 	
+	@ApiOperation(value = "Cria um novo agendamento")
 	@RequestMapping(value = "/agendamento", method = RequestMethod.POST)
 	public void adicionaAgenda(String cpf, String nome, String servico, String dataAgendamento, String horaAgendamento,
 			String genero, String email, String telefone) {
@@ -67,6 +68,7 @@ public class AgendaController implements WebMvcConfigurer{
 	
 	
 	@ResponseBody
+	@ApiOperation(value = "Cria um novo agendamento")
 	@RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.POST, produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<byte[]> AgendamentoOK(String ok, String recibo) throws IOException {
 		
@@ -86,14 +88,15 @@ public class AgendaController implements WebMvcConfigurer{
 	    return response;
 	}
 	
-	
+	@ApiOperation(value = "Lista todas as categorias")
 	@GetMapping(value = "/categorias")
 	public  ResponseEntity<?> buscarCategorias() {
 		List<Categoria> cat = categoriaService.buscarCategoria();
 		return ResponseEntity.ok(cat);
 		
 	}
-		
+	
+	@ApiOperation(value = "Busca todos os serviços de uma categoria")
 	@GetMapping(value = "/servicosDaCategoria/{categoria}")
 	public  ResponseEntity<?> buscarServicosDaCategoria(@PathVariable("categoria") Integer categoria) {
 		List<Servicos> servs = servicosService.listaServicosCategoria(categoria);
