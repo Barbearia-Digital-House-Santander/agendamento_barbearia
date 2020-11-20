@@ -10,6 +10,7 @@ import { AgendamentoComponent } from '../agendamento/agendamento.component';
 import { LoginComponent } from '../login/login.component';
 import { FuncionariosComponent } from '../funcionarios/funcionarios.component';
 import { ClientesListaComponent } from '../clientes-lista/clientes-lista.component';
+import { ContatoComponent } from '../contato/contato.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'agendamento', component: AgendamentoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'funcionarios', component: FuncionariosComponent },
-  { path: 'marcacoes', component: ClientesListaComponent}
+  { path: 'marcacoes', component: ClientesListaComponent},
+  { path: 'contato', component: ContatoComponent}
   
 ];
 

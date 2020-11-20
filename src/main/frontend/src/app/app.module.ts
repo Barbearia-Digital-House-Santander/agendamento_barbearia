@@ -22,7 +22,7 @@ import { DisplayBoardComponent } from './display-board/display-board.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { DialogConfirmService } from './services/dialogconfirm.service';
 import { ClientesListaComponent } from './clientes-lista/clientes-lista.component';
-import { AgendaFuncComponent } from './agenda-func/agenda-func.component';
+import { ContatoComponent } from './contato/contato.component';
 
 
 @NgModule({
@@ -39,7 +39,7 @@ import { AgendaFuncComponent } from './agenda-func/agenda-func.component';
     DisplayBoardComponent,
     FuncionariosComponent,
     ClientesListaComponent,
-    AgendaFuncComponent
+    ContatoComponent
     ],
   imports: [
     BrowserModule,
