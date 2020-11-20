@@ -22,6 +22,7 @@ import { DisplayBoardComponent } from './display-board/display-board.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { DialogConfirmService } from './services/dialogconfirm.service';
 import { ClientesListaComponent } from './clientes-lista/clientes-lista.component';
+import { ContatoComponent } from './contato/contato.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ClientesListaComponent } from './clientes-lista/clientes-lista.componen
     LoginComponent,
     DisplayBoardComponent,
     FuncionariosComponent,
-    ClientesListaComponent
+    ClientesListaComponent,
+    ContatoComponent
     ],
   imports: [
     BrowserModule,
