@@ -24,4 +24,14 @@ export class FuncionarioService {
   getTodosFuncionarios(){      
     return this.http.get(this.urlFuncionario + '/funcionarios',{headers: this.headers});
   }
+
+  salvarDisponibilidade(disponiblidade: any){
+    return this.http.post(this.urlFuncionario + '/disponiblidade' + disponiblidade,{headers: this.headers});
+
+  }
+
+  getHora(){
+    return this.http.get(this.urlFuncionario + '/hora',{headers: this.headers});
+  }
+
 }
