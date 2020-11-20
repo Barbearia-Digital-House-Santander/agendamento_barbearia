@@ -9,6 +9,7 @@ import { MenuAgendaComponent } from '../menu-agenda/menu-agenda.component';
 import { AgendamentoComponent } from '../agendamento/agendamento.component';
 import { LoginComponent } from '../login/login.component';
 import { FuncionariosComponent } from '../funcionarios/funcionarios.component';
+import { ClientesListaComponent } from '../clientes-lista/clientes-lista.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'agendaCentral', component: MenuAgendaComponent },
   { path: 'agendamento', component: AgendamentoComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'funcionarios', component: FuncionariosComponent }
+  { path: 'funcionarios', component: FuncionariosComponent },
+  { path: 'marcacoes', component: ClientesListaComponent}
   
 ];
 

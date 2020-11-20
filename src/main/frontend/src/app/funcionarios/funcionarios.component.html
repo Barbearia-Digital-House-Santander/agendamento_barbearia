@@ -1,3 +1,20 @@
+<head>
+  <style>
+   @import url('../assets/css/fontawesome-all.min.css');
+  </style>
+  </head>
+  
+  <div id='cssmenu'>
+      <ul>
+         <li><a href='#'>Home</a></li>
+         <li ><a href='marcacoes'>Clientes</a></li>
+         <li><a href='#'>Minha Agenda</a></li>
+         <li><a href='#'>Meus Dados</a></li>
+         <li class='active'><a href='funcionarios'>Funcionários</a></li>
+         <li><a href='#' style="left: 45em;"><i class="fas fa-sign-out-alt"></i></a></li>
+      </ul>
+  </div>
+
 <div class="container">
     <div class="row">
       <div class="col-md-7 mrgnbtm">
@@ -30,6 +47,7 @@
               <input type="text" class="form-control" formControlName="endereco" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Endereço">
             </div>
           </div>
+          
           <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger">Adicionar</button>
         </form>
       </div>

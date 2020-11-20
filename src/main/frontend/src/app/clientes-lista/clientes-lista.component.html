@@ -1,0 +1,53 @@
+<head>
+  <style>
+   @import url('../assets/css/fontawesome-all.min.css');
+  </style>
+  </head>
+  
+  <div id='cssmenu'>
+      <ul>
+         <li><a href='#'>Home</a></li>
+         <li  class='active'><a href='marcacoes'>Clientes</a></li>
+         <li><a href='#'>Minha Agenda</a></li>
+         <li><a href='#'>Meus Dados</a></li>
+         <li><a href='funcionarios'>Funcionários</a></li>
+         <li><a href='#' style="left: 45em;"><i class="fas fa-sign-out-alt"></i></a></li>
+      </ul>
+  </div>
+
+
+
+<h2 style="background-color: black; color: blanchedalmond;">Lista de Agendamento</h2>
+<br>
+<div class="container">
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+         <!--  <a routerLink="/cliente/salvar" class="btn btn-success">Novo</a>-->
+ 
+           <table class="table table-striped table-hover">   
+               <thead>
+                   <tr>
+                     <th>Nome</th>
+                     <th>Data</th>
+                     <th>Hora</th>
+                     <th>Email</th>
+                     <th>Telefone</th>
+                     <th>Ações</th>
+                   </tr>
+               </thead>
+ 
+               <tbody>  
+                 <tr *ngFor = "let c of clientes" [routerLink]= "['/cliente/salvar',c.id]">
+                     <td>{{c.nome}}</td>
+                     <td>{{c.dataAgendamento}}</td>
+                     <td>{{c.horaAgendamento}}</td>
+                     <td>{{c.email}}</td>
+                     <td>{{c.telefone}}</td>
+                     <td><button class="btn btn-danger" (click)="onDelete(c); $event.stopPropagation()">Remarcar</button></td>
+                 </tr>
+               </tbody>
+           </table>
+ 
+       </div>
+    </div>
+ </div>

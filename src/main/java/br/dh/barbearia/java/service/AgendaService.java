@@ -87,4 +87,9 @@ public class AgendaService {
 		return dados.get(dados.size()-1);
 	}
 	
+	public List<Agenda> buscarMarcacoesAgenda(){
+		List<Agenda> dados = agendaRepository.findAll();
+		return dados;
+	}
+	
 }

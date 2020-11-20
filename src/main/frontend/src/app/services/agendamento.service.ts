@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { stringify } from 'querystring';
 import { map } from 'rxjs/operators';
+import { Agendamento } from '../models/agendamento';
 import { Categoria } from '../models/categoria';
 
 @Injectable({
@@ -27,6 +28,24 @@ export class AgendamentoService {
     getServicosDaCategoria(categoria:number){
       return this.http.get(this.urlAgenda + '/servicosDaCategoria/'+ categoria,{headers: this.headers});
     }
+
+
+    getClientes(){
+      return this.http.get(this.urlAgenda + '/agendamentos/',{headers: this.headers});
+    }
+
+    update(cliente: Agendamento): Promise<Agendamento> {
+      const url = `${this.urlAgenda}/${cliente.idAgendamento}`; 
+      return this.http
+      .put(url, JSON.stringify(cliente), {headers:this.headers})
+      .toPromise()
+      .then(() => cliente as Agendamento)  
+      .catch(this.trataErro);
+  }
+
+  private trataErro(err : any) : Promise<any> {
+    return Promise.reject(err.message || err );
+  }
 
   } 
     

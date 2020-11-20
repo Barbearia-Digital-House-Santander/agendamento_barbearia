@@ -2,12 +2,12 @@ create table funcionarios (
 	 id_func int primary key auto_increment unique,
      cpf varchar(15) not null ,
      nome varchar(90) not null,
-     data_nasc varchar(12) not null, 
+     data_nasc varchar(12) , 
 	 genero varchar(10),
-     email varchar(40) not null,
+     email varchar(40),
      telefone varchar(15) ,
      nacionalidade varchar(25) default("Brasileira(o)"),
-     endereco varchar(45) not null,
+     endereco varchar(45),
      uf varchar(45),
      cep varchar(15)  ,
      categoria int (10) ,
@@ -18,7 +18,7 @@ create table funcionarios (
      FOREIGN KEY (nivel_func) REFERENCES Nivel(id_nivel)
      );
      
-     insert into funcionarios values(00001, '163.908.262-06', 'ADM', '2020-10-05', 'Feminino', 'adm@gmail.com', '(61) 99594-5245',
-     'Brasileira', 'Brasília', 'DF', '730000-000', 121, 1, 'admin');
+     insert into funcionarios(cpf, nome, email, matricula, senha, nivel_func) 
+     values( '163.908.262-06', 'ADM', 'adm@gmail.com', '2020DHBR', '12345', 1);
      
      select * from funcionarios;

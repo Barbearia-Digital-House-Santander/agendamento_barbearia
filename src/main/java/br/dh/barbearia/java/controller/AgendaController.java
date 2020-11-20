@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import br.dh.barbearia.java.entity.Agenda;
 import br.dh.barbearia.java.entity.Categoria;
 import br.dh.barbearia.java.entity.Servicos;
 import br.dh.barbearia.java.service.AgendaService;
@@ -101,6 +102,14 @@ public class AgendaController implements WebMvcConfigurer{
 	public  ResponseEntity<?> buscarServicosDaCategoria(@PathVariable("categoria") Integer categoria) {
 		List<Servicos> servs = servicosService.listaServicosCategoria(categoria);
 		return ResponseEntity.ok(servs);
+		
+	}
+	
+	@ApiOperation(value = "Busca todos agendamentos")
+	@GetMapping(value = "/agendamentos")
+	public  ResponseEntity<?> buscarAgendamentos() {
+		List<Agenda> ags = agendaService.buscarMarcacoesAgenda();
+		return ResponseEntity.ok(ags);
 		
 	}
 }
