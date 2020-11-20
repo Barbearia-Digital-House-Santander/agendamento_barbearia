@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import br.dh.barbearia.java.entity.Funcionario;
+import br.dh.barbearia.java.entity.Hora;
 import br.dh.barbearia.java.service.FuncionariosService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -45,6 +46,14 @@ public class FuncionariosController  implements WebMvcConfigurer {
 	public  ResponseEntity<?> buscarFuncionarios() {
 		List<Funcionario> func = funcService.buscarTodosFuncionarios();
 		return ResponseEntity.ok(func);
+		
+	}
+	
+	@ApiOperation(value = "Lista todos os horarios")
+	@GetMapping(value = "/hora")
+	public  ResponseEntity<?> buscarHorarios() {
+		List<Hora> horas = funcService.buscarTodasHoras();
+		return ResponseEntity.ok(horas);
 		
 	}
 }

@@ -9,15 +9,19 @@ import org.springframework.stereotype.Service;
 
 import br.dh.barbearia.java.commun.Constantes;
 import br.dh.barbearia.java.commun.RandomCommun;
-import br.dh.barbearia.java.entity.Categoria;
 import br.dh.barbearia.java.entity.Funcionario;
+import br.dh.barbearia.java.entity.Hora;
 import br.dh.barbearia.java.repository.FuncionarioRepository;
+import br.dh.barbearia.java.repository.HoraRepository;
 
 @Service
 public class FuncionariosService {
 	
 	@Resource
 	private FuncionarioRepository funcionarioRepository;
+	
+	@Resource
+	private HoraRepository horaRepository;
 	
 	private RandomCommun randomCommun;
 
@@ -44,5 +48,9 @@ public class FuncionariosService {
 	
 	public List<Funcionario> buscarTodosFuncionarios() {
 		return funcionarioRepository.findAll();
+	}
+	
+	public List<Hora> buscarTodasHoras() {
+		return horaRepository.findAll();
 	}
 }
