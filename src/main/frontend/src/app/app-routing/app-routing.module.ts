@@ -11,6 +11,7 @@ import { LoginComponent } from '../login/login.component';
 import { FuncionariosComponent } from '../funcionarios/funcionarios.component';
 import { ClientesListaComponent } from '../clientes-lista/clientes-lista.component';
 import { ContatoComponent } from '../contato/contato.component';
+import { DisponiblidadeFuncionarioComponent } from '../disponiblidade-funcionario/disponiblidade-funcionario.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'funcionarios', component: FuncionariosComponent },
   { path: 'marcacoes', component: ClientesListaComponent},
-  { path: 'contato', component: ContatoComponent}
+  { path: 'contato', component: ContatoComponent},
+  { path: 'minhaAgenda', component: DisponiblidadeFuncionarioComponent}
   
 ];
 

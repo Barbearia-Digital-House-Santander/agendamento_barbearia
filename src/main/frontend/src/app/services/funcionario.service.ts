@@ -21,6 +21,10 @@ export class FuncionarioService {
     return this.http.post(this.urlFuncionario + '/salvaFuncionario' + user,{headers: this.headers});
   }
 
+  salvarDisponibilidadeDoFuncionario(agenda: any){
+    return this.http.post(this.urlFuncionario + '/salvarDisponibilidade' + agenda,{headers: this.headers});
+  }
+
   getTodosFuncionarios(){      
     return this.http.get(this.urlFuncionario + '/funcionarios',{headers: this.headers});
   }
@@ -33,5 +37,6 @@ export class FuncionarioService {
   getHora(){
     return this.http.get(this.urlFuncionario + '/hora',{headers: this.headers});
   }
+
 
 }

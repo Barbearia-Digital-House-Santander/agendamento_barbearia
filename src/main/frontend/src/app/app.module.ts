@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 //Templates
 import { AppComponent } from './app.component';
@@ -23,6 +22,7 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { DialogConfirmService } from './services/dialogconfirm.service';
 import { ClientesListaComponent } from './clientes-lista/clientes-lista.component';
 import { ContatoComponent } from './contato/contato.component';
+import { DisponiblidadeFuncionarioComponent } from './disponiblidade-funcionario/disponiblidade-funcionario.component';
 
 
 @NgModule({
@@ -39,7 +39,8 @@ import { ContatoComponent } from './contato/contato.component';
     DisplayBoardComponent,
     FuncionariosComponent,
     ClientesListaComponent,
-    ContatoComponent
+    ContatoComponent,
+    DisponiblidadeFuncionarioComponent
     ],
   imports: [
     BrowserModule,

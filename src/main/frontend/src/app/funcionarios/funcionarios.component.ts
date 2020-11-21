@@ -28,7 +28,7 @@ export class FuncionariosComponent implements OnDestroy {
     categoria: new FormControl('', Validators.nullValidator && Validators.required),
     cep: new FormControl('', Validators.nullValidator && Validators.required),
     genero: new FormControl('', Validators.nullValidator && Validators.required),
-    nivel: new FormControl('', Validators.nullValidator && Validators.required),
+    nivel: new FormControl('', Validators.nullValidator && Validators.required)
 
   });
 

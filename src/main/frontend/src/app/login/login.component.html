@@ -29,7 +29,7 @@
      </style>
 </head>
 <body>
-   <app-pre-carregamento></app-pre-carregamento>
+  <!-- <app-pre-carregamento></app-pre-carregamento>-->
     <app-header></app-header>
     
     <main>
@@ -76,42 +76,28 @@
                         <div class="heading mb-4">
                             <h4>Entre com sua conta</h4>
                         </div>
-                        <form method="POST" action="login/autentica.php">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                             <div class="form-input">
                                 <span><i class="fa fa-envelope"></i></span>
-                                <input type="text" name="usu-email" id="usu-email" autofocus="autofocus" placeholder="Digite seu e-mail"
+                                <input type="text" formControlName="matricula"  autofocus="autofocus" placeholder="Digite sua matrícula"
                                 required>
                             </div>
                             <div class="form-input">
                                 <span><i class="fa fa-lock"></i></span>
-                                <input type="password" name="usu-senha" id="usu-senha" placeholder="Digite sua senha"
+                                <input type="password" formControlName="senha" id="usu-senha" placeholder="Digite sua senha"
                                 required>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-6 d-flex">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="" id="cb1"
-                                        class="custom-control-input">
-                                        <label for="cb1" class="custom-control-label text-white">Lembrar</label>
-                                    </div>
-                                </div>
+                     <!--      <div class="row mb-3">
+    
                                 <div class="col-6 text-right">
                                     <a class="forget-link" href="forget.hmtl">Esqueceu a senha</a>
                                 </div>
                             </div>
+                    -->         
                             <div class="text-left mb-3">
-                                <button type="submit" class="btns">Login</button>
+                                <button type="submit" [disabled]="!loginForm.valid" class="btns">Login</button>
                             </div>
-                            <div class="text-center mb-2">
-                                <div class="mb-3" style="color:#777">
-                                Ou entre com</div>
-                                <a href=""class="btns btn-social btn-facebook">Facebook</a>
-                                <a href=""class="btns btn-social btn-google">Google</a>
-                                <a href=""class="btns btn-social btn-twitter">Twitter</a>
-                            </div>
-                            <div style="color:#777">Não é cadastrado
-                                <a href="register.html" class="register-link">Registre-se aqui</a>
-                            </div>
+                      
                         </form>
                     </div>
                 </div>

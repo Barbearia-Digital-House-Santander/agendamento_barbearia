@@ -11,4 +11,6 @@ import br.dh.barbearia.java.entity.Funcionario;
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 
 		List<Funcionario> findAll();
+		
+		List<Funcionario> findByMatriculaAndSenha(String matricula, String senha);
 }

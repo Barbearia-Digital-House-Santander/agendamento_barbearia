@@ -53,4 +53,9 @@ public class FuncionariosService {
 	public List<Hora> buscarTodasHoras() {
 		return horaRepository.findAll();
 	}
+	
+	public List<Funcionario> buscaFuncionarioEspecifico(String matricula, String senha){
+		 return funcionarioRepository.findByMatriculaAndSenha(matricula, senha);
+		
+	}
 }

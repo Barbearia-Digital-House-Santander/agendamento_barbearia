@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
 @Controller
 @Api(value = "Funcionarios")
 @RequestMapping("/funcionario")
-public class FuncionariosController  implements WebMvcConfigurer {
+public class FuncionariosController implements WebMvcConfigurer  {
 	
 	@Resource
 	private FuncionariosService funcService;

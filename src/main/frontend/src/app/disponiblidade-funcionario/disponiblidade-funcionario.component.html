@@ -1,0 +1,47 @@
+<head>
+    <style>
+     @import url('../assets/css/fontawesome-all.min.css');
+    </style>
+    </head>
+    
+    <div id='cssmenu'>
+        <ul>
+           <li><a href='#'>Home</a></li>
+           <li ><a href='marcacoes'>Clientes</a></li>
+           <li><a href='minhaAgenda'>Minha Agenda</a></li>
+           <li><a href='#'>Meus Dados</a></li>
+           <li class='active'><a href='funcionarios'>Funcionários</a></li>
+           <li><a href='#' style="left: 45em;"><i class="fas fa-sign-out-alt"></i></a></li>
+        </ul>
+    </div>
+  
+  <div class="container">
+      <div class="row">
+        <div class="col-md-7 mrgnbtm">
+          <h2>Adicione Novos Funcionários</h2>
+          <form [formGroup]="disponivelForm" (ngSubmit)="onSubmit()" >
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Data</label>
+                <input type="date" class="form-control" formControlName="data" placeholder="Data">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Hora</label>
+                <select formControlName="horas"  class="form-control" >
+                    
+                    <option *ngFor="let horas  of horaList" value= {{horas.id}} (click)="selecionaHora(horas)">
+                      {{horas.hora}} 
+                    </option>
+              </select>
+              </div>
+            </div>
+           
+            
+            <button type="submit" [disabled]="!disponivelForm.valid" class="btn btn-danger">Adicionar</button>
+          </form>
+        </div>
+       
+      </div>
+    </div>
+   
+    
