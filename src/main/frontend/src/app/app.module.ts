@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { HomeComponent } from './home/home.component';
-import { PreCarregamentoComponent } from './pre-carregamento/pre-carregamento.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuAgendaComponent } from './menu-agenda/menu-agenda.component';
@@ -23,6 +22,8 @@ import { DialogConfirmService } from './services/dialogconfirm.service';
 import { ClientesListaComponent } from './clientes-lista/clientes-lista.component';
 import { ContatoComponent } from './contato/contato.component';
 import { DisponiblidadeFuncionarioComponent } from './disponiblidade-funcionario/disponiblidade-funcionario.component';
+import { HomeFuncComponent } from './home-func/home-func.component';
+import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 
 
 @NgModule({
@@ -30,7 +31,6 @@ import { DisponiblidadeFuncionarioComponent } from './disponiblidade-funcionario
     AppComponent,
     GaleriaComponent,
     HomeComponent,
-    PreCarregamentoComponent,
     FooterComponent,
     HeaderComponent,
     MenuAgendaComponent,
@@ -40,7 +40,9 @@ import { DisponiblidadeFuncionarioComponent } from './disponiblidade-funcionario
     FuncionariosComponent,
     ClientesListaComponent,
     ContatoComponent,
-    DisponiblidadeFuncionarioComponent
+    DisponiblidadeFuncionarioComponent,
+    HomeFuncComponent,
+    PreLoaderComponent
     ],
   imports: [
     BrowserModule,

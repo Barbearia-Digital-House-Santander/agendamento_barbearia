@@ -12,6 +12,7 @@ import { FuncionariosComponent } from '../funcionarios/funcionarios.component';
 import { ClientesListaComponent } from '../clientes-lista/clientes-lista.component';
 import { ContatoComponent } from '../contato/contato.component';
 import { DisponiblidadeFuncionarioComponent } from '../disponiblidade-funcionario/disponiblidade-funcionario.component';
+import { HomeFuncComponent } from '../home-func/home-func.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'funcionarios', component: FuncionariosComponent },
   { path: 'marcacoes', component: ClientesListaComponent},
   { path: 'contato', component: ContatoComponent},
-  { path: 'minhaAgenda', component: DisponiblidadeFuncionarioComponent}
+  { path: 'minhaAgenda', component: DisponiblidadeFuncionarioComponent},
+  { path: 'home', component: HomeFuncComponent}
   
 ];
 

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,19 +34,23 @@ public class AutentificacaoController implements WebMvcConfigurer {
 	}
 	
 	@ApiOperation(value = "Autentica login do funcionarionario")
-	@GetMapping(value = "/login/{funcionario}")
-	public List<Funcionario> logarFuncionario(HttpSession session, @PathVariable("funcionario") Funcionario func) {
+	@GetMapping(value = "/login/{matricula}/{senha}")
+	public ResponseEntity<?> logarFuncionario(HttpSession session, @PathVariable("matricula") String matricula,
+			@PathVariable("senha") String senha) {
 	
-		List<Funcionario> funcionario = funcService.buscaFuncionarioEspecifico(func.getMatricula(), func.getSenha());	
+		List<Funcionario> funcionario = funcService.buscaFuncionarioEspecifico(matricula, senha);	
 		  if(!funcionario.isEmpty()) {
-	          session.setAttribute("usuarioLogado", func);
-	          return funcionario;
+	          session.setAttribute("usuarioLogado", funcionario.get(0).getNome());
+	          return ResponseEntity.ok(funcionario);
 	      }
-		  return funcionario;
+		  return ResponseEntity.ok(funcionario);
 	  }
 	
-	  public String logout(HttpSession session) {
+	@ApiOperation(value = "Deslogar login do funcionarionario")
+	@GetMapping(value = "/logout/{usuario}")
+	  public ResponseEntity<?>  logout(HttpSession session, @PathVariable String usuario) {
+		  session.setAttribute("usuarioLogado", usuario);
 	      session.invalidate();
-	      return "redirect:loginForm";
+	      return ResponseEntity.ok("Deslogado");
 	  }
 }

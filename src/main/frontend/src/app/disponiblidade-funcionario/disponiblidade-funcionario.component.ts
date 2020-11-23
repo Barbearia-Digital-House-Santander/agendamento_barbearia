@@ -3,6 +3,8 @@ import { FuncionarioService } from '../services/funcionario.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Funcionario } from '../models/funcionario';
+import { AutentificacaoService } from '../services/autentificacao.service';
 
 @Component({
   selector: 'app-disponiblidade-funcionario',
@@ -15,14 +17,22 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
   timeCount = 0;
   disponiblidadeCount = 0;
 
-  constructor(private service: FuncionarioService) { }
+  usuario: Funcionario;
+
+  logado:any;
+
+  constructor(private service: FuncionarioService, private serviceAut: AutentificacaoService) { }
 
   ngOnInit(): void {
+    this.logado = this.serviceAut.usuario ;
+    this.usuario = this.logado ;
+    this.disponivelForm.get('funcionario').setValue(this.usuario);
     this.disponivelForm.get('hora').setValue(this.buscarHoras());
   }
   
 
   disponivelForm = new FormGroup({
+    funcionario: new FormControl('', Validators.nullValidator && Validators.required), 
     data: new FormControl('', Validators.nullValidator && Validators.required),
     hora: new FormControl('', Validators.nullValidator && Validators.required)
 

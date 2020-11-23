@@ -1,0 +1,30 @@
+<head>
+    <style>
+     @import url('../assets/css/fontawesome-all.min.css');
+    </style>
+    </head>
+  <body>
+    <div id='cssmenu'>
+        <ul>
+           <li class='active'><a href='home'>Home</a></li>
+           <li ><a href='marcacoes'>Clientes</a></li>
+           <li><a href='minhaAgenda'>Minha Agenda</a></li>
+           <li><a href='#'>Meus Dados</a></li>
+           <li ><a href='funcionarios'>Funcionários</a></li>
+           <li *ngFor = "let  u of usuario" style="left: 12em; text-align: center; top:15px;" >
+            Você está logado como:<br> {{u.nome}}
+           </li>
+          <li><a href='#' style="left: 36em;" (click)="logout()">SAIR<i class="fas fa-sign-out-alt"></i></a></li>
+           
+        </ul>
+    </div>
+    <div class="layout" *ngFor = "let  u of usuario" >
+        <br><br>
+        <p class="textop">Seja bem-vindo  {{u.nome}}</p><br>
+        <p class="textop">ao nosso portal </p>
+       
+        
+        <img src="../../assets/img/logo/teste.png" class="logoo">
+        <p id="lembrete">Para sua segurança, não se esqueça de sair do portal!</p>
+    </div>
+</body>  

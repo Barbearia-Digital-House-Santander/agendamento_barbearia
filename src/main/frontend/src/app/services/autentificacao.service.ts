@@ -10,16 +10,33 @@ import { Categoria } from '../models/categoria';
 export class AutentificacaoService {
 
     
-  private headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
+  private headers = new HttpHeaders()
+  .set('Accept', 'application/json')
+  .set('Content-Type', 'application/json')
+  .set('Access-Control-Allow-Origin','*');
+
+
   private urlAutentica:string;
+  usuario: any;
 
   constructor(private http: HttpClient) {
     this.urlAutentica = 'http://localhost:8080/autentificar';
     this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Access-Control-Allow-Origin','*');
    }
 
    autenticarFuncionario(usuario:any){
-    return this.http.get(this.urlAutentica + '/login' + usuario,{headers: this.headers});
+    const matricula = usuario.matricula;
+    const senha = usuario.senha;
+    return this.http.get(`${this.urlAutentica}/login/${matricula}/${senha}`,{headers: this.headers});
 
+  }
+
+  setUsuarioLogado(logado:any){
+    this.usuario = logado;
+  }
+
+  lougoutUsuario(usuario:any){
+    return this.http.get(`${this.urlAutentica}/logout/${usuario}`,{headers: this.headers});
   }
 }

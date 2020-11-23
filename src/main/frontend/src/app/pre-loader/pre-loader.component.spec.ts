@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PreCarregamentoComponent } from './pre-carregamento.component';
+import { PreLoaderComponent } from './pre-loader.component';
 
-describe('PreCarregamentoComponent', () => {
-  let component: PreCarregamentoComponent;
-  let fixture: ComponentFixture<PreCarregamentoComponent>;
+describe('PreLoaderComponent', () => {
+  let component: PreLoaderComponent;
+  let fixture: ComponentFixture<PreLoaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PreCarregamentoComponent ]
+      declarations: [ PreLoaderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PreCarregamentoComponent);
+    fixture = TestBed.createComponent(PreLoaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
