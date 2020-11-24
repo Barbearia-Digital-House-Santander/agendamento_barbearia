@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Funcionario } from '../models/funcionario';
 import { AutentificacaoService } from '../services/autentificacao.service';
@@ -15,6 +15,7 @@ export class HomeFuncComponent implements OnInit {
   usuario: Funcionario;
 
   logado:any;
+  subject = new BehaviorSubject([]);
 
   destroy$: Subject<boolean> = new Subject<boolean>();
   router: Router;
@@ -25,7 +26,8 @@ export class HomeFuncComponent implements OnInit {
 
   ngOnInit(): void {
     this.logado = this.service.usuario ;
-    this.usuario = this.logado ;
+    this.usuario = this.logado;
+    this.subject.subscribe(a => a = this.logado);
     this.usuario;
   }
 
@@ -33,8 +35,12 @@ export class HomeFuncComponent implements OnInit {
     this.service.lougoutUsuario(this.usuario).pipe(takeUntil(this.destroy$)).subscribe(mens => {
     
       this.router.navigate(['/', '']);
-      
     });
   }
 
+  minhaAgenda(){
+    this.router.navigate(['/', 'minhaAgenda']);
+    this.service.setUsuarioLogado(this.logado);
+   
+  }
 }

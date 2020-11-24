@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HomeFuncComponent } from '../home-func/home-func.component';
 import { AutentificacaoService } from '../services/autentificacao.service';
@@ -32,9 +32,10 @@ export class LoginComponent implements OnInit {
   });
 
   onSubmit() {
-    this.service.autenticarFuncionario(this.loginForm.value).pipe(takeUntil(this.destroy$)).subscribe(func => {
-    
-    this.service.setUsuarioLogado(func);
+    this.service.autenticarFuncionario(this.loginForm.value).pipe(takeUntil(this.destroy$)).subscribe((func: any[]) => {
+    this.users = func;
+    this.service.pessoaLogada.push(func);
+      this.service.setUsuarioLogado(this.users);
     this.loginForm.reset();
     this.router.navigate(['/', 'home']);
     

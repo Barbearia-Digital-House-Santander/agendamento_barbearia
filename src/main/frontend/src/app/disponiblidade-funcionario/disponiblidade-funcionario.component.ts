@@ -5,6 +5,9 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Funcionario } from '../models/funcionario';
 import { AutentificacaoService } from '../services/autentificacao.service';
+import { BaseDados } from '../models/baseDados';
+import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-disponiblidade-funcionario',
@@ -18,15 +21,18 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
   disponiblidadeCount = 0;
 
   usuario: Funcionario;
-
+  router: Router;
   logado:any;
 
-  constructor(private service: FuncionarioService, private serviceAut: AutentificacaoService) { }
+  constructor(private service: FuncionarioService, private serviceAut: AutentificacaoService, router: Router){
+    this.router = router; }
+
 
   ngOnInit(): void {
-    this.logado = this.serviceAut.usuario ;
-    this.usuario = this.logado ;
-    this.disponivelForm.get('funcionario').setValue(this.usuario);
+    this.logado = this.serviceAut.usuario;
+
+    this.usuario = this.logado[0] ;
+    this.disponivelForm.get('funcionario').setValue(this.usuario.nome);
     this.disponivelForm.get('hora').setValue(this.buscarHoras());
   }
   
@@ -65,5 +71,16 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
     this.salvarDisponibilidade();
 }
 
+logout(){
+  this.serviceAut.lougoutUsuario(this.usuario).pipe(takeUntil(this.destroy$)).subscribe(mens => {
+  
+    this.router.navigate(['/', '']);
+  });
+}
+
+minhaAgenda(){
+  this.router.navigate(['/', 'minhaAgenda']);
+  this.serviceAut.setUsuarioLogado(this.logado);
+}
 
 }

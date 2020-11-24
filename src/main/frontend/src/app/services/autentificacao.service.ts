@@ -18,6 +18,7 @@ export class AutentificacaoService {
 
   private urlAutentica:string;
   usuario: any;
+  pessoaLogada: any = [];
 
   constructor(private http: HttpClient) {
     this.urlAutentica = 'http://localhost:8080/autentificar';
@@ -29,11 +30,11 @@ export class AutentificacaoService {
     const matricula = usuario.matricula;
     const senha = usuario.senha;
     return this.http.get(`${this.urlAutentica}/login/${matricula}/${senha}`,{headers: this.headers});
-
   }
 
   setUsuarioLogado(logado:any){
     this.usuario = logado;
+    this.pessoaLogada.push(this.usuario);
   }
 
   lougoutUsuario(usuario:any){
