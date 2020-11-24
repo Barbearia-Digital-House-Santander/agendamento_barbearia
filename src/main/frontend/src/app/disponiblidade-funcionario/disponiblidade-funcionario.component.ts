@@ -7,6 +7,7 @@ import { Funcionario } from '../models/funcionario';
 import { AutentificacaoService } from '../services/autentificacao.service';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
+import { SelectService } from '../services/selects.service';
 
 @Component({
   selector: 'app-disponiblidade-funcionario',
@@ -22,8 +23,10 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
   usuario: Funcionario;
   router: Router;
   logado:any;
+  
 
-  constructor(private service: FuncionarioService, private serviceAut: AutentificacaoService, router: Router){
+  constructor(private service: FuncionarioService, private serviceAut: AutentificacaoService, 
+    private selects: SelectService, router: Router){
     this.router = router; }
 
 
@@ -53,7 +56,7 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
 
   
   buscarHoras() {
-    this.service.getHora().pipe(takeUntil(this.destroy$)).subscribe((time: any[]) => {
+    this.selects.getHora().pipe(takeUntil(this.destroy$)).subscribe((time: any[]) => {
       this.timeCount = time.length;
       this.horaList = time;
       return this.horaList;
@@ -78,10 +81,7 @@ logout(){
   });
 }
 
-minhaAgenda(){
-  this.router.navigate(['/', 'minhaAgenda']);
-  this.serviceAut.setUsuarioLogado(this.logado);
-}
+
 
 pagMinhaAgenda(){
   this.router.navigate(['/', 'minhaAgenda']);

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Agendamento } from '../models/agendamento';
+import { Funcionario } from '../models/funcionario';
 import { AgendamentoService } from '../services/agendamento.service';
+import { AutentificacaoService } from '../services/autentificacao.service';
 import { ClientesService } from '../services/clientes.service';
 import { DialogConfirmService } from '../services/dialogconfirm.service';
 
@@ -11,13 +16,23 @@ import { DialogConfirmService } from '../services/dialogconfirm.service';
 })
 export class ClientesListaComponent implements OnInit {
   clientes : Agendamento[] ;
+  usuario: Funcionario;
+  router: Router;
+  logado:any;
+
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
     constructor(
         private agendaService : AgendamentoService,
-        private dialogconfirmService :  DialogConfirmService
-        ){}
+        private dialogconfirmService :  DialogConfirmService,
+        private serviceAut: AutentificacaoService, 
+        router: Router){
+            this.router = router; }
 
     ngOnInit() : void {
+        this.logado = this.serviceAut.usuario;
+        this.usuario = this.logado; 
+
         this.agendaService.getClientes()
         .subscribe((clientes : Agendamento[]) => {
             this.clientes = clientes;
@@ -41,4 +56,32 @@ export class ClientesListaComponent implements OnInit {
         });
         
      }
+
+     logout(){
+        this.serviceAut.lougoutUsuario(this.usuario).pipe(takeUntil(this.destroy$)).subscribe(mens => {
+        
+          this.router.navigate(['/', '']);
+        });
+      }
+      
+   
+      
+      pagMinhaAgenda(){
+        this.router.navigate(['/', 'minhaAgenda']);
+        this.serviceAut.setUsuarioLogado(this.logado);
+      }
+      
+      pagMarcacoes(){
+        this.router.navigate(['/', 'marcacoes']);
+        this.serviceAut.setUsuarioLogado(this.logado);
+      }
+      
+      pagHome(){
+        this.router.navigate(['/', 'home']);
+        this.serviceAut.setUsuarioLogado(this.logado);
+      }
+      pagFuncionarios(){
+        this.router.navigate(['/', 'funcionarios']);
+        this.serviceAut.setUsuarioLogado(this.logado);
+      }
 }

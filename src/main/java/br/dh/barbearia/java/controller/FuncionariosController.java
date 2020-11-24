@@ -1,8 +1,11 @@
 package br.dh.barbearia.java.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.entity.Hora;
+import br.dh.barbearia.java.entity.NivelHierarquico;
+import br.dh.barbearia.java.entity.UF;
 import br.dh.barbearia.java.service.FuncionariosService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,10 +39,17 @@ public class FuncionariosController implements WebMvcConfigurer  {
 	}
 	
 	@ApiOperation(value = "Cria um novo funcionário")
-	@PostMapping(value = "/salvaFuncionario/{funcionario}")
-	public void adicionaFuncionario(@PathVariable("funcionario") Funcionario func) {
-		 funcService.salvarNovoFunc(func.getCpf(), func.getNome(), func.getDtNascimento(), func.getNacionalidade(), func.getGenero(), func.getEmail(),
-				 func.getTelefone(), func.getEndereco(), func.getUf(), func.getCep(), func.getNivelFunc(), func.getCategoria());
+	@PostMapping(value = "/salvaFuncionario/{nome}/{cpf}/{dtNasc}/{endereco}/{uf}/{cep}/{nacionalidade}/{genero}/{telefone}/{categoria}/{email}/{nivel}")
+	public ResponseEntity<?> adicionaFuncionario(@PathVariable("nome") String nome,@PathVariable("cpf") String cpf,
+			@PathVariable("endereco") String endereco,@PathVariable("cep") String cep,
+			@PathVariable("uf") Integer uf,@PathVariable("telefone") String telefone,
+			@PathVariable("email") String email,@PathVariable("categoria") Integer categoria,
+			@PathVariable("nivel") Integer nivel,@PathVariable("genero") String genero,
+			@PathVariable("nacionalidade") String nacionalidade,@PathVariable("dtNasc") LocalDate dtNasc) {
+		
+		 funcService.salvarNovoFunc(cpf, nome, dtNasc, nacionalidade, genero, email,
+				 telefone, endereco, uf, cep, nivel, categoria);
+		 return ResponseEntity.ok("Salvo");
 	}
 	
 
@@ -54,6 +66,22 @@ public class FuncionariosController implements WebMvcConfigurer  {
 	public  ResponseEntity<?> buscarHorarios() {
 		List<Hora> horas = funcService.buscarTodasHoras();
 		return ResponseEntity.ok(horas);
+		
+	}
+	
+	@ApiOperation(value = "Lista todos os niveis")
+	@GetMapping(value = "/nivel")
+	public  ResponseEntity<?> buscarNivel() {
+		List<NivelHierarquico> nivel = funcService.buscarTodosOsNiveis();
+		return ResponseEntity.ok(nivel);
+		
+	}
+	
+	@ApiOperation(value = "Lista todos os ufs")
+	@GetMapping(value = "/ufs")
+	public  ResponseEntity<?> buscarUF() {
+		List<UF> ufs = funcService.buscarTodosUFs();
+		return ResponseEntity.ok(ufs);
 		
 	}
 }

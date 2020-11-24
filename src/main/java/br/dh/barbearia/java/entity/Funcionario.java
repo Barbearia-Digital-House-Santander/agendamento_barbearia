@@ -47,16 +47,16 @@ public class Funcionario {
 	private String endereco;
 
 	@Column(name = "uf")
-	private String uf;
+	private Integer uf;
 
 	@Column(name = "cep")
 	private String cep;
 
 	@Column(name = "categoria")
-	private String categoria;
+	private Integer categoria;
 
 	@Column(name = "nivel_func")
-	private String nivelFunc;
+	private Integer nivelFunc;
 
 	@Column(name = "matricula")
 	private String matricula;
