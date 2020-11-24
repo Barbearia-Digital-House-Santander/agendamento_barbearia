@@ -5,7 +5,6 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Funcionario } from '../models/funcionario';
 import { AutentificacaoService } from '../services/autentificacao.service';
-import { BaseDados } from '../models/baseDados';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 
@@ -34,6 +33,7 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
     this.usuario = this.logado[0] ;
     this.disponivelForm.get('funcionario').setValue(this.usuario.nome);
     this.disponivelForm.get('hora').setValue(this.buscarHoras());
+    this.usuario = this.logado;
   }
   
 
@@ -80,6 +80,25 @@ logout(){
 
 minhaAgenda(){
   this.router.navigate(['/', 'minhaAgenda']);
+  this.serviceAut.setUsuarioLogado(this.logado);
+}
+
+pagMinhaAgenda(){
+  this.router.navigate(['/', 'minhaAgenda']);
+  this.serviceAut.setUsuarioLogado(this.logado);
+}
+
+pagMarcacoes(){
+  this.router.navigate(['/', 'marcacoes']);
+  this.serviceAut.setUsuarioLogado(this.logado);
+}
+
+pagHome(){
+  this.router.navigate(['/', 'home']);
+  this.serviceAut.setUsuarioLogado(this.logado);
+}
+pagFuncionarios(){
+  this.router.navigate(['/', 'funcionarios']);
   this.serviceAut.setUsuarioLogado(this.logado);
 }
 

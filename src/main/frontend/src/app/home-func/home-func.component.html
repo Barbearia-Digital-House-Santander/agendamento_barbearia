@@ -6,11 +6,11 @@
   <body>
     <div id='cssmenu'>
         <ul>
-           <li class='active'><a href='home'>Home</a></li>
-           <li ><a href='marcacoes'>Clientes</a></li>
-           <li (click)="minhaAgenda()"><a >Minha Agenda</a></li>
-           <li><a href='#'>Meus Dados</a></li>
-           <li ><a href='funcionarios'>Funcionários</a></li>
+           <li class='active' (click)="pagHome()"><a >Home</a></li>
+           <li (click)="pagMarcacoes()"><a>Clientes</a></li>
+           <li (click)="pagMinhaAgenda()"><a>Minha Agenda</a></li>
+           <li ><a href='#'>Meus Dados</a></li>
+           <li (click)="pagFuncionarios()"><a>Funcionários</a></li>
            <li *ngFor = "let  u of usuario" style="left: 12em; text-align: center; top:15px;" >
             Você está logado como:<br> {{u.nome}}
            </li>

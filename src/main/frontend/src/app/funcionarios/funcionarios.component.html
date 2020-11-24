@@ -5,14 +5,18 @@
   </head>
   <body>
   <div id='cssmenu'>
-      <ul>
-         <li><a href='#'>Home</a></li>
-         <li ><a href='marcacoes'>Clientes</a></li>
-         <li><a href='minhaAgenda'>Minha Agenda</a></li>
-         <li><a href='#'>Meus Dados</a></li>
-         <li class='active'><a href='funcionarios'>Funcionários</a></li>
-         <li><a href='#' style="left: 45em;"><i class="fas fa-sign-out-alt"></i></a></li>
-      </ul>
+    <ul>
+      <li (click)="pagHome()"><a >Home</a></li>
+      <li (click)="pagMarcacoes()"><a>Clientes</a></li>
+      <li (click)="pagMinhaAgenda()"><a>Minha Agenda</a></li>
+      <li ><a href='#'>Meus Dados</a></li>
+      <li class='active'  (click)="pagFuncionarios()"><a>Funcionários</a></li>
+      <li *ngFor = "let  u of usuario" style="left: 12em; text-align: center; top:15px;" >
+       Você está logado como:<br> {{u.nome}}
+      </li>
+     <li><a href='#' style="left: 36em;" (click)="logout()">SAIR<i class="fas fa-sign-out-alt"></i></a></li>
+      
+   </ul>
   </div>
 
 <div class="container">

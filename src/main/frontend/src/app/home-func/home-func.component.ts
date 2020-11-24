@@ -38,9 +38,22 @@ export class HomeFuncComponent implements OnInit {
     });
   }
 
-  minhaAgenda(){
+  pagMinhaAgenda(){
     this.router.navigate(['/', 'minhaAgenda']);
     this.service.setUsuarioLogado(this.logado);
-   
+  }
+
+  pagMarcacoes(){
+    this.router.navigate(['/', 'marcacoes']);
+    this.service.setUsuarioLogado(this.logado);
+  }
+
+  pagHome(){
+    this.router.navigate(['/', 'home']);
+    this.service.setUsuarioLogado(this.logado);
+  }
+  pagFuncionarios(){
+    this.router.navigate(['/', 'funcionarios']);
+    this.service.setUsuarioLogado(this.logado);
   }
 }
