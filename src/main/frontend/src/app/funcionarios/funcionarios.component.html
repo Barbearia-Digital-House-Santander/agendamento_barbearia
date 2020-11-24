@@ -27,7 +27,7 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleInputEmail1">Nome completo</label>
-              <input type="text" class="form-control" formControlName="nome" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+              <input type="text" class="form-control" formControlName="nome" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome">
             </div>
             <div class="form-group col-md-6">
               <label for="exampleInputPassword1">CPF</label>
@@ -44,14 +44,69 @@
               <input type="text" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
             </div>
           </div>
-      
           <div class="row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
+              <label for="exampleInputEmail1">Data de Nascimento</label>
+              <input type="date" class="form-control" formControlName="dtNasc"  placeholder="Data de  Nascimento">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="exampleInputPassword1">Nacionalidade</label>
+              <input type="text" class="form-control" formControlName="nacionalidade" aria-describedby="emailHelp" placeholder="Nacionalidade">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
               <label for="exampleInputEmail1">Endereco</label>
               <input type="text" class="form-control" formControlName="endereco" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Endereço">
             </div>
+            <div class="form-group col-md-6">
+              <label for="exampleInputPassword1">CEP</label>
+              <input type="text" class="form-control" formControlName="cep" id="exampleInputPassword1" placeholder="CEP">
+            </div>
           </div>
-          
+          <div class="row">
+            <div class="form-group col-md-3">
+              <p>Gênero</p>
+              <select class="form-control" formControlName="genero">
+                <option [ngValue]="selecionar" [selected]=true disabled >Selecionar</option>
+
+                  <option  value= "masculino" >Masculino</option>
+                  <option  value= "feminino" >Feminino</option>
+              </select>
+            </div>
+              <div class="form-group col-md-3">
+                <p>UF</p>
+                <select class="form-control" formControlName="ufs">
+                  <option [ngValue]="selecionar" disabled >Selecionar</option>
+
+                    <option *ngFor="let uf  of ufList" value= {{uf.idUF}} >
+                      {{uf.nome}} 
+                    </option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-3">
+                <p>Nível Hierárquico</p>
+                <select class="form-control" formControlName="nivels">
+                    <option [ngValue]="selecionar" disabled >Selecionar</option>
+                    <option *ngFor="let nivels  of nivelList"   value= {{nivels.idNivel}} >
+                      {{nivels.descricao}} 
+                    </option>
+                </select>
+              </div>
+              
+              
+              <div class="form-group col-md-3">
+                <p>Categoria</p>
+                <select class="form-control" formControlName="categorias">
+                  <option [ngValue]="selecionar" disabled >Selecionar</option>
+
+                 <option *ngFor="let categoria  of categoriaList" value= {{categoria.idCategoria}} (click)="selecionaCategoria(categoria)">
+                   {{categoria.nome}} 
+                 </option>
+              </select>
+              </div>
+        </div>
           <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger">Adicionar</button>
         </form>
       </div>

@@ -5,6 +5,7 @@ import { map, takeUntil } from 'rxjs/operators';
 import { AppService } from '../app.service';
 import { Categoria } from '../models/categoria';
 import { AgendamentoService } from '../services/agendamento.service';
+import { SelectService } from '../services/selects.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class AgendamentoComponent implements OnInit {
   servicoList: any[];
   catCount = 0;
 
-  constructor(private service: AgendamentoService) {
+  constructor(private service: AgendamentoService, private selects: SelectService) {
   }
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class AgendamentoComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   buscarCategorias() {
-    this.service.getTodasCategorias().pipe(takeUntil(this.destroy$)).subscribe((categoria: any[]) => {
+    this.selects.getTodasCategorias().pipe(takeUntil(this.destroy$)).subscribe((categoria: any[]) => {
       this.catCount = categoria.length;
       this.categoriaList = categoria;
       return this.categoriaList;
@@ -54,7 +55,7 @@ export class AgendamentoComponent implements OnInit {
     const id = categoria.idCategoria;
     this.agendamentoForm.get("categorias").setValue(id);
     this.agendamentoForm.get("servicos").enable();
-      this.service.getServicosDaCategoria(id).pipe(takeUntil(this.destroy$)).subscribe((servs: any[]) => {
+      this.selects.getServicosDaCategoria(id).pipe(takeUntil(this.destroy$)).subscribe((servs: any[]) => {
         this.catCount = servs.length;
         this.servicoList = servs;
         return this.servicoList;

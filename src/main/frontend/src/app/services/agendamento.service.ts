@@ -20,16 +20,6 @@ export class AgendamentoService {
    }
     
 
-/**CONSULTA TODAS AS CATEGORIAS CADASTRADAS */
-    getTodasCategorias(){      
-      return this.http.get(this.urlAgenda + '/categorias',{headers: this.headers});
-    }
-
-    getServicosDaCategoria(categoria:number){
-      return this.http.get(this.urlAgenda + '/servicosDaCategoria/'+ categoria,{headers: this.headers});
-    }
-
-
     getClientes(){
       return this.http.get(this.urlAgenda + '/agendamentos/',{headers: this.headers});
     }

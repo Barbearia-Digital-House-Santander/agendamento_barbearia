@@ -17,8 +17,20 @@ export class FuncionarioService {
     this.headers.append('Content-Type', 'application/json');
    }
     
-   salvarFuncionario(user: any){
-    return this.http.post(this.urlFuncionario + '/salvaFuncionario' + user,{headers: this.headers});
+   salvarFuncionario(usuario: any){
+    const nome = usuario.nome;
+    const cpf = usuario.cpf;
+    const dtNasc = usuario.dtNasc;
+    const endereco= usuario.endereco;
+    const nacionalidade = usuario.nacionalidade;
+    const categoria = usuario.categorias;
+    const nivel = usuario.nivels;
+    const uf = usuario.ufs;
+    const cep = usuario.cep;
+    const telefone = usuario.telefone;
+    const email = usuario.email;
+    const genero = usuario.genero;
+    return this.http.post(`${this.urlFuncionario}/salvaFuncionario/${nome}/${cpf}/${dtNasc}/${endereco}/${uf}/${cep}/${nacionalidade}/${genero}/${telefone}/${categoria}/${email}/${nivel}`,{headers: this.headers});
   }
 
   salvarDisponibilidadeDoFuncionario(agenda: any){
@@ -34,9 +46,7 @@ export class FuncionarioService {
 
   }
 
-  getHora(){
-    return this.http.get(this.urlFuncionario + '/hora',{headers: this.headers});
-  }
+
 
 
 }
