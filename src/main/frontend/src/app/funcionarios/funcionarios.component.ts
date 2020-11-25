@@ -46,7 +46,9 @@ selecionar: any;
     genero: new FormControl('', Validators.nullValidator && Validators.required),
     nivels: new FormControl(''),
     dtNasc: new FormControl('', Validators.nullValidator && Validators.required),
-    nacionalidade: new FormControl('')
+    nacionalidade: new FormControl('Brasileira(o)'),
+    nomeFuncLogado: new FormControl(''),
+    nivelFuncLogado: new FormControl('')
   });
 
   users: any[] = [];
@@ -76,10 +78,12 @@ selecionar: any;
 
   ngOnInit() {
     this.logado = this.serviceAut.usuario;
-    this.usuario = this.logado;
+    this.usuario = this.logado[0];
     this.userForm.get('categorias').setValue(this.buscarCategorias());
     this.userForm.get('ufs').setValue(this.buscarUF());
     this.userForm.get('nivels').setValue(this.buscarNivel());
+    this.userForm.get('nivelFuncLogado').setValue(this.usuario.nivels);
+    this.userForm.get('nomeFuncLogado').setValue(this.usuario.nome)
   	this.getAllUsers();
   }
 

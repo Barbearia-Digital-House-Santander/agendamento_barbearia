@@ -18,23 +18,11 @@ export class FuncionarioService {
    }
     
    salvarFuncionario(usuario: any){
-    const nome = usuario.nome;
-    const cpf = usuario.cpf;
-    const dtNasc = usuario.dtNasc;
-    const endereco= usuario.endereco;
-    const nacionalidade = usuario.nacionalidade;
-    const categoria = usuario.categorias;
-    const nivel = usuario.nivels;
-    const uf = usuario.ufs;
-    const cep = usuario.cep;
-    const telefone = usuario.telefone;
-    const email = usuario.email;
-    const genero = usuario.genero;
-    return this.http.post(`${this.urlFuncionario}/salvaFuncionario/${nome}/${cpf}/${dtNasc}/${endereco}/${uf}/${cep}/${nacionalidade}/${genero}/${telefone}/${categoria}/${email}/${nivel}`,{headers: this.headers});
+    return this.http.post(this.urlFuncionario +'/salvaFuncionario',usuario,{headers: this.headers});
   }
 
   salvarDisponibilidadeDoFuncionario(agenda: any){
-    return this.http.post(this.urlFuncionario + '/salvarDisponibilidade' + agenda,{headers: this.headers});
+    return this.http.post(this.urlFuncionario + '/salvarDisponibilidade', agenda,{headers: this.headers});
   }
 
   getTodosFuncionarios(){      

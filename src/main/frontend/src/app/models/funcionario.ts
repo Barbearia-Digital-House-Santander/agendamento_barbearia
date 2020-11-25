@@ -6,7 +6,8 @@ export interface Funcionario {
     email: string;
     telefone: string;
     sexo: string;
-    categoria: string;
+    categorias: string;
     servicos: string;
+    nivels: string;
 
 }
