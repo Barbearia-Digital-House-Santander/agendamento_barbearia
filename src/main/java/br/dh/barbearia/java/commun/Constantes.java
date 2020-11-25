@@ -9,4 +9,8 @@ public class Constantes {
 		public static String SIM ="SIM";
 		
 		public static String NAO ="NÃO";
+		
+		public static int NIVEL_GERENTE = 1;
+		
+		public static int NIVEL_COMUM = 2;
 }

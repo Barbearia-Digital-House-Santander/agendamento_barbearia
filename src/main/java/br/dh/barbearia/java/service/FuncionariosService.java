@@ -4,15 +4,16 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.swing.JOptionPane;
 
 import org.springframework.stereotype.Service;
 
-import br.dh.barbearia.java.commun.Constantes;
-import br.dh.barbearia.java.commun.RandomCommun;
+import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
 import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.entity.Hora;
 import br.dh.barbearia.java.entity.NivelHierarquico;
 import br.dh.barbearia.java.entity.UF;
+import br.dh.barbearia.java.repository.DisponibilidadeFuncionarioRepository;
 import br.dh.barbearia.java.repository.FuncionarioRepository;
 import br.dh.barbearia.java.repository.HoraRepository;
 import br.dh.barbearia.java.repository.NivelRepository;
@@ -25,6 +26,9 @@ public class FuncionariosService {
 	private FuncionarioRepository funcionarioRepository;
 	
 	@Resource
+	private DisponibilidadeFuncionarioRepository disponibilidadeFuncionarioRepository;
+	
+	@Resource
 	private HoraRepository horaRepository;
 	
 	@Resource
@@ -33,30 +37,55 @@ public class FuncionariosService {
 	@Resource
 	private NivelRepository nivelRepository;
 	
-	private RandomCommun randomCommun;
+
 
 	public void salvarNovoFunc(String cpf, String nome, LocalDate dataNascimento, String nacionalidade,
-	  		  String genero, String email,String telefone, String endereco, Integer uf, String cep, Integer nivel, Integer categoria) {
+	  		  String genero, String email,String telefone, String endereco, Integer uf, String cep, Integer nivel,
+	  		  Integer categoria, String matricula, String senha) {
 
 			  Funcionario func = new Funcionario();
 			  func.setCpf(cpf);
 			  func.setNome(nome);
-			  func.setCategoria(categoria);
-			  func.setDtNascimento(dataNascimento);
+			  func.setCategorias(categoria);
+			  func.setDtNasc(dataNascimento);
 			  func.setNacionalidade(nacionalidade);
 			  func.setEndereco(endereco);;
 			  func.setGenero(genero);
 			  func.setEmail(email);
 			  func.setTelefone(telefone);
 			  func.setCep(cep);
-			  func.setUf(uf);
-			  func.setMatricula(randomCommun.geradorLetrasNumerosAleatorios(Constantes.CARACTERES, Constantes.TAMANHO_RANDOM));
-			  func.setSenha(randomCommun.geradorLetrasNumerosAleatorios(Constantes.CARACTERES, Constantes.TAMANHO_RANDOM));
+			  func.setUfs(uf);
+			  func.setMatricula(matricula);
+			  func.setSenha(senha);
+			  func.setNivels(nivel);
+			  
 			  funcionarioRepository.save(func);
 		
 	          //return "redirect:/barbearia/notificacaoAgendamentoOK";
 		}
 	
+	@SuppressWarnings("unlikely-arg-type")
+	public String salvarNovaDisponibilidade(String funcionario, String data, Integer hora) {
+		
+		DisponibilidadeFuncionario trabalhador = new DisponibilidadeFuncionario();
+		if(funcionario != null || !funcionario.isEmpty()) {
+			List <DisponibilidadeFuncionario> func = disponibilidadeFuncionarioRepository.findByFuncionarioAndDataAndHora(funcionario, data, hora);
+				if(Boolean.TRUE.equals(func == null || func.isEmpty())){
+					
+					  trabalhador.setFuncionario(funcionario);;
+					  trabalhador.setData(data);
+					  trabalhador.setHora(hora);
+					  
+					  disponibilidadeFuncionarioRepository.save(trabalhador);
+					}
+					else {
+					
+					        return "Marcação já existe";
+				}
+		}else {
+		  return "Funcionário não encontrado, faça o login novamente" ;}
+		return "Salvo com Sucesso";
+	}
 	public List<Funcionario> buscarTodosFuncionarios() {
 		return funcionarioRepository.findAll();
 	}

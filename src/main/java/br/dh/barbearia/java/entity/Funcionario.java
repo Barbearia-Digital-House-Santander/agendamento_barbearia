@@ -29,7 +29,7 @@ public class Funcionario {
 
 
 	@Column(name = "data_nasc")
-	private LocalDate dtNascimento;
+	private LocalDate dtNasc;
 
 	@Column(name = "genero")
 	private String genero;
@@ -47,22 +47,25 @@ public class Funcionario {
 	private String endereco;
 
 	@Column(name = "uf")
-	private Integer uf;
+	private Integer ufs;
 
 	@Column(name = "cep")
 	private String cep;
 
 	@Column(name = "categoria")
-	private Integer categoria;
+	private Integer categorias;
 
 	@Column(name = "nivel_func")
-	private Integer nivelFunc;
+	private Integer nivels;
 
 	@Column(name = "matricula")
 	private String matricula;
 
 	@Column(name = "senha")
 	private String senha;
+	
+	private Integer nivelFuncLogado;
+	private String nomeFuncLogado;
 
 	public Funcionario() {
 
