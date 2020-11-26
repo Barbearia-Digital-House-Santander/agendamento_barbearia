@@ -30,6 +30,13 @@ export class SelectService {
  getNivel(){
     return this.http.get(this.urlFuncionario + '/nivel',{headers: this.headers});
   }
+
+  getHoraDisponiveis(){
+    return this.http.get(this.urlAgenda + '/horaDisponiveis',{headers: this.headers});
+  }
+  getDataHoraDisponiveis(){
+    return this.http.get(this.urlAgenda + '/datahoraDisponiveis',{headers: this.headers});
+  }
   
 /**CONSULTA TODAS AS CATEGORIAS CADASTRADAS */
   getTodasCategorias(){      
@@ -38,5 +45,9 @@ export class SelectService {
 
   getServicosDaCategoria(categoria:number){
     return this.http.get(this.urlAgenda + '/servicosDaCategoria/'+ categoria,{headers: this.headers});
+  }
+
+  getHoraDisponivelData(data:any){
+    return this.http.get(this.urlAgenda + '/horaDisponivel/'+ data,{headers: this.headers});
   }
 }

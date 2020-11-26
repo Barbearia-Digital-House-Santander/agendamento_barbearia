@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,6 +26,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import br.dh.barbearia.java.entity.Agenda;
 import br.dh.barbearia.java.entity.Categoria;
+import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
+import br.dh.barbearia.java.entity.Hora;
 import br.dh.barbearia.java.entity.Servicos;
 import br.dh.barbearia.java.service.AgendaService;
 import br.dh.barbearia.java.service.CategoriaService;
@@ -112,4 +115,30 @@ public class AgendaController implements WebMvcConfigurer{
 		return ResponseEntity.ok(ags);
 		
 	}
+	
+	@ApiOperation(value = "Lista todos os horarios disponiveis")
+	@GetMapping(value = "/horaDisponivel/{data}")
+	public  ResponseEntity<?> buscarHorariosDisponiveis(@PathVariable("data") String data) {
+		List<DisponibilidadeFuncionario> disp = agendaService.buscarTodasHorasDisponiveis(data);
+		List<Hora> hora = agendaService.buscarHoras();
+		for(DisponibilidadeFuncionario d : disp) {
+			Integer h = d.getHora();
+			for(Hora y : hora) {
+				if(y.getIdHora().equals(h)) {
+					d.setHoraS(y.getHora());
+				}
+			
+			}
+		}
+		return ResponseEntity.ok(disp);
+		
+	}
+	
+	@ApiOperation(value = "Lista todos as datas")
+	@GetMapping(value = "/datahoraDisponiveis")
+	public  ResponseEntity<?> buscarDatasDisponiveis() {
+		List<DisponibilidadeFuncionario> datas = agendaService.buscarTodasDatasDisponiveis();
+		return ResponseEntity.ok(datas);
+	}
+
 }

@@ -8,6 +8,7 @@ import { Categoria } from '../models/categoria';
   providedIn: 'root'
 })
 export class FuncionarioService {
+  
 
   private headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
   private urlFuncionario:string;
@@ -33,7 +34,9 @@ export class FuncionarioService {
     return this.http.post(this.urlFuncionario + '/disponiblidade' + disponiblidade,{headers: this.headers});
 
   }
-
+  getDisponibilidades(funcionario:string) {
+    return this.http.get(this.urlFuncionario + '/getDisponibilidadeDoFuncionario/' + funcionario,{headers: this.headers});
+    }
 
 
 

@@ -1,6 +1,7 @@
 package br.dh.barbearia.java.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,13 +12,24 @@ import br.dh.barbearia.java.commun.Constantes;
 import br.dh.barbearia.java.commun.GeneratorPDF;
 import br.dh.barbearia.java.commun.RandomCommun;
 import br.dh.barbearia.java.entity.Agenda;
+import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
+import br.dh.barbearia.java.entity.Hora;
 import br.dh.barbearia.java.repository.AgendaRepository;
+import br.dh.barbearia.java.repository.DisponibilidadeFuncionarioRepository;
+import br.dh.barbearia.java.repository.HoraRepository;
 
 @Service
 public class AgendaService {
 
 	@Resource
 	private AgendaRepository agendaRepository;
+	
+
+	@Resource
+	private DisponibilidadeFuncionarioRepository disponibilidadeFuncionarioRepository;
+	
+	@Resource
+	private HoraRepository horaRepository;
 
 	
 	private String geradorAleatorio() {
@@ -92,4 +104,17 @@ public class AgendaService {
 		return dados;
 	}
 	
+	public List<DisponibilidadeFuncionario>  buscarTodasHorasDisponiveis(String data){
+		List<DisponibilidadeFuncionario> horas = disponibilidadeFuncionarioRepository.findByData(data);
+		return horas;
+	}
+	public List<Hora>  buscarHoras(){
+		List<Hora> horas = horaRepository.findAll();
+		return horas;
+	}
+
+	public List<DisponibilidadeFuncionario>  buscarTodasDatasDisponiveis(){
+		List<DisponibilidadeFuncionario> dados = disponibilidadeFuncionarioRepository.findAll();
+		return dados;
+	}
 }

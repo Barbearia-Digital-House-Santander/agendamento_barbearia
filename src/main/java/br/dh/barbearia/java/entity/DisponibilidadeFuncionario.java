@@ -27,4 +27,6 @@ public class DisponibilidadeFuncionario {
 	
 	@Column(name = "hora")
 	private Integer hora;
+	
+	private String horaS;
 }

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.swing.JOptionPane;
 
 import org.springframework.stereotype.Service;
 
@@ -64,7 +63,6 @@ public class FuncionariosService {
 	          //return "redirect:/barbearia/notificacaoAgendamentoOK";
 		}
 	
-	@SuppressWarnings("unlikely-arg-type")
 	public String salvarNovaDisponibilidade(String funcionario, String data, Integer hora) {
 		
 		DisponibilidadeFuncionario trabalhador = new DisponibilidadeFuncionario();
@@ -104,6 +102,9 @@ public class FuncionariosService {
 	
 	public List<NivelHierarquico> buscarTodosOsNiveis(){
 		return nivelRepository.findAll();
-
+	}
+	
+	public List<DisponibilidadeFuncionario>  buscarTodasDisponibilidadeDoFuncionario(String funcionario){
+		return  disponibilidadeFuncionarioRepository.findByFuncionario(funcionario);
 	}
 }

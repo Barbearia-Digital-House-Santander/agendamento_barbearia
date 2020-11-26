@@ -14,5 +14,9 @@ public interface DisponibilidadeFuncionarioRepository extends JpaRepository<Disp
 	
 	List<DisponibilidadeFuncionario> findByFuncionarioAndDataAndHora(String funcionario, String data, Integer hora);
 	
+	List<DisponibilidadeFuncionario> findByFuncionario(String funcionario);
+	
+	List<DisponibilidadeFuncionario> findByData(String data);
+	
 
 }
