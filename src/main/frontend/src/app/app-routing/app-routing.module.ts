@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,6 +14,7 @@ import { ClientesListaComponent } from '../clientes-lista/clientes-lista.compone
 import { ContatoComponent } from '../contato/contato.component';
 import { DisponiblidadeFuncionarioComponent } from '../disponiblidade-funcionario/disponiblidade-funcionario.component';
 import { HomeFuncComponent } from '../home-func/home-func.component';
+import { ServicosComponent } from '../servicos/servicos.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,7 +26,8 @@ const routes: Routes = [
   { path: 'marcacoes', component: ClientesListaComponent},
   { path: 'contato', component: ContatoComponent},
   { path: 'minhaAgenda', component: DisponiblidadeFuncionarioComponent},
-  { path: 'home', component: HomeFuncComponent}
+  { path: 'home', component: HomeFuncComponent},
+  { path: 'servicos', component: ServicosComponent}
   
 ];
 

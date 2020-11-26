@@ -24,6 +24,7 @@ import { ContatoComponent } from './contato/contato.component';
 import { DisponiblidadeFuncionarioComponent } from './disponiblidade-funcionario/disponiblidade-funcionario.component';
 import { HomeFuncComponent } from './home-func/home-func.component';
 import { PreLoaderComponent } from './pre-loader/pre-loader.component';
+import { ServicosComponent } from './servicos/servicos.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { PreLoaderComponent } from './pre-loader/pre-loader.component';
     ContatoComponent,
     DisponiblidadeFuncionarioComponent,
     HomeFuncComponent,
-    PreLoaderComponent
+    PreLoaderComponent,
+    ServicosComponent
     ],
   imports: [
     BrowserModule,
