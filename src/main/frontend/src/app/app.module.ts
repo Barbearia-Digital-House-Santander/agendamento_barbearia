@@ -25,6 +25,7 @@ import { DisponiblidadeFuncionarioComponent } from './disponiblidade-funcionario
 import { HomeFuncComponent } from './home-func/home-func.component';
 import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 import { ServicosComponent } from './servicos/servicos.component';
+import { SobreComponent } from './sobre/sobre.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ServicosComponent } from './servicos/servicos.component';
     DisponiblidadeFuncionarioComponent,
     HomeFuncComponent,
     PreLoaderComponent,
-    ServicosComponent
+    ServicosComponent,
+    SobreComponent
     ],
   imports: [
     BrowserModule,
