@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +30,7 @@ import io.swagger.annotations.ApiOperation;
 @Controller
 @Api(value = "Funcionarios")
 @RequestMapping("/funcionario")
-public class FuncionariosController implements WebMvcConfigurer  {
-	
-	
+public class FuncionariosController implements WebMvcConfigurer  {	
 	
 	@Resource
 	private FuncionariosService funcService;
@@ -93,6 +92,14 @@ public class FuncionariosController implements WebMvcConfigurer  {
 	public  ResponseEntity<?> buscarUF() {
 		List<UF> ufs = funcService.buscarTodosUFs();
 		return ResponseEntity.ok(ufs);
+		
+	}
+	
+	@ApiOperation(value = "Lista todos os ufs")
+	@GetMapping(value = "/getDisponibilidadeDoFuncionario/{funcionario}")
+	public  ResponseEntity<?> buscarDisponibilidadeDoFuncionario(@PathVariable("funcionario") String funcionario) {
+		List<DisponibilidadeFuncionario> disp = funcService.buscarTodasDisponibilidadeDoFuncionario(funcionario);
+		return ResponseEntity.ok(disp);
 		
 	}
 }

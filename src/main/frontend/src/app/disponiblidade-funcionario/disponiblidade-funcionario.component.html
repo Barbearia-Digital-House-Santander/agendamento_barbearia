@@ -3,7 +3,7 @@
      @import url('../assets/css/fontawesome-all.min.css');
     </style>
     </head>
-    
+    <body>
     <div id='cssmenu'>
       <ul>
         <li (click)="pagHome()"><a >Home</a></li>
@@ -55,5 +55,37 @@
        
       </div>
     </div>
-   
+    <br><br>
+    <h2 style="background-color: black; color: blanchedalmond;">Lista de Marcações</h2>
+    <br>
+    <div class="container">
+        <div class="row">
+           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+             <!--  <a routerLink="/cliente/salvar" class="btn btn-success">Novo</a>-->
+     
+               <table class="table table-striped table-hover">   
+                   <thead>
+                       <tr>
+                         
+                         <th>Data</th>
+                         <th>Hora</th>
+                        
+                       </tr>
+                   </thead>
+     
+                   <tbody>  
+                     <tr *ngFor = "let c of disponibilidade" [routerLink]= "['/cliente/salvar',c.id]">
+                         
+                         <td>{{c.data}}</td>
+                         <td>{{c.hora}}</td>
+                         
+                         <td><button class="btn btn-danger" (click)="onDelete(c); $event.stopPropagation()">Deletar</button></td>
+                     </tr>
+                   </tbody>
+               </table>
+     
+           </div>
+        </div>
+     </div>
+    </body>
     

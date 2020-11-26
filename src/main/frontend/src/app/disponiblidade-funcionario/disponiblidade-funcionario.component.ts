@@ -8,6 +8,7 @@ import { AutentificacaoService } from '../services/autentificacao.service';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 import { SelectService } from '../services/selects.service';
+import { Disponibilidades } from '../models/disponibilidades';
 
 @Component({
   selector: 'app-disponiblidade-funcionario',
@@ -19,7 +20,8 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
   horaList: any[];
   timeCount = 0;
   disponiblidadeCount = 0;
-
+  marcacoes = 0;
+  disponibilidade : Disponibilidades[] ;
   usuario: Funcionario;
   router: Router;
   logado:any;
@@ -36,7 +38,13 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
     this.usuario = this.logado[0] ;
     this.disponivelForm.get('funcionario').setValue(this.usuario.nome);
     this.disponivelForm.get('hora').setValue(this.buscarHoras());
-    this.usuario = this.logado;
+   
+
+    this.service.getDisponibilidades(this.usuario.nome)
+        .subscribe((disp : Disponibilidades[]) => {
+            this.disponibilidade = disp;
+        });
+        this.usuario = this.logado;
   }
   
 
@@ -67,6 +75,9 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
     this.service.salvarDisponibilidadeDoFuncionario(this.disponivelForm.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
       this.disponiblidadeCount = this.disponiblidadeCount + 1;
       this.disponivelForm.reset();
+      this.service.getDisponibilidades(this.disponivelForm.get("funcionario").value).subscribe((disp : Disponibilidades[]) => {
+        this.disponibilidade = disp;
+    });
   });}
   
   onSubmit() {
