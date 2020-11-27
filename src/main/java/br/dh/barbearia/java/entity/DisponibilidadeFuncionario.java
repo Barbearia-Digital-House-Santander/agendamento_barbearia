@@ -28,5 +28,9 @@ public class DisponibilidadeFuncionario {
 	@Column(name = "hora")
 	private Integer hora;
 	
+	@Column(name = "categoria")
+	private Integer categoria;
+	
 	private String horaS;
+	
 }

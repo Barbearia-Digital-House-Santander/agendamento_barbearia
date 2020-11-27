@@ -23,6 +23,10 @@ export class SelectService {
     return this.http.get(this.urlFuncionario + '/hora',{headers: this.headers});
   }
 
+  getFuncionarios() {
+    return this.http.get(this.urlFuncionario + '/funcionarios',{headers: this.headers});
+  }
+
   getUF(){
     return this.http.get(this.urlFuncionario + '/ufs',{headers: this.headers});
   }
@@ -50,4 +54,12 @@ export class SelectService {
   getHoraDisponivelData(data:any){
     return this.http.get(this.urlAgenda + '/horaDisponivel/'+ data,{headers: this.headers});
   }
+
+  getDisponibilidades(funcionario:string) {
+    return this.http.get(this.urlFuncionario + '/getDisponibilidadeDoFuncionario/' + funcionario,{headers: this.headers});
+    }
+
+    getHoraFunc(funcionario: any, data: any) {
+      return this.http.get(`${this.urlFuncionario}/getHoraFuncionario/${funcionario}/${data}`,{headers: this.headers});
+    }
 }

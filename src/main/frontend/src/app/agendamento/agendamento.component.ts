@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { AppService } from '../app.service';
 import { Categoria } from '../models/categoria';
+import { Disponibilidades } from '../models/disponibilidades';
 import { AgendamentoService } from '../services/agendamento.service';
 import { SelectService } from '../services/selects.service';
 
@@ -14,33 +15,36 @@ import { SelectService } from '../services/selects.service';
   styleUrls: ['./agendamento.component.css']
 })
 export class AgendamentoComponent implements OnInit {
+  d: Disponibilidades[];
   categoriaList: any[];
   servicoList: any[];
   horaList: any[];
+  hrList:any[];
+  funcionarioList: any[];
   dataList: any[];
+  dispEspList: any[];
   dataCount = 0;
   timeCount = 0;
   catCount = 0;
   servCount = 0;
   selecionar: any;
+  isHidden = true;
+  isHidden2 = true;
+  isHiddenSelect1 = true;
+  isHiddenSelect2 = true;
+  isHiddenHora1 = true;
+  isHiddenHora2 = true;
+  isHiddenFunc = true;
+  disponiblidadeFunc: any;
 
   constructor(private service: AgendamentoService, private selects: SelectService) {
   }
 
   ngOnInit(): void {
-     this.agendamentoForm.get('categorias').setValue(this.buscarCategorias());
-     this.agendamentoForm.get('hora').disable();
-     this.agendamentoForm.get('data').setValue(this.buscarDatas()); 
-    
-     this.agendamentoForm.get('categorias').valueChanges.subscribe(selectedValue => {
-      this.agendamentoForm.get('servicos').enable();
-      this.agendamentoForm.get('servicos').setValue(this.buscarServicosDaCategoria(this.agendamentoForm.value.categorias));
-    });
+    this.controlePrecisaDeProfissionalEspecifico();
+    this.desabilitarFormsControllers();
+   
 
-    this.agendamentoForm.get('data').valueChanges.subscribe(selectedValue => {
-      this.agendamentoForm.get('hora').enable();
-      this.agendamentoForm.get('hora').setValue(this.buscarHoras(this.agendamentoForm.value.data));
-    });
   }
 
   agendamentoForm = new FormGroup({
@@ -52,7 +56,9 @@ export class AgendamentoComponent implements OnInit {
     servicos: new FormControl({value:'', disabled: true}, Validators.nullValidator && Validators.required),
     categorias: new FormControl(),
     data: new FormControl(),
-    hora: new FormControl()
+    hora: new FormControl(),
+    precisaProfissional: new FormControl('',Validators.nullValidator && Validators.required),
+    funcionario: new FormControl()
   });
 
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -95,6 +101,19 @@ export class AgendamentoComponent implements OnInit {
     });
   }
 
+  buscarDisponibilidadeFuncionarioEspecifico(){
+    this.selects.getDisponibilidades(this.agendamentoForm.get("funcionario").value).subscribe((disp : Disponibilidades[]) => {
+      this.dispEspList = disp;
+    });
+  }
+
+  buscarFuncionarios(){
+    this.selects.getFuncionarios().pipe(takeUntil(this.destroy$)).subscribe((funcs: any[]) => {
+      this.funcionarioList = funcs;
+      return this.funcionarioList;
+    });
+  }
+
   buscarDatas() {
     this.selects.getDataHoraDisponiveis().pipe(takeUntil(this.destroy$)).subscribe((time: any[]) => {
       this.dataCount = time.length;
@@ -103,6 +122,106 @@ export class AgendamentoComponent implements OnInit {
     });
   }
   
+  controlePrecisaDeProfissionalEspecifico(){
+    this.agendamentoForm.get('precisaProfissional').valueChanges.subscribe(selectedValue => {
+      
+      this.limparFormsControllers();
 
+      if(selectedValue == "Nao"){ 
+       
+        this.agendamentoForm.updateValueAndValidity();
+          this.isHidden = false;
+          this.isHidden2 = true;
+          this.isHiddenFunc = true;
+      
+  
+          this.agendamentoForm.get('data').setValue(this.buscarDatas()); 
+          this.agendamentoForm.get('categorias').setValue(this.buscarCategorias());
+        
+         
+          this.agendamentoForm.get('categorias').enable();
+          this.agendamentoForm.get('data').enable();
+          this.controleDatasDiponiveisSemProfissional();
+          this.controleCategoriasDiponiveisSemProfissional();
+      }
+     else if(selectedValue == "Sim"){
+      this.agendamentoForm.updateValueAndValidity();
+       this.isHidden = true;
+       this.isHidden2 = true;
+       this.isHiddenFunc = false;
+       
+        this.agendamentoForm.get('funcionario').setValue(this.buscarFuncionarios()); 
+        this.controleFuncionarios();
+        
+      }
+    });
+
+  }
+
+  desabilitarFormsControllers(){
+    this.agendamentoForm.get('hora').disable();
+    this.agendamentoForm.get('servicos').disable();
+    this.agendamentoForm.get('categorias').disable();
+    this.agendamentoForm.get('data').disable();
+    
+  }
+
+  limparFormsControllers(){
+    this.agendamentoForm.get('categorias').setValue(undefined);
+    this.agendamentoForm.get('data').setValue(undefined);
+    this.agendamentoForm.get('servicos').setValue(undefined);
+    this.agendamentoForm.get('hora').setValue(undefined);
+    this.agendamentoForm.get('funcionario').setValue(undefined);
+  }
+
+  controleDatasDiponiveisSemProfissional(){
+    this.agendamentoForm.get('data').valueChanges.subscribe(selectedValue => {
+      this.isHiddenHora1 = false;
+      this.agendamentoForm.get('hora').enable();
+      this.agendamentoForm.get('hora').setValue(this.buscarHoras(this.agendamentoForm.value.data));
+    });
+  }
+
+  controleCategoriasDiponiveisSemProfissional(){
+    this.agendamentoForm.get('categorias').valueChanges.subscribe(selectedValue => {
+      this.isHiddenSelect1 = false;
+      this.agendamentoForm.get('servicos').enable();
+      this.agendamentoForm.get('servicos').setValue(this.buscarServicosDaCategoria(this.agendamentoForm.value.categorias));
+    });
+  }
+
+  controleFuncionarios(){
+    this.agendamentoForm.get('funcionario').valueChanges.subscribe(selectedValue => {
+      this.isHidden2 = false;
+      this.agendamentoForm.get('categorias').enable();
+      this.agendamentoForm.get('data').enable();
+      this.buscarDisponibilidadeFuncionarioEspecifico();
+      this.controleDatasDiponiveisComProfissional();
+      this.controleCategoriasDiponiveisComProfissional();
+    });
+  }
+  controleDatasDiponiveisComProfissional(){
+    this.agendamentoForm.get('data').valueChanges.subscribe(selectedValue => {
+      this.isHiddenHora2 = false;
+      this.agendamentoForm.get('hora').enable();
+      this.agendamentoForm.get('hora').setValue(this.buscarHorasFuncEsp(this.agendamentoForm.value.funcionario,this.agendamentoForm.value.data));
+
+    });
+  }
+  buscarHorasFuncEsp(funcionario: any, data: any): any {
+    this.selects.getHoraFunc(funcionario,data).pipe(takeUntil(this.destroy$)).subscribe((horas: any[]) => {
+      this.hrList = horas;
+      return this.hrList;
+    });
+  }
+
+  controleCategoriasDiponiveisComProfissional(){
+    
+    this.agendamentoForm.get('categorias').valueChanges.subscribe(selectedValue => {
+      this.isHiddenSelect2 = false;
+      this.agendamentoForm.get('servicos').enable();
+      this.agendamentoForm.get('servicos').setValue(this.buscarServicosDaCategoria(this.agendamentoForm.value.categorias));
+    });
+  }
 }
 

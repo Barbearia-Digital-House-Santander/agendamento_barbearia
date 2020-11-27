@@ -40,7 +40,7 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
     this.disponivelForm.get('hora').setValue(this.buscarHoras());
    
 
-    this.service.getDisponibilidades(this.usuario.nome)
+    this.selects.getDisponibilidades(this.usuario.nome)
         .subscribe((disp : Disponibilidades[]) => {
             this.disponibilidade = disp;
         });
@@ -75,7 +75,7 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
     this.service.salvarDisponibilidadeDoFuncionario(this.disponivelForm.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
       this.disponiblidadeCount = this.disponiblidadeCount + 1;
       this.disponivelForm.reset();
-      this.service.getDisponibilidades(this.disponivelForm.get("funcionario").value).subscribe((disp : Disponibilidades[]) => {
+      this.selects.getDisponibilidades(this.disponivelForm.get("funcionario").value).subscribe((disp : Disponibilidades[]) => {
         this.disponibilidade = disp;
     });
   });}

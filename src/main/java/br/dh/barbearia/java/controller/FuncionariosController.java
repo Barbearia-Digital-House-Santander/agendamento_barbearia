@@ -2,6 +2,7 @@ package br.dh.barbearia.java.controller;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
@@ -18,11 +19,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import br.dh.barbearia.java.commun.Constantes;
 import br.dh.barbearia.java.commun.RandomCommun;
+import br.dh.barbearia.java.entity.Categoria;
 import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
 import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.entity.Hora;
 import br.dh.barbearia.java.entity.NivelHierarquico;
 import br.dh.barbearia.java.entity.UF;
+import br.dh.barbearia.java.service.CategoriaService;
 import br.dh.barbearia.java.service.FuncionariosService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,6 +37,10 @@ public class FuncionariosController implements WebMvcConfigurer  {
 	
 	@Resource
 	private FuncionariosService funcService;
+	
+	@Resource
+	private CategoriaService catService;
+	
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
@@ -66,9 +73,12 @@ public class FuncionariosController implements WebMvcConfigurer  {
 	@ApiOperation(value = "Lista todos os funcionários")
 	@GetMapping(value = "/funcionarios")
 	public  ResponseEntity<?> buscarFuncionarios() {
+		List<Categoria> categoria = catService.buscarCategoria();
 		List<Funcionario> func = funcService.buscarTodosFuncionarios();
-		return ResponseEntity.ok(func);
+		categoria.stream().filter(f -> f.getIdCategoria().equals(func.get(0).getCategorias())).collect(Collectors.toList());
+		func.get(0).setCategoriass(categoria.get(0).getNome());
 		
+		return ResponseEntity.ok(func);
 	}
 	
 	@ApiOperation(value = "Lista todos os horarios")
@@ -95,11 +105,22 @@ public class FuncionariosController implements WebMvcConfigurer  {
 		
 	}
 	
-	@ApiOperation(value = "Lista todos os ufs")
+	@ApiOperation(value = "Lista todas disponibilidades do funcionario")
 	@GetMapping(value = "/getDisponibilidadeDoFuncionario/{funcionario}")
 	public  ResponseEntity<?> buscarDisponibilidadeDoFuncionario(@PathVariable("funcionario") String funcionario) {
 		List<DisponibilidadeFuncionario> disp = funcService.buscarTodasDisponibilidadeDoFuncionario(funcionario);
+		List<DisponibilidadeFuncionario> dt = funcService.datasNaoRepetidasFuncEsp(disp);
+				
+		return ResponseEntity.ok(dt);
+  }
+	
+	@ApiOperation(value = "Lista todas disponibilidades do funcionario")
+	@GetMapping(value = "/getHoraFuncionario/{funcionario}/{data}")
+	public  ResponseEntity<?> buscarHorasFuncionario(@PathVariable("funcionario") String funcionario,
+			@PathVariable("data") String data) {
+		List<DisponibilidadeFuncionario> disp = funcService.buscarHoraDoFuncionarioNaData(funcionario, data);
+				
 		return ResponseEntity.ok(disp);
-		
-	}
+  }
+	
 }

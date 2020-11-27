@@ -1,7 +1,9 @@
 package br.dh.barbearia.java.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
@@ -106,5 +108,39 @@ public class FuncionariosService {
 	
 	public List<DisponibilidadeFuncionario>  buscarTodasDisponibilidadeDoFuncionario(String funcionario){
 		return  disponibilidadeFuncionarioRepository.findByFuncionario(funcionario);
+	}
+	
+	public List<DisponibilidadeFuncionario> datasNaoRepetidasFuncEsp(List<DisponibilidadeFuncionario> dados){
+		List<DisponibilidadeFuncionario> dts = new ArrayList<DisponibilidadeFuncionario>();
+		
+		if(dts.isEmpty() || dts == null) {
+			dts.add(dados.get(0));
+		}
+
+		for(int i = 0; i < dts.size(); i++) {
+			if(dts.get(i) != null && !dts.isEmpty()) {
+				String dt = dts.get(i).getData();
+				for(DisponibilidadeFuncionario d : dados) {
+					if(!d.getData().equals(dt)) {
+						dts.add(d);
+					}
+				}
+			}
+		}
+			
+		return dts;
+		}
+
+	public List<DisponibilidadeFuncionario> buscarHoraDoFuncionarioNaData(String funcionario, String data) {
+		List<DisponibilidadeFuncionario> disp =  disponibilidadeFuncionarioRepository.findByFuncionarioAndData(funcionario, data);		
+		List<Hora> horas = horaRepository.findAll();
+		for(DisponibilidadeFuncionario d : disp) {
+			List<Hora> hrs = horas.stream().filter(y -> y.getIdHora().equals(d.getHora())).collect(Collectors.toList());
+			for(Hora h : hrs) {
+				d.setHoraS(h.getHora());
+			}
+			
+	}
+	return disp;
 	}
 }

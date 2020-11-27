@@ -34,10 +34,6 @@ export class FuncionarioService {
     return this.http.post(this.urlFuncionario + '/disponiblidade' + disponiblidade,{headers: this.headers});
 
   }
-  getDisponibilidades(funcionario:string) {
-    return this.http.get(this.urlFuncionario + '/getDisponibilidadeDoFuncionario/' + funcionario,{headers: this.headers});
-    }
-
 
 
 }

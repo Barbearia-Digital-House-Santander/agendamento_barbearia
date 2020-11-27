@@ -66,6 +66,7 @@ public class Funcionario {
 	
 	private Integer nivelFuncLogado;
 	private String nomeFuncLogado;
+	private String Categoriass;
 
 	public Funcionario() {
 
@@ -75,4 +76,6 @@ public class Funcionario {
 		this.idFuncionario = idFuncionario;
 		this.nome = nome;
 	}
+	
+	
 }

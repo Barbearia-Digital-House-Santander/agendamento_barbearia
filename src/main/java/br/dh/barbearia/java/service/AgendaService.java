@@ -3,6 +3,7 @@ package br.dh.barbearia.java.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
@@ -114,7 +115,27 @@ public class AgendaService {
 	}
 
 	public List<DisponibilidadeFuncionario>  buscarTodasDatasDisponiveis(){
+		
 		List<DisponibilidadeFuncionario> dados = disponibilidadeFuncionarioRepository.findAll();
-		return dados;
+		List<DisponibilidadeFuncionario> dts = new ArrayList<DisponibilidadeFuncionario>();
+		
+				if(dts.isEmpty() || dts == null) {
+					dts.add(dados.get(0));
+				}
+		
+		
+		for(int i = 0; i < dts.size(); i++) {
+			if(dts.get(i) != null && !dts.isEmpty()) {
+				String dt = dts.get(i).getData();
+				for(DisponibilidadeFuncionario d : dados) {
+					if(!d.getData().equals(dt)) {
+						dts.add(d);
+					}
+				}
+			}
+		}
+
+		
+		return dts;
 	}
 }

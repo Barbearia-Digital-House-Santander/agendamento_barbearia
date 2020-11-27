@@ -48,17 +48,42 @@
           <label>Sexo</label>
           <div class="question-answer">
             <div>
-              <input type="radio" value="none" id="radio_1" formControlName="sexo"/>
-              <label for="radio_1" class="radio"><span>Feminino</span></label>
+              <input type="radio" value="Feminino" id="fem" formControlName="sexo"/>
+              <label for="fem" class="radio"><span>Feminino</span></label>
             </div>
             <div>
-              <input  type="radio" value="none" id="radio_2" formControlName="sexo"/>
-              <label for="radio_2" class="radio"><span>Masculino</span></label>
+              <input  type="radio" value="Masculino" id="male" formControlName="sexo"/>
+              <label for="male" class="radio"><span>Masculino</span></label>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="form-group col-md-3">
+        <div class="question">
+          <label>Você têm preferência por algum profissional de nossa barbearia?</label>
+          <div class="question-answer">
+            <div>
+              <input type="radio" value="Sim" id="radio_1" formControlName="precisaProfissional"/>
+              <label for="radio_1" class="radio"><span>Sim</span></label>
+            </div>
+            <div>
+              <input  type="radio" value="Nao" id="radio_2" formControlName="precisaProfissional"/>
+              <label for="radio_2" class="radio"><span>Não</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="row" [hidden]="isHiddenFunc == true">
+          <div class="form-group col-md-3" >
+         			<p>Funcionário</p>
+               <select class="form-control" formControlName="funcionario">
+                <option [ngValue]="selecionar" disabled >Selecionar</option>
+                 
+                <option *ngFor="let func  of funcionarioList" value= {{func.nome}} >
+                  {{func.nome}} 
+                </option>
+             </select>
+          </div>
+        </div>
+        <div class="row" [hidden]="isHidden == true">
+          <div class="form-group col-md-3" >
          			<p>Categoria</p>
                <select class="form-control" formControlName="categorias">
                 <option [ngValue]="selecionar" disabled >Selecionar</option>
@@ -68,7 +93,7 @@
                 </option>
              </select>
           </div>
-             <div class="form-group col-md-3">
+             <div class="form-group col-md-3" [hidden]="isHiddenSelect1 == true">
 			        <p>Serviço</p>
 					<select formControlName="servicos"  class="form-control" >
             <option [ngValue]="selecionar" disabled >Selecionar</option>
@@ -88,11 +113,52 @@
           </select>
           </div>
 
-          <div class="form-group col-md-3" >
+          <div class="form-group col-md-3"  [hidden]="isHiddenHora1 == true">
             <label >Hora</label>
             <select formControlName="hora"  class="form-control" >
               <option [ngValue]="selecionar" disabled >Selecionar</option>
-                <option *ngFor="let horas  of horaList" value= {{horas.idDisp}} >
+                <option *ngFor="let horas  of horaList" value= {{horas.hora}} >
+                  {{horas.horaS}} 
+                </option>
+          </select>
+          </div>
+        </div>
+        <div class="row" [hidden]="isHidden2 == true">
+          <div class="form-group col-md-3" >
+         			<p>Categoria</p>
+               <select class="form-control" formControlName="categorias" >
+                <option [ngValue]="selecionar" disabled >Selecionar</option>
+                 
+                <option  *ngFor="let categoria  of funcionarioList" value= {{categoria.categorias}} >
+                  {{categoria.categoriass}} 
+                </option>
+             </select>
+          </div>
+        <div class="form-group col-md-3" [hidden]="isHiddenSelect2 == true">
+			        <p>Serviço</p>
+					<select formControlName="servicos"  class="form-control" >
+            <option [ngValue]="selecionar" disabled >Selecionar</option>
+            <option *ngFor="let servs  of servicoList" value= {{servs.idServico}}>
+              {{servs.nome}} 
+            </option>
+            </select>
+       </div>
+             
+          <div class="form-group col-md-3">
+            <label >Datas(Ano-Mês-Dia)</label>
+            <select formControlName="data"  class="form-control" >
+              <option [ngValue]="selecionar" disabled >Selecionar</option>
+                <option *ngFor="let datas  of dispEspList" value= {{datas.data}} >
+                  {{datas.data}} 
+                </option>
+          </select>
+          </div>
+
+          <div class="form-group col-md-3" [hidden]="isHiddenHora2 == true" >
+            <label >Hora</label>
+            <select formControlName="hora"  class="form-control" >
+              <option [ngValue]="selecionar" disabled >Selecionar</option>
+                <option *ngFor="let horas  of hrList" value= {{horas.hora}} >
                   {{horas.horaS}} 
                 </option>
           </select>

@@ -4,5 +4,6 @@ export interface Disponibilidades {
     funcionario:string;
     data: string;
     hora: number;
+    categoria: number;
 
 }
