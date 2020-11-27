@@ -9,6 +9,7 @@ import { Categoria } from '../models/categoria';
 })
 export class SelectService {
 
+
   private headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
   private urlFuncionario:string;
   private urlAgenda:string;
@@ -49,6 +50,10 @@ export class SelectService {
 
   getServicosDaCategoria(categoria:number){
     return this.http.get(this.urlAgenda + '/servicosDaCategoria/'+ categoria,{headers: this.headers});
+  }
+
+  getValorServicos(id: number) {
+    return this.http.get(this.urlAgenda + '/valorDoServico/'+ id,{headers: this.headers});
   }
 
   getHoraDisponivelData(data:any){

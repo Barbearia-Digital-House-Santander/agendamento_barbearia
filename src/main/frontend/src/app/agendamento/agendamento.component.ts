@@ -5,6 +5,7 @@ import { map, takeUntil } from 'rxjs/operators';
 import { AppService } from '../app.service';
 import { Categoria } from '../models/categoria';
 import { Disponibilidades } from '../models/disponibilidades';
+import { Servicos } from '../models/servicos';
 import { AgendamentoService } from '../services/agendamento.service';
 import { SelectService } from '../services/selects.service';
 
@@ -19,6 +20,7 @@ export class AgendamentoComponent implements OnInit {
   categoriaList: any[];
   servicoList: any[];
   horaList: any[];
+  valorList: Servicos[];
   hrList:any[];
   funcionarioList: any[];
   dataList: any[];
@@ -35,6 +37,7 @@ export class AgendamentoComponent implements OnInit {
   isHiddenHora1 = true;
   isHiddenHora2 = true;
   isHiddenFunc = true;
+  isHiddenTotal  = true;
   disponiblidadeFunc: any;
 
   constructor(private service: AgendamentoService, private selects: SelectService) {
@@ -44,7 +47,7 @@ export class AgendamentoComponent implements OnInit {
     this.controlePrecisaDeProfissionalEspecifico();
     this.desabilitarFormsControllers();
    
-
+    this.controleServicosDiponiveis();
   }
 
   agendamentoForm = new FormGroup({
@@ -58,7 +61,8 @@ export class AgendamentoComponent implements OnInit {
     data: new FormControl(),
     hora: new FormControl(),
     precisaProfissional: new FormControl('',Validators.nullValidator && Validators.required),
-    funcionario: new FormControl()
+    funcionario: new FormControl(),
+    valor:new FormControl('')
   });
 
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -68,15 +72,17 @@ export class AgendamentoComponent implements OnInit {
     this.salvarAgendamento();
 }
 
-
   ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
 
   salvarAgendamento(){
+    this.agendamentoForm.updateValueAndValidity();
+    this.service.salvarAgendaCliente(this.agendamentoForm.value).pipe(takeUntil(this.destroy$)).subscribe(agenda => {
+      this.agendamentoForm.reset();
+    });
   }
-
   
   buscarCategorias() {
     this.selects.getTodasCategorias().pipe(takeUntil(this.destroy$)).subscribe((categoria: any[]) => {
@@ -91,6 +97,14 @@ export class AgendamentoComponent implements OnInit {
       this.servCount = servs.length;
       this.servicoList = servs;
       return this.servicoList;
+    });
+  }
+
+  buscarServicosValor(id:number){
+    this.selects.getValorServicos(id).pipe(takeUntil(this.destroy$)).subscribe((val: any[]) => {
+      this.valorList = val;
+      this.isHiddenTotal = false;
+      this.agendamentoForm.get('valor').setValue(this.valorList[0].valor);
     });
   }
 
@@ -126,15 +140,16 @@ export class AgendamentoComponent implements OnInit {
     this.agendamentoForm.get('precisaProfissional').valueChanges.subscribe(selectedValue => {
       
       this.limparFormsControllers();
-
+     
+      this.agendamentoForm.updateValueAndValidity();
+      
       if(selectedValue == "Nao"){ 
        
-        this.agendamentoForm.updateValueAndValidity();
           this.isHidden = false;
           this.isHidden2 = true;
           this.isHiddenFunc = true;
-      
-  
+          
+          this.agendamentoForm.get('valor').setValue(null);
           this.agendamentoForm.get('data').setValue(this.buscarDatas()); 
           this.agendamentoForm.get('categorias').setValue(this.buscarCategorias());
         
@@ -149,7 +164,7 @@ export class AgendamentoComponent implements OnInit {
        this.isHidden = true;
        this.isHidden2 = true;
        this.isHiddenFunc = false;
-       
+     
         this.agendamentoForm.get('funcionario').setValue(this.buscarFuncionarios()); 
         this.controleFuncionarios();
         
@@ -172,6 +187,8 @@ export class AgendamentoComponent implements OnInit {
     this.agendamentoForm.get('servicos').setValue(undefined);
     this.agendamentoForm.get('hora').setValue(undefined);
     this.agendamentoForm.get('funcionario').setValue(undefined);
+    this.agendamentoForm.get('valor').setValue(null);
+
   }
 
   controleDatasDiponiveisSemProfissional(){
@@ -185,8 +202,10 @@ export class AgendamentoComponent implements OnInit {
   controleCategoriasDiponiveisSemProfissional(){
     this.agendamentoForm.get('categorias').valueChanges.subscribe(selectedValue => {
       this.isHiddenSelect1 = false;
+      this.isHiddenTotal = true;
       this.agendamentoForm.get('servicos').enable();
       this.agendamentoForm.get('servicos').setValue(this.buscarServicosDaCategoria(this.agendamentoForm.value.categorias));
+      this.controleServicosDiponiveis();
     });
   }
 
@@ -219,9 +238,18 @@ export class AgendamentoComponent implements OnInit {
     
     this.agendamentoForm.get('categorias').valueChanges.subscribe(selectedValue => {
       this.isHiddenSelect2 = false;
+      
       this.agendamentoForm.get('servicos').enable();
       this.agendamentoForm.get('servicos').setValue(this.buscarServicosDaCategoria(this.agendamentoForm.value.categorias));
+      this.controleServicosDiponiveis();
     });
+  }
+
+  controleServicosDiponiveis(){
+    
+    this.agendamentoForm.get('servicos').valueChanges.subscribe(selectedValue => {
+      this.buscarServicosValor(selectedValue);
+        });
   }
 }
 

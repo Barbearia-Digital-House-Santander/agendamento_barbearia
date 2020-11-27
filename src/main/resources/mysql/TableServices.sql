@@ -1,10 +1,10 @@
 
 CREATE TABLE servicos (
-   id_servico bigint(20) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-   nome varchar(50) DEFAULT NULL,
-   descricao varchar(100) NOT NULL,
-   valor varchar(10) NOT NULL,
-   categoria int(3) NOT NULL,
+   id_servico int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+   nome varchar(50),
+   descricao varchar(100) ,
+   valor varchar(10),
+   categoria int(3) ,
    FOREIGN KEY (categoria) REFERENCES categoria(id_categoria)
 );
 INSERT INTO servicos

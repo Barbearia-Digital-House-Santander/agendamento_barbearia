@@ -37,5 +37,9 @@ export class AgendamentoService {
     return Promise.reject(err.message || err );
   }
 
-  } 
+  salvarAgendaCliente(agenda: any){
+    return this.http.post(this.urlAgenda + '/salvarAgenda', agenda,{headers: this.headers});
+  }
+
+} 
     
