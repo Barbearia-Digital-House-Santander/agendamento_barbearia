@@ -27,7 +27,6 @@ import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { SobreComponent } from './sobre/sobre.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
