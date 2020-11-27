@@ -25,6 +25,9 @@ public class Servicos {
     @Column(name="descricao")
 	private String descricao;
     
+    @Column(name="valor")
+ 	private String valor;
+    
     @Column(name="categoria", nullable=false)
     private int idCategoria;
     

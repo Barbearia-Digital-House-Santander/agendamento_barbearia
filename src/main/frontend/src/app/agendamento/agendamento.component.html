@@ -26,7 +26,7 @@
         <div class="colums">
           <div class="item">
             <label for="cpf">CPF<span>*</span></label>
-             <input class="input--style-3" type="text" id="cpf" maxlength="13"  formControlName="cpf" onkeypress="mascaracpf(this)">
+             <input class="input--style-3" type="text" id="cpf" maxlength="14"  formControlName="cpf" onkeypress="mascaracpf(this)">
           </div>
           
            <div class="item">
@@ -35,7 +35,7 @@
           </div>
           <div class="item">
             <label for="email">E-mail<span>*</span></label>
-            <input id="email" type="text"   formControlName="email" required/>
+            <input id="email" type="email"   formControlName="email" required/>
           </div>
           
           <div class="item">
@@ -164,8 +164,15 @@
           </select>
           </div>
         </div>
+
+        <div class="form-group col-md-12" [hidden]="isHiddenTotal == true" >
+            <label>Total R$</label>
+             <input class="input--style-3" type="text" disabled  formControlName="valor">
+          </div>
+          <label><span>** O valor será mostrado quando você clicar no botão "Agendar", não se preocupe, o agendamento só será efetuado se você aceitar o valor.</span></label>
+          <label><span>** O  botão "Agendar", só estará disponivel quando todos os dados forem preenchidos.</span></label>
         <div class="btn-block">
-          <button type="submit" [disabled]="!agendamentoForm.valid" >Agendar</button>
+          <button type="submit"  class="btn btn-danger" [disabled]="!agendamentoForm.valid" >Agendar</button>
         </div>
       </form>
     </div>

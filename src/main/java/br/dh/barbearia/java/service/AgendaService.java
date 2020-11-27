@@ -42,19 +42,22 @@ public class AgendaService {
 		return agendaRepository.findByChaveDeCancelamento(chaveDeCancelamento);
 	}
 	
-	public void salvarMarcacaoNaAgenda(String cpf, String nome, String servico, LocalDate dataAgendamento, String horaAgendamento,
-  		  String genero, String email,String telefone) {
+	public void salvarMarcacaoNaAgenda(String cpf, String nome, String telefone, Integer categoria, String dataAgendamento, String email, String genero, String valor, String nomeFunc, Integer hora, Integer servico) {
 
 		  Agenda agenda = new Agenda();
 		  agenda.setCpf(cpf);
 		  agenda.setNome(nome);
-		  agenda.setServico(servico);
-		  agenda.setDataAgendamento(dataAgendamento);
-		  agenda.setHoraAgendamento(horaAgendamento);
-		  agenda.setGenero(genero);
+		  agenda.setServicos(servico);
+		  agenda.setData(dataAgendamento);
+		  agenda.setHora(hora);
+		  agenda.setSexo(genero);
 		  agenda.setEmail(email);
 		  agenda.setTelefone(telefone);
-		  
+		  agenda.setCategorias(categoria);
+		  agenda.setValor(valor);
+		  if(nomeFunc != null) {
+			  agenda.setFuncionario(nomeFunc);
+		  }
 		  agenda.setCancelado(Constantes.NAO);
 		  agenda.setChaveDeCancelamento(geradorAleatorio());
 		  agendaRepository.save(agenda);
@@ -70,10 +73,10 @@ public class AgendaService {
 			  agenda.setIdAgendamento(dados.get(0).getIdAgendamento());
 			  agenda.setCpf(dados.get(0).getCpf());
 			  agenda.setNome(dados.get(0).getNome());
-			  agenda.setServico(dados.get(0).getServico());
-			  agenda.setDataAgendamento(dados.get(0).getDataAgendamento());
-			  agenda.setHoraAgendamento(dados.get(0).getHoraAgendamento());
-			  agenda.setGenero(dados.get(0).getGenero());
+			  agenda.setServicos(dados.get(0).getServicos());
+			  agenda.setData(dados.get(0).getData());
+			  agenda.setHora(dados.get(0).getHora());
+			  agenda.setSexo(dados.get(0).getSexo());
 			  agenda.setEmail(dados.get(0).getEmail());
 			  agenda.setTelefone(dados.get(0).getTelefone());
 			  agenda.setChaveDeCancelamento(chaveDeCancelamento);

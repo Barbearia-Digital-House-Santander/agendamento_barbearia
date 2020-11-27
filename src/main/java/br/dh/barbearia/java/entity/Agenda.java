@@ -28,16 +28,19 @@ public class Agenda {
 	private String nome;
 
 	@Column(name="servico", nullable=false)
-	private String servico;
+	private Integer servicos;
+	
+	@Column(name="categoria", nullable=false)
+	private Integer categorias;
 	
     @Column(name="data_agendamento")
-	private LocalDate dataAgendamento;
+	private String data;
 	
     @Column(name="hora_agendamento")
-	private String horaAgendamento;
+	private Integer hora;
 	
     @Column(name="genero", nullable=false)
-	private String genero;
+	private String sexo;
 
     @Column(name="email", nullable=false)
 	private String email;
@@ -46,7 +49,10 @@ public class Agenda {
 	private String telefone;
 	
     @Column(name="nome_func", nullable = true)
-	private String nomeFunc;
+	private String funcionario;
+    
+    @Column(name="valor", nullable=false)
+   	private String valor;
     
     // cancelamentos 
     

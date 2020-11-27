@@ -13,4 +13,6 @@ public interface ServicosRepository extends JpaRepository<Servicos, Long>{
 	List<Servicos> findAll();
 	
 	List<Servicos> findByIdCategoria(Integer id);
+	
+	List<Servicos> findByIdServico(Integer id);
 }

@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import br.dh.barbearia.java.entity.Agenda;
 import br.dh.barbearia.java.entity.Categoria;
 import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
+import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.entity.Hora;
 import br.dh.barbearia.java.entity.Servicos;
 import br.dh.barbearia.java.service.AgendaService;
@@ -60,13 +62,14 @@ public class AgendaController implements WebMvcConfigurer{
 	}
 	
 	@ApiOperation(value = "Cria um novo agendamento")
-	@RequestMapping(value = "/agendamento", method = RequestMethod.POST)
-	public void adicionaAgenda(String cpf, String nome, String servico, String dataAgendamento, String horaAgendamento,
-			String genero, String email, String telefone) {
+	@RequestMapping(value = "/salvarAgenda", method = RequestMethod.POST)
+	public  ResponseEntity<?> adicionaAgenda(@RequestBody  Agenda agenda) {
 
-		LocalDate data = LocalDate.parse(dataAgendamento);
-		 agendaService.salvarMarcacaoNaAgenda(cpf, nome, servico, data, horaAgendamento, genero, email,
-				telefone);
+		 agendaService.salvarMarcacaoNaAgenda(agenda.getCpf(), agenda.getNome(), agenda.getTelefone(), agenda.getCategorias(),
+				 agenda.getData(), agenda.getEmail(), agenda.getSexo(), agenda.getValor(), agenda.getFuncionario(),
+				 agenda.getHora(), agenda.getServicos());
+		 
+		 return ResponseEntity.ok("OK");
 	}
 
 	
@@ -106,6 +109,13 @@ public class AgendaController implements WebMvcConfigurer{
 		List<Servicos> servs = servicosService.listaServicosCategoria(categoria);
 		return ResponseEntity.ok(servs);
 		
+	}
+	
+	@ApiOperation(value = "Busca os serviço do id")
+	@GetMapping(value = "/valorDoServico/{id}")
+	public  ResponseEntity<?> buscarServicoSelecionado(@PathVariable("id") Integer idServico) {
+		List<Servicos> servs = servicosService.listaServicoDoId(idServico);
+		return ResponseEntity.ok(servs);
 	}
 	
 	@ApiOperation(value = "Busca todos agendamentos")

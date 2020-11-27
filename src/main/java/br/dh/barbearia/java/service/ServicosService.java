@@ -22,4 +22,8 @@ public class ServicosService {
 	public List<Servicos> listaServicosCategoria(Integer id) {
 		return servicosRepository.findByIdCategoria(id);
 	}
+	
+	public List<Servicos> listaServicoDoId(Integer id) {
+		return servicosRepository.findByIdServico(id);
+	}
 }
