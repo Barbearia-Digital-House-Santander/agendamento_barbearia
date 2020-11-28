@@ -80,6 +80,10 @@ selecionar: any;
 
   ngOnInit() {
     this.logado = this.serviceAut.usuario;
+    if(this.serviceAut.usuario== undefined || this.serviceAut.usuario == null){
+      this.router.navigate(['/', 'inicio']);
+      this.naoExisteUsuarioLogado();
+    }else{
     this.usuario = this.logado[0];
     this.userForm.get('categorias').setValue(this.buscarCategorias());
     this.userForm.get('ufs').setValue(this.buscarUF());
@@ -87,8 +91,8 @@ selecionar: any;
     this.userForm.get('nivelFuncLogado').setValue(this.usuario.nivels);
     this.userForm.get('nomeFuncLogado').setValue(this.usuario.nome)
   	this.getAllUsers();
+   }
   }
-
   pagMinhaAgenda(){
     this.router.navigate(['/', 'minhaAgenda']);
     this.serviceAut.setUsuarioLogado(this.logado);
@@ -139,6 +143,17 @@ selecionar: any;
       return this.ufList;
     });
   }
+
+  naoExisteUsuarioLogado(){  
+    Swal.fire({  
+      
+      title: 'Ops...',  
+      text: 'Parece que você perdeu a conexão faça seu login novamente para reiniciar a sessão.',  
+      icon: 'error' ,
+     footer: '<a href="login"> Sim, fazer login </a>',  
+      
+    });  
+  }  
 
 
 }

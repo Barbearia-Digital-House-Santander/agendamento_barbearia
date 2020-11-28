@@ -27,7 +27,6 @@ import { HomeFuncComponent } from './home-func/home-func.component';
 import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { SobreComponent } from './sobre/sobre.component';
-import { AlertmsgComponentComponent } from './alertmsg-component/alertmsg-component.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +47,6 @@ import { AlertmsgComponentComponent } from './alertmsg-component/alertmsg-compon
     PreLoaderComponent,
     ServicosComponent,
     SobreComponent,
-    AlertmsgComponentComponent
     ],
   imports: [
     BrowserModule,

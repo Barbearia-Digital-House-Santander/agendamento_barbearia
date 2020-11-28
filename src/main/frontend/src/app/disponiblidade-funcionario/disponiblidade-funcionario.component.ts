@@ -34,9 +34,14 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
 
 
   ngOnInit(): void {
-    /* this.logado = this.serviceAut.usuario;
+     this.logado = this.serviceAut.usuario;
 
-    this.usuario = this.logado[0] ;
+   
+    if(this.serviceAut.usuario== undefined || this.serviceAut.usuario == null){
+      this.router.navigate(['/', 'inicio']);
+      this.naoExisteUsuarioLogado();
+    }else{
+      this.usuario = this.logado[0] ;
     this.disponivelForm.get('funcionario').setValue(this.usuario.nome);
     this.disponivelForm.get('hora').setValue(this.buscarHoras());
     
@@ -45,13 +50,14 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
         .subscribe((disp : Disponibilidades[]) => {
             this.disponibilidade = disp;
         });
-        this.usuario = this.logado;*/
+        this.usuario = this.logado;
 
         this.disponivelForm.get('data').valueChanges.subscribe(selectedValue => {
           if(selectedValue != ''){
               this.verificaSeDataPassada(selectedValue);
            
           } });
+        }
   }
   
 
@@ -132,5 +138,16 @@ verificaSeDataPassada(dt: any){
     }
   });
 }
+
+naoExisteUsuarioLogado(){  
+  Swal.fire({  
+    
+    title: 'Ops...',  
+    text: 'Parece que você perdeu a conexão faça seu login novamente para reiniciar a sessão.',  
+    icon: 'error' ,
+   footer: '<a href="login"> Sim, fazer login </a>',  
+    
+  });  
+}  
 
 }

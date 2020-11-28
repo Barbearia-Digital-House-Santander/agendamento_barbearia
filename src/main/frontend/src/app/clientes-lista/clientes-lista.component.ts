@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 import { Agendamento } from '../models/agendamento';
 import { Funcionario } from '../models/funcionario';
 import { AgendamentoService } from '../services/agendamento.service';
@@ -31,6 +32,10 @@ export class ClientesListaComponent implements OnInit {
 
     ngOnInit() : void {
         this.logado = this.serviceAut.usuario;
+        if(this.serviceAut.usuario== undefined || this.serviceAut.usuario == null){
+          this.router.navigate(['/', 'inicio']);
+          this.naoExisteUsuarioLogado();
+        }else{
         this.usuario = this.logado; 
 
         this.agendaService.getClientes()
@@ -38,7 +43,7 @@ export class ClientesListaComponent implements OnInit {
             this.clientes = clientes;
         })
      }
-    
+    } 
 
     onDelete(cliente : Agendamento) : void {
         this.dialogconfirmService.confirm('Deseja remarcar o cliente ' + cliente.nome + ' ?')
@@ -84,4 +89,15 @@ export class ClientesListaComponent implements OnInit {
         this.router.navigate(['/', 'funcionarios']);
         this.serviceAut.setUsuarioLogado(this.logado);
       }
+
+      naoExisteUsuarioLogado(){  
+        Swal.fire({  
+          
+          title: 'Ops...',  
+          text: 'Parece que você perdeu a conexão faça seu login novamente para reiniciar a sessão.',  
+          icon: 'error' ,
+         footer: '<a href="login"> Sim, fazer login </a>',  
+          
+        });  
+      }  
 }

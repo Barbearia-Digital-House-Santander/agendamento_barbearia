@@ -19,6 +19,7 @@ import { SobreComponent } from '../sobre/sobre.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'inicio', component: HomeComponent },
   { path: 'galeria', component: GaleriaComponent },
   { path: 'agendaCentral', component: MenuAgendaComponent },
   { path: 'agendamento', component: AgendamentoComponent },
