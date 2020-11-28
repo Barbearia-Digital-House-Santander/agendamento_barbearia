@@ -32,7 +32,13 @@ public class ContatoController implements WebMvcConfigurer{
 	@ResponseBody
 	@ApiOperation(value = "Cria um contato")
 	@RequestMapping(value = "/adicionar", method = RequestMethod.POST)
-	public Contato salvarContato(Contato contato) {
+//	public Contato salvarContato(Contato contato) {
+	public Contato salvarContato(String nome, String email, String assunto, String mensagem) {
+		Contato contato = new Contato();
+		contato.setNome(nome);
+		contato.setAssunto(assunto);
+		contato.setEmail(email);
+		contato.setMensagem(mensagem);
 		return contatoService.salvarContato(contato);
 	}
 	
