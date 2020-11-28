@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AutentificacaoService } from '../services/autentificacao.service';
 import { Funcionario } from '../models/funcionario';
 import { SelectService } from '../services/selects.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-funcionarios',
@@ -26,6 +27,7 @@ selecionar: any;
   nivelList: any[];
   catCount = 0;
   nivelCount = 0;
+  
 
   constructor(private service: FuncionarioService,private serviceAut: AutentificacaoService,
     private selects: SelectService, router: Router){
@@ -137,4 +139,6 @@ selecionar: any;
       return this.ufList;
     });
   }
+
+
 }

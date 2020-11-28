@@ -44,7 +44,7 @@ export class AgendamentoComponent implements OnInit {
   val:any;
   agendas:  Array<Agendamento> = [];
   mask:string;
-
+ 
 
   constructor(private service: AgendamentoService, private selects: SelectService) {
   }
@@ -269,12 +269,6 @@ export class AgendamentoComponent implements OnInit {
     this.agendamentoForm.get('servicos').valueChanges.subscribe(selectedValue => {
       this.buscarServicosValor(selectedValue);
         });
-  }
-
-  cpfmask() {
-    const value = this.agendamentoForm.get('cpf').value;
-  
-      this.mask = '00.000.0000-00'
   }
 
 ////////alerts

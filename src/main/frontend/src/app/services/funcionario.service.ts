@@ -35,5 +35,8 @@ export class FuncionarioService {
 
   }
 
+  isDataPassada(dataDigitada:any){
+    return this.http.get(this.urlFuncionario + '/dataPassada/'  + dataDigitada,{headers: this.headers});
+  }
 
 }

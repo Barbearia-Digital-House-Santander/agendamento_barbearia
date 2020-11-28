@@ -9,6 +9,7 @@ import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 import { SelectService } from '../services/selects.service';
 import { Disponibilidades } from '../models/disponibilidades';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-disponiblidade-funcionario',
@@ -25,7 +26,7 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
   usuario: Funcionario;
   router: Router;
   logado:any;
-  
+  dataPassada = false;
 
   constructor(private service: FuncionarioService, private serviceAut: AutentificacaoService, 
     private selects: SelectService, router: Router){
@@ -33,18 +34,24 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
 
 
   ngOnInit(): void {
-    this.logado = this.serviceAut.usuario;
+    /* this.logado = this.serviceAut.usuario;
 
     this.usuario = this.logado[0] ;
     this.disponivelForm.get('funcionario').setValue(this.usuario.nome);
     this.disponivelForm.get('hora').setValue(this.buscarHoras());
-   
+    
 
     this.selects.getDisponibilidades(this.usuario.nome)
         .subscribe((disp : Disponibilidades[]) => {
             this.disponibilidade = disp;
         });
-        this.usuario = this.logado;
+        this.usuario = this.logado;*/
+
+        this.disponivelForm.get('data').valueChanges.subscribe(selectedValue => {
+          if(selectedValue != ''){
+              this.verificaSeDataPassada(selectedValue);
+           
+          } });
   }
   
 
@@ -82,7 +89,11 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
   
   onSubmit() {
     this.disponivelForm.value;
-    this.salvarDisponibilidade();
+    if(this.dataPassada == false){
+      this.salvarDisponibilidade();
+    }else{
+      Swal.fire('Atenção', 'A data deve ser posterior ao dia de hoje.', 'error')
+    }
 }
 
 logout(){
@@ -111,6 +122,15 @@ pagHome(){
 pagFuncionarios(){
   this.router.navigate(['/', 'funcionarios']);
   this.serviceAut.setUsuarioLogado(this.logado);
+}
+
+verificaSeDataPassada(dt: any){
+  this.service.isDataPassada(dt).pipe(takeUntil(this.destroy$)).subscribe((data: any) => {
+    this.dataPassada = data;
+    if( this.dataPassada == true){
+      Swal.fire('Atenção', 'A data deve ser posterior ao dia de hoje.', 'error')
+    }
+  });
 }
 
 }
