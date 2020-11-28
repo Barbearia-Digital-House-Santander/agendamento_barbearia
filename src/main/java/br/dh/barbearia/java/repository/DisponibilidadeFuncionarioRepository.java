@@ -1,5 +1,6 @@
 package br.dh.barbearia.java.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +13,7 @@ public interface DisponibilidadeFuncionarioRepository extends JpaRepository<Disp
 
 	List<DisponibilidadeFuncionario> findAll();
 	
-	List<DisponibilidadeFuncionario> findByFuncionarioAndDataAndHora(String funcionario, String data, Integer hora);
+	List<DisponibilidadeFuncionario> findByFuncionarioAndDataAndHora(String funcionario, LocalDate data, Integer hora);
 	
 	List<DisponibilidadeFuncionario> findByFuncionario(String funcionario);
 	

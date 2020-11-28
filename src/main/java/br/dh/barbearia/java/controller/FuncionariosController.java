@@ -1,6 +1,10 @@
 package br.dh.barbearia.java.controller;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -122,5 +126,26 @@ public class FuncionariosController implements WebMvcConfigurer  {
 				
 		return ResponseEntity.ok(disp);
   }
+	
+	@ApiOperation(value = "verifica se a data é passada")
+	@GetMapping(value = "/dataPassada/{data}")
+	public ResponseEntity<?> verificaDataIsPassada(@PathVariable String data) {
+		 String parteAno = data.substring(0,4);
+		 String parteMes = data.substring(5,7);
+		 String parteDia = data.substring(8,10);
+		 String dt = parteDia+"-"+parteMes+"-"+parteAno;
+		 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		 Boolean resposta = false;
+		 try {
+			Date date = formatter.parse(dt);
+			resposta= this.funcService.isDataPassada(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		 return ResponseEntity.ok(resposta);
+
+	}
 	
 }

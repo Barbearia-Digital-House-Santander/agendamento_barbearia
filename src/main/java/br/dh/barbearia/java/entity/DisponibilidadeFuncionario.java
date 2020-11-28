@@ -1,5 +1,7 @@
 package br.dh.barbearia.java.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,7 @@ public class DisponibilidadeFuncionario {
 	private String funcionario;
 
 	@Column(name = "data")
-	private String data;
+	private LocalDate data;
 	
 	@Column(name = "hora")
 	private Integer hora;

@@ -150,7 +150,7 @@ public class AgendaService {
 		
 		for(int i = 0; i < dts.size(); i++) {
 			if(dts.get(i) != null && !dts.isEmpty()) {
-				String dt = dts.get(i).getData();
+				LocalDate dt = dts.get(i).getData();
 				for(DisponibilidadeFuncionario d : dados) {
 					if(!d.getData().equals(dt)) {
 						dts.add(d);

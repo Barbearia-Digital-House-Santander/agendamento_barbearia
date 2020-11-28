@@ -1,7 +1,10 @@
 package br.dh.barbearia.java.service;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,8 +41,6 @@ public class FuncionariosService {
 	@Resource
 	private NivelRepository nivelRepository;
 	
-
-
 	public void salvarNovoFunc(String cpf, String nome, LocalDate dataNascimento, String nacionalidade,
 	  		  String genero, String email,String telefone, String endereco, Integer uf, String cep, Integer nivel,
 	  		  Integer categoria, String matricula, String senha) {
@@ -65,7 +66,7 @@ public class FuncionariosService {
 	          //return "redirect:/barbearia/notificacaoAgendamentoOK";
 		}
 	
-	public String salvarNovaDisponibilidade(String funcionario, String data, Integer hora) {
+	public String salvarNovaDisponibilidade(String funcionario, LocalDate data, Integer hora) {
 		
 		DisponibilidadeFuncionario trabalhador = new DisponibilidadeFuncionario();
 		if(funcionario != null || !funcionario.isEmpty()) {
@@ -119,7 +120,7 @@ public class FuncionariosService {
 
 		for(int i = 0; i < dts.size(); i++) {
 			if(dts.get(i) != null && !dts.isEmpty()) {
-				String dt = dts.get(i).getData();
+				LocalDate dt = dts.get(i).getData();
 				for(DisponibilidadeFuncionario d : dados) {
 					if(!d.getData().equals(dt)) {
 						dts.add(d);
@@ -142,5 +143,16 @@ public class FuncionariosService {
 			
 	}
 	return disp;
+	}
+	
+	public Boolean isDataPassada(Date data){
+		LocalDate dataInserida = data.toInstant().atZone(ZoneId.systemDefault())
+	      .toLocalDate();
+	
+		LocalDate dataAtual = LocalDate.now();
+		if(dataInserida.isBefore(dataAtual)) {
+			return true;
+		}
+		return false;
 	}
 }
