@@ -65,4 +65,7 @@ public class Agenda {
     @Column(name="data_cancelamento", nullable=true)
 	private LocalDate dataCancelamento;
     
+    private String horas;
+    
+    private String msg;
 }

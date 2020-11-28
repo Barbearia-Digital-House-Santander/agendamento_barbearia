@@ -8,5 +8,6 @@ export interface Agendamento {
     sexo: string;
     categoria: string;
     servicos: string;
+    msg: string;
 
 }

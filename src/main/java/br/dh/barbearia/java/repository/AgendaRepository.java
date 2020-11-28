@@ -13,4 +13,6 @@ public interface AgendaRepository extends JpaRepository<Agenda, Long>{
 	List<Agenda> findByChaveDeCancelamento(String chaveDeCancelamento);
 	
 	List<Agenda> findAll();
+	
+	List<Agenda> findByDataAndHoraAndFuncionario(String data,Integer hora, String funcionario);
 }

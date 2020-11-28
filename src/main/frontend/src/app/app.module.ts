@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaskModule } from 'ngx-mask';
 
 //Templates
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { HomeFuncComponent } from './home-func/home-func.component';
 import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { SobreComponent } from './sobre/sobre.component';
+import { AlertmsgComponentComponent } from './alertmsg-component/alertmsg-component.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { SobreComponent } from './sobre/sobre.component';
     HomeFuncComponent,
     PreLoaderComponent,
     ServicosComponent,
-    SobreComponent
+    SobreComponent,
+    AlertmsgComponentComponent
     ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { SobreComponent } from './sobre/sobre.component';
     FormsModule,
     MatSelectModule,
     BrowserAnimationsModule,
+    NgxMaskModule 
   ],
   providers: [AgendamentoService, DialogConfirmService],
   bootstrap: [AppComponent]

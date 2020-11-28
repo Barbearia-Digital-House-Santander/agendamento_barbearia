@@ -68,21 +68,29 @@ public class AgendaController implements WebMvcConfigurer{
 		 agendaService.salvarMarcacaoNaAgenda(agenda.getCpf(), agenda.getNome(), agenda.getTelefone(), agenda.getCategorias(),
 				 agenda.getData(), agenda.getEmail(), agenda.getSexo(), agenda.getValor(), agenda.getFuncionario(),
 				 agenda.getHora(), agenda.getServicos());
-		 
+		 String filename = agendaService.agendamentoOK("recibo");
 		 return ResponseEntity.ok("OK");
 	}
 
-	
+	@ApiOperation(value = "Verifica se pode salvar agendamento")
+	@RequestMapping(value = "/podeSalvar", method = RequestMethod.POST)
+	public  ResponseEntity<?> verificaAgenda(@RequestBody  Agenda agenda) {
+
+		String func = agendaService.setarFuncionario(agenda.getFuncionario(), agenda.getCategorias());
+		String verifica = agendaService.verificarSePodeSalvarAgendamento(agenda.getData(), agenda.getHora(), func);
+		agenda.setMsg(verifica);
+		 return ResponseEntity.ok(agenda);
+	}
 	
 	@ResponseBody
 	@ApiOperation(value = "Cria um novo agendamento")
 	@RequestMapping(value = "notificacaoAgendamentoOK", method = RequestMethod.POST, produces = MediaType.APPLICATION_PDF_VALUE)
-	public ResponseEntity<byte[]> AgendamentoOK(String ok, String recibo) throws IOException {
+	public ResponseEntity<byte[]> AgendamentoOK(String recibo) throws IOException {
 		
 		HttpHeaders headers = new HttpHeaders();
 
 	    headers.setContentType(MediaType.parseMediaType("application/pdf"));
-	    String filename = agendaService.agendamentoOK(ok, recibo);
+	    String filename = agendaService.agendamentoOK( recibo);
 	    Path filePath = Paths.get(System.getProperty("user.dir") + "/recibo/" + filename);
 
 	    headers.add("Content-Disposition", "attachment; filename=" + filename);

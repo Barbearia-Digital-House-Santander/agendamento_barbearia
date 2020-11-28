@@ -26,11 +26,11 @@
         <div class="colums">
           <div class="item">
             <label for="cpf">CPF<span>*</span></label>
-             <input class="input--style-3" type="text" id="cpf" maxlength="14"  formControlName="cpf" onkeypress="mascaracpf(this)">
+             <input class="input--style-3" type="text" id="cpf" maxlength="14"  formControlName="cpf">
           </div>
           
            <div class="item">
-            <label for="nome">Nome<span>*</span></label>
+            <label for="nome">Nome Completo<span>*</span></label>
              <input class="input--style-3" type="text"  formControlName="nome">
           </div>
           <div class="item">
@@ -40,7 +40,7 @@
           
           <div class="item">
             <label for="telefone">Telefone/Celular<span>*</span></label>
-            <input id="telefone" type="tel"   formControlName="telefone" required maxlength="14" onkeypress="mascaratel(this)"/>
+            <input id="telefone" type="tel"   formControlName="telefone" required maxlength="14"  />
           </div>
           
         </div>
@@ -165,10 +165,6 @@
           </div>
         </div>
 
-        <div class="form-group col-md-12" [hidden]="isHiddenTotal == true" >
-            <label>Total R$</label>
-             <input class="input--style-3" type="text" disabled  formControlName="valor">
-          </div>
           <label><span>** O valor será mostrado quando você clicar no botão "Agendar", não se preocupe, o agendamento só será efetuado se você aceitar o valor.</span></label>
           <label><span>** O  botão "Agendar", só estará disponivel quando todos os dados forem preenchidos.</span></label>
         <div class="btn-block">

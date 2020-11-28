@@ -31,7 +31,8 @@ public class GeneratorPDF {
               PdfPCell nome = new PdfPCell(new Paragraph("Nome do cliente: " + dadosCliente.getNome() ));
               PdfPCell cpf = new PdfPCell(new Paragraph("CPF: " + dadosCliente.getCpf() ));
               PdfPCell data = new PdfPCell(new Paragraph("Data: " + dadosCliente.getData()));
-              PdfPCell hora = new PdfPCell(new Paragraph("Hora: " + dadosCliente.getHora()));
+              PdfPCell hora = new PdfPCell(new Paragraph("Hora: " + dadosCliente.getHoras()));
+              PdfPCell funcionario = new PdfPCell(new Paragraph("Funcionário: " + dadosCliente.getFuncionario()));
               PdfPCell chave = new PdfPCell(new Paragraph("Chave de Cancelamento: " + dadosCliente.getChaveDeCancelamento()));
               PdfPCell notifica = new PdfPCell(new Paragraph("\n \n** A chave de cancelamento serve para cancelar sua marcação, bastando apenas acessar a página AGENDA e selecionar a opção CANCELAMENTO."));
              
@@ -40,6 +41,7 @@ public class GeneratorPDF {
               table.addCell(cpf);
               table.addCell(data);
               table.addCell(hora);
+              table.addCell(funcionario);
               table.addCell(chave);   
               table.addCell(notifica);  
               

@@ -1,6 +1,9 @@
 package br.dh.barbearia.java.commun;
 
+import java.util.List;
 import java.util.Random;
+
+import br.dh.barbearia.java.entity.Funcionario;
 
 public class RandomCommun {
 
@@ -11,6 +14,11 @@ public class RandomCommun {
 			sb.append(caracteres.charAt(random.nextInt(caracteres.length())));
 		}
 		return sb.toString();
+	}
+	
+	public String escolheFuncionario(List<Funcionario> func) {
+		return  func.get(new Random().nextInt(func.size())).getNome();
+		
 	}
 
 }

@@ -8,7 +8,9 @@ import { Disponibilidades } from '../models/disponibilidades';
 import { Servicos } from '../models/servicos';
 import { AgendamentoService } from '../services/agendamento.service';
 import { SelectService } from '../services/selects.service';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';  
+import { Agendamento } from '../models/agendamento';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-agendamento',
@@ -39,6 +41,10 @@ export class AgendamentoComponent implements OnInit {
   isHiddenFunc = true;
   isHiddenTotal  = true;
   disponiblidadeFunc: any;
+  val:any;
+  agendas:  Array<Agendamento> = [];
+  mask:string;
+
 
   constructor(private service: AgendamentoService, private selects: SelectService) {
   }
@@ -62,14 +68,14 @@ export class AgendamentoComponent implements OnInit {
     hora: new FormControl(),
     precisaProfissional: new FormControl('',Validators.nullValidator && Validators.required),
     funcionario: new FormControl(),
-    valor:new FormControl('')
+    valor:new FormControl(''),
+    msg:new FormControl('')
   });
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   onSubmit() {
-    this.agendamentoForm.value;
-    this.salvarAgendamento();
+    this.podeSalvarAgendamento();
 }
 
   ngOnDestroy() {
@@ -81,6 +87,19 @@ export class AgendamentoComponent implements OnInit {
     this.agendamentoForm.updateValueAndValidity();
     this.service.salvarAgendaCliente(this.agendamentoForm.value).pipe(takeUntil(this.destroy$)).subscribe(agenda => {
       this.agendamentoForm.reset();
+    });
+  }
+
+  podeSalvarAgendamento(){
+    
+    this.service.podeSalvar(this.agendamentoForm.value).pipe(takeUntil(this.destroy$)).subscribe((agenda: Agendamento)=> {
+      if( agenda.msg == "OK"){
+          this.val = this.agendamentoForm.get('valor');
+          this.confirmaAgendamentoCliente(this.val.value);
+     }
+     else{
+          this.erroalert();
+     }
     });
   }
   
@@ -251,5 +270,50 @@ export class AgendamentoComponent implements OnInit {
       this.buscarServicosValor(selectedValue);
         });
   }
+
+  cpfmask() {
+    const value = this.agendamentoForm.get('cpf').value;
+  
+      this.mask = '00.000.0000-00'
+  }
+
+////////alerts
+
+confirmaAgendamentoCliente(valor: string){  
+  Swal.fire({  
+    title: 'Deseja realizar o agendamento?',  
+    text: 'O valor do serviço a ser realidado será de:' + valor +', podendo ser pago em dinheiro ou cartão no dia da atividade.',  
+    icon: 'warning',  
+    showCancelButton: true,  
+    confirmButtonText: 'Sim, me agende',  
+    cancelButtonText: 'Não, deixe para a próxima'  
+  }).then((result) => {  
+    if (result.value) {  
+      this.salvarAgendamento();
+      Swal.fire(  
+        'PARABÉNS!',  
+        'seu agendamento foi realizado, vejo você em breve :) !!! \n\n ****RECIBO: PROCURE EM SEU COMPUTADOR O ARQUIVO: PDF_BarbeariaAgendamento.PDF',  
+        'success'  
+      )  
+    } else if (result.dismiss === Swal.DismissReason.cancel) {  
+      Swal.fire(  
+        'AGENDAMENTO CANCELADO',  
+        'Que pena, esperamos que você mude de ideia e marqur uma hora conosco, adorariamos ter você como cliente.',  
+        'error'  
+      )  
+    }  
+  })  
+}  
+
+erroalert()  
+{  
+  Swal.fire({  
+    icon: 'error',  
+    title: 'Oops... Parece que alguém passou na sua frente...',  
+    text: 'Não foi possível fazer o agendamento, este horário está ocupado.',  
+    footer: 'Tente com outro horário,data ou funcionário.'  
+  })  
+}  
+
 }
 

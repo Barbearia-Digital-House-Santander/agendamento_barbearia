@@ -14,9 +14,11 @@ import br.dh.barbearia.java.commun.GeneratorPDF;
 import br.dh.barbearia.java.commun.RandomCommun;
 import br.dh.barbearia.java.entity.Agenda;
 import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
+import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.entity.Hora;
 import br.dh.barbearia.java.repository.AgendaRepository;
 import br.dh.barbearia.java.repository.DisponibilidadeFuncionarioRepository;
+import br.dh.barbearia.java.repository.FuncionarioRepository;
 import br.dh.barbearia.java.repository.HoraRepository;
 
 @Service
@@ -25,6 +27,8 @@ public class AgendaService {
 	@Resource
 	private AgendaRepository agendaRepository;
 	
+	@Resource
+	private FuncionarioRepository funcionarioRepository;
 
 	@Resource
 	private DisponibilidadeFuncionarioRepository disponibilidadeFuncionarioRepository;
@@ -55,14 +59,24 @@ public class AgendaService {
 		  agenda.setTelefone(telefone);
 		  agenda.setCategorias(categoria);
 		  agenda.setValor(valor);
-		  if(nomeFunc != null) {
-			  agenda.setFuncionario(nomeFunc);
-		  }
+		  agenda.setFuncionario(this.setarFuncionario(nomeFunc, categoria));
 		  agenda.setCancelado(Constantes.NAO);
 		  agenda.setChaveDeCancelamento(geradorAleatorio());
 		  agendaRepository.save(agenda);
 	
         //  return "redirect:/barbearia/notificacaoAgendamentoOK";
+	}
+	
+	public String setarFuncionario(String nomeFunc, Integer categoria) {
+		if(nomeFunc != null ) {
+			  return nomeFunc;
+		}
+		if(nomeFunc == null || nomeFunc.isEmpty()) {
+			  RandomCommun random = new RandomCommun();
+			  List<Funcionario> func = funcionarioRepository.findByCategorias(categoria);
+			   nomeFunc = random.escolheFuncionario(func);
+		  }
+		return nomeFunc;
 	}
 	
 	public String atualizarMarcacaoNaAgenda(String chaveDeCancelamento) {
@@ -90,8 +104,15 @@ public class AgendaService {
         }
 	}
 	
-	public String agendamentoOK(String ok, String recibo) {
+	public String agendamentoOK(String recibo) {
 		 Agenda dados = buscarUltimosDadosPeloId();
+		 List<Hora> horas = horaRepository.findAll();
+		
+		 List<Hora> hrs = horas.stream().filter(y -> y.getIdHora().equals(dados.getHora())).collect(Collectors.toList());
+				for(Hora h : hrs) {
+					dados.setHoras(h.getHora());
+				}
+		 
 		 if(recibo.equals("recibo")) {
 			  return GeneratorPDF.geraPDFagendamentoOK(dados);
 		  }
@@ -140,5 +161,13 @@ public class AgendaService {
 
 		
 		return dts;
+	}
+	
+	public String verificarSePodeSalvarAgendamento(String data, Integer hora, String funcionario) {
+	  List<Agenda> agd = agendaRepository.findByDataAndHoraAndFuncionario(data, hora, funcionario);
+			  if(agd.isEmpty() || agd == null) {
+				  return "OK";
+			  }
+	  return "erro";
 	}
 }

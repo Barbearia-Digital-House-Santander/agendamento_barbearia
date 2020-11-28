@@ -41,5 +41,9 @@ export class AgendamentoService {
     return this.http.post(this.urlAgenda + '/salvarAgenda', agenda,{headers: this.headers});
   }
 
+  podeSalvar(agenda:any){
+    return this.http.post(this.urlAgenda + '/podeSalvar', agenda,{headers: this.headers});
+  }
+
 } 
     
