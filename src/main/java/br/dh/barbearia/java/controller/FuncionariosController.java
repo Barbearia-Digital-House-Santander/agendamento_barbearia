@@ -58,12 +58,12 @@ public class FuncionariosController implements WebMvcConfigurer  {
 	public ResponseEntity<?> adicionaFuncionario(@RequestBody  Funcionario func, RandomCommun randomCommun) {
 		if(Boolean.TRUE.equals(func.getNivelFuncLogado().equals(Constantes.NIVEL_GERENTE))) {
 			func.setMatricula(randomCommun.geradorLetrasNumerosAleatorios(Constantes.CARACTERES, Constantes.TAMANHO_RANDOM));
-			func.setSenha(randomCommun.geradorLetrasNumerosAleatorios(Constantes.CARACTERES, Constantes.TAMANHO_RANDOM));
-			funcService.salvarNovoFunc(func.getCpf(), func.getNome(), func.getDtNasc(), func.getNacionalidade(), func.getGenero(), func.getEmail(),
-					 func.getTelefone(), func.getEndereco(), func.getUfs(), func.getCep(), func.getNivels(), func.getCategorias(), func.getMatricula(), func.getSenha());
-			 return ResponseEntity.ok(func);
+			Funcionario funcio = funcService.salvarNovoFunc(func.getCpf(), func.getNome(), func.getDtNasc(), func.getNacionalidade(), func.getGenero(), func.getEmail(),
+					 func.getTelefone(), func.getEndereco(), func.getUfs(), func.getCep(), func.getNivels(), func.getCategorias(), func.getMatricula());
+			 return ResponseEntity.ok(funcio);
 		}
-		 return ResponseEntity.ok("Erro");
+		func.setMsg("Erro");
+		 return ResponseEntity.ok(func);
 
 	}
 	

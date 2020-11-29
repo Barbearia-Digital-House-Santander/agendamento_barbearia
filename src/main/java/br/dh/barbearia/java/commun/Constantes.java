@@ -13,4 +13,6 @@ public class Constantes {
 		public static int NIVEL_GERENTE = 1;
 		
 		public static int NIVEL_COMUM = 2;
+		
+		public static String SENHA_PADRAO = "12345";
 }

@@ -59,9 +59,15 @@ selecionar: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   onSubmit() {
-      this.service.salvarFuncionario(this.userForm.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
-      this.userCount = this.userCount + 1;
-      this.userForm.reset();
+      this.service.salvarFuncionario(this.userForm.value).pipe(takeUntil(this.destroy$)).subscribe((func: Funcionario) => {
+        if(func.msg == "ok"){
+          this.userCount = this.userCount + 1;
+          this.userForm.reset();
+          this.msgSalvoComSucesso(func.matricula, func.senha);
+        }else{
+          this.msgErroAoSalvar();
+        }
+      
     });
   }
 
@@ -150,10 +156,28 @@ selecionar: any;
       title: 'Ops...',  
       text: 'Parece que você perdeu a conexão faça seu login novamente para reiniciar a sessão.',  
       icon: 'error' ,
-     footer: '<a href="login"> Sim, fazer login </a>',  
+      footer: '<a href="login"> Sim, fazer login </a>',  
       
     });  
   }  
 
+  msgSalvoComSucesso( matricula: String, senha: String ){  
+    Swal.fire({  
+      
+      title: 'Salvo',  
+      text: 'O Funcionário foi registrado \n \n <strong> MATRICULA: </strong>' + matricula +'\n \n \n <strong>SENHA:</strong>' + senha,  
+      icon: 'success'       
+    });  
+  } 
+
+  msgErroAoSalvar(){  
+    Swal.fire({  
+      
+      title: 'Ops...',  
+      text: 'Ocorreu um erro ao tentar registrar, tente novamente ou procure a assistência técnica',  
+      icon: 'error' 
+      
+    });  
+  }  
 
 }

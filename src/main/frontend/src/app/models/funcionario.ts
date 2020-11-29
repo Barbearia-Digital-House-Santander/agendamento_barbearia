@@ -9,5 +9,9 @@ export interface Funcionario {
     categorias: string;
     servicos: string;
     nivels: string;
+    msg : string;
+    dtNasc: string;
+    matricula: string;
+    senha: string;
 
 }

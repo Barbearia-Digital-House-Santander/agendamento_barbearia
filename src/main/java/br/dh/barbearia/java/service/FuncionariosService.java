@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import br.dh.barbearia.java.commun.Constantes;
 import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
 import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.entity.Hora;
@@ -41,9 +42,9 @@ public class FuncionariosService {
 	@Resource
 	private NivelRepository nivelRepository;
 	
-	public void salvarNovoFunc(String cpf, String nome, LocalDate dataNascimento, String nacionalidade,
+	public Funcionario salvarNovoFunc(String cpf, String nome, LocalDate dataNascimento, String nacionalidade,
 	  		  String genero, String email,String telefone, String endereco, Integer uf, String cep, Integer nivel,
-	  		  Integer categoria, String matricula, String senha) {
+	  		  Integer categoria, String matricula) {
 
 			  Funcionario func = new Funcionario();
 			  func.setCpf(cpf);
@@ -58,12 +59,11 @@ public class FuncionariosService {
 			  func.setCep(cep);
 			  func.setUfs(uf);
 			  func.setMatricula(matricula);
-			  func.setSenha(senha);
+			  func.setSenha(Constantes.SENHA_PADRAO);
 			  func.setNivels(nivel);
-			  
+			  func.setMsg("ok");
 			  funcionarioRepository.save(func);
-		
-	          //return "redirect:/barbearia/notificacaoAgendamentoOK";
+			  return func;
 		}
 	
 	public String salvarNovaDisponibilidade(String funcionario, LocalDate data, Integer hora) {
