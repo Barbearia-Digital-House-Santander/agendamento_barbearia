@@ -27,6 +27,7 @@ import { HomeFuncComponent } from './home-func/home-func.component';
 import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { SobreComponent } from './sobre/sobre.component';
+import { AdmComponent } from './adm/adm.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SobreComponent } from './sobre/sobre.component';
     PreLoaderComponent,
     ServicosComponent,
     SobreComponent,
+    AdmComponent,
     ],
   imports: [
     BrowserModule,

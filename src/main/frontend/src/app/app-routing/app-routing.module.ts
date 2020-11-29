@@ -16,6 +16,7 @@ import { DisponiblidadeFuncionarioComponent } from '../disponiblidade-funcionari
 import { HomeFuncComponent } from '../home-func/home-func.component';
 import { ServicosComponent } from '../servicos/servicos.component';
 import { SobreComponent } from '../sobre/sobre.component';
+import { AdmComponent } from '../adm/adm.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'minhaAgenda', component: DisponiblidadeFuncionarioComponent},
   { path: 'home', component: HomeFuncComponent},
   { path: 'servicos', component: ServicosComponent},
-  { path: 'sobre', component: SobreComponent}
+  { path: 'sobre', component: SobreComponent},
+  { path: 'adm', component: AdmComponent}
   
 ];
 
