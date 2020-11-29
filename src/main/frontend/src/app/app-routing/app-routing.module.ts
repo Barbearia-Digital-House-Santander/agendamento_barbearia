@@ -17,6 +17,7 @@ import { HomeFuncComponent } from '../home-func/home-func.component';
 import { ServicosComponent } from '../servicos/servicos.component';
 import { SobreComponent } from '../sobre/sobre.component';
 import { AdmComponent } from '../adm/adm.component';
+import { AjudaComponent } from '../ajuda/ajuda.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'home', component: HomeFuncComponent},
   { path: 'servicos', component: ServicosComponent},
   { path: 'sobre', component: SobreComponent},
-  { path: 'adm', component: AdmComponent}
+  { path: 'adm', component: AdmComponent},
+  { path: 'ajuda', component: AjudaComponent}
   
 ];
 

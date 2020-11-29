@@ -28,6 +28,7 @@ import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { SobreComponent } from './sobre/sobre.component';
 import { AdmComponent } from './adm/adm.component';
+import { AjudaComponent } from './ajuda/ajuda.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AdmComponent } from './adm/adm.component';
     ServicosComponent,
     SobreComponent,
     AdmComponent,
+    AjudaComponent,
     ],
   imports: [
     BrowserModule,
