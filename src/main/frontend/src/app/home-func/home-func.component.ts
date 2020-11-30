@@ -34,6 +34,7 @@ export class HomeFuncComponent implements OnInit {
     this.usuario = this.logado;
     this.subject.subscribe(a => a = this.logado);
     this.usuario;
+    this.msgBemVindo();
   }
  }
 
@@ -70,6 +71,17 @@ export class HomeFuncComponent implements OnInit {
       text: 'Parece que você perdeu a conexão faça seu login novamente para reiniciar a sessão.',  
       icon: 'error' ,
      footer: '<a href="login"> Sim, fazer login </a>',  
+      
+    });  
+  }  
+
+ msgBemVindo(){  
+    Swal.fire({  
+      
+      title: 'Seja Bem-Vindo',  
+      text: 'Ao nosso portal, você pode adicionar seus horários, visualizar seus clientes entre outros.',  
+      icon: 'success' ,
+      footer: 'Se é a sua primeira vez, altere sua senha acessando a página Meus Dados.',  
       
     });  
   }  
