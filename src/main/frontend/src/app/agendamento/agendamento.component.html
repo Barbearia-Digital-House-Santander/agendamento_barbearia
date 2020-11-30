@@ -26,7 +26,7 @@
         <div class="colums">
           <div class="item">
             <label for="cpf">CPF<span>*</span></label>
-             <input class="input--style-3" type="text" id="cpf" maxlength="14"  formControlName="cpf">
+             <input class="input--style-3" type="text" id="cpf"   formControlName="cpf" [dropSpecialCharacters]="false" mask="000.000.000-00"  >
           </div>
           
            <div class="item">
@@ -40,7 +40,7 @@
           
           <div class="item">
             <label for="telefone">Telefone/Celular<span>*</span></label>
-            <input id="telefone" type="tel"   formControlName="telefone" required maxlength="14"  />
+            <input id="telefone" type="tel"   formControlName="telefone" required [dropSpecialCharacters]="false" mask="(00) 0000-0000" />
           </div>
           
         </div>

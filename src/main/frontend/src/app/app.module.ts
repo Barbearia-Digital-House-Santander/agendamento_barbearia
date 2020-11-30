@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxMaskModule } from 'ngx-mask';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
 
 //Templates
 import { AppComponent } from './app.component';
@@ -29,6 +29,10 @@ import { ServicosComponent } from './servicos/servicos.component';
 import { SobreComponent } from './sobre/sobre.component';
 import { AdmComponent } from './adm/adm.component';
 import { AjudaComponent } from './ajuda/ajuda.component';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   declarations: [
@@ -60,7 +64,7 @@ import { AjudaComponent } from './ajuda/ajuda.component';
     FormsModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    NgxMaskModule 
+    NgxMaskModule.forRoot(maskConfig),
   ],
   providers: [AgendamentoService, DialogConfirmService],
   bootstrap: [AppComponent]

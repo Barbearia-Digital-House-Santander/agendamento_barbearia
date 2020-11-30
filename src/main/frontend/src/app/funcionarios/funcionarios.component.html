@@ -43,13 +43,13 @@
             </div>
             <div class="form-group col-md-6">
               <label for="exampleInputPassword1">CPF</label>
-              <input type="text" class="form-control" formControlName="cpf" id="exampleInputPassword1" placeholder="CPF">
+              <input type="text" class="form-control" formControlName="cpf" id="exampleInputPassword1" placeholder="CPF" [dropSpecialCharacters]="false" mask="000.000.000-00" > 
             </div>
           </div>
           <div class="row">
             <div class="form-group col-md-6">
               <label for="exampleInputEmail1">Telefone</label>
-              <input type="text" class="form-control" formControlName="telefone"  placeholder="Telefone">
+              <input type="text" class="form-control" formControlName="telefone"  placeholder="Telefone" [dropSpecialCharacters]="false" mask="(00) 0000-0000">
             </div>
             <div class="form-group col-md-6">
               <label for="exampleInputPassword1">E-mail</label>
@@ -73,7 +73,7 @@
             </div>
             <div class="form-group col-md-6">
               <label for="exampleInputPassword1">CEP</label>
-              <input type="text" class="form-control" formControlName="cep" id="exampleInputPassword1" placeholder="CEP">
+              <input type="text" class="form-control" formControlName="cep" id="exampleInputPassword1" placeholder="CEP" [dropSpecialCharacters]="false" mask="00000-000>
             </div>
           </div>
           <div class="row">
