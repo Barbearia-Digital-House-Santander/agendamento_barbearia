@@ -74,7 +74,8 @@ public class AgendaService {
 		if(nomeFunc == null || nomeFunc.isEmpty()) {
 			  RandomCommun random = new RandomCommun();
 			  List<Funcionario> func = funcionarioRepository.findByCategorias(categoria);
-			   nomeFunc = random.escolheFuncionario(func);
+			  List<Funcionario> funcNivelComum = func.stream().filter(f -> f.getNivels().equals(Constantes.NIVEL_COMUM)).collect(Collectors.toList());
+			   nomeFunc = random.escolheFuncionario(funcNivelComum);
 		  }
 		return nomeFunc;
 	}
