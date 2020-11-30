@@ -76,6 +76,16 @@ export class ClientesListaComponent implements OnInit {
         this.serviceAut.setUsuarioLogado(this.logado);
       }
       
+      pagMeusDados(){
+        this.router.navigate(['/', 'meusDados']);
+        this.serviceAut.setUsuarioLogado(this.logado);
+      }
+
+      pagSenha(){
+        this.router.navigate(['/', 'senha']);
+        this.serviceAut.setUsuarioLogado(this.logado);
+      }
+      
       pagMarcacoes(){
         this.router.navigate(['/', 'marcacoes']);
         this.serviceAut.setUsuarioLogado(this.logado);

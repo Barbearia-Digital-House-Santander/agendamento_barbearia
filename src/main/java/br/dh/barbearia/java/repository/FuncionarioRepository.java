@@ -16,5 +16,7 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 		List<Funcionario> findByMatriculaAndSenha(String matricula, String senha);
 		
 		List<Funcionario> findByCategorias(Integer categorias);
+		
+		List<Funcionario> findByMatricula(String matricula);
 
 }

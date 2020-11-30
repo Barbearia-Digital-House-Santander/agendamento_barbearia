@@ -68,6 +68,7 @@ public class Funcionario {
 	private String nomeFuncLogado;
 	private String Categoriass;
 	private String msg;
+	private String novaSenha;
 
 	public Funcionario() {
 

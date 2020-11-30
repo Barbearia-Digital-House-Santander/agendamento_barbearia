@@ -22,6 +22,10 @@ export class FuncionarioService {
     return this.http.post(this.urlFuncionario +'/salvaFuncionario',usuario,{headers: this.headers});
   }
 
+  atualizarSenha(usuario: any){
+    return this.http.post(this.urlFuncionario +'/atualizarSenha',usuario,{headers: this.headers});
+  }
+
   salvarDisponibilidadeDoFuncionario(agenda: any){
     return this.http.post(this.urlFuncionario + '/salvarDisponibilidade', agenda,{headers: this.headers});
   }

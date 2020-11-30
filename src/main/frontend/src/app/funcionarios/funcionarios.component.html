@@ -9,7 +9,8 @@
       <li (click)="pagHome()"><a >Home</a></li>
       <li (click)="pagMarcacoes()"><a>Clientes</a></li>
       <li (click)="pagMinhaAgenda()"><a>Minha Agenda</a></li>
-      <li ><a href='#'>Meus Dados</a></li>
+      <li (click)="pagMeusDados()" ><a>Meus Dados</a></li>
+      <li  (click)="pagSenha()"><a >Mudar Senha</a></li>
       <li class='active'  (click)="pagFuncionarios()"><a>Funcionários</a></li>
       <li *ngFor = "let  u of usuario" style="left: 12em; text-align: center; top:15px;" >
        Você está logado como:<br> {{u.nome}}
@@ -39,16 +40,16 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label >Nome completo</label>
-              <input type="text" class="form-control" formControlName="nome" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome">
+              <input type="text" class="form-control" formControlName="nome" placeholder="Nome">
             </div>
             <div class="form-group col-md-6">
-              <label for="exampleInputPassword1">CPF</label>
-              <input type="text" class="form-control" formControlName="cpf" id="exampleInputPassword1" placeholder="CPF" [dropSpecialCharacters]="false" mask="000.000.000-00" > 
+              <label >CPF</label>
+              <input type="text" class="form-control" formControlName="cpf"  placeholder="CPF" [dropSpecialCharacters]="false" mask="000.000.000-00" > 
             </div>
           </div>
           <div class="row">
             <div class="form-group col-md-6">
-              <label for="exampleInputEmail1">Telefone</label>
+              <label >Telefone</label>
               <input type="text" class="form-control" formControlName="telefone"  placeholder="Telefone" [dropSpecialCharacters]="false" mask="(00) 0000-0000">
             </div>
             <div class="form-group col-md-6">
@@ -62,18 +63,18 @@
               <input type="date" class="form-control" formControlName="dtNasc"  placeholder="Data de  Nascimento">
             </div>
             <div class="form-group col-md-6">
-              <label for="exampleInputPassword1">Nacionalidade</label>
-              <input type="text" class="form-control" formControlName="nacionalidade" aria-describedby="emailHelp" placeholder="Nacionalidade">
+              <label >Nacionalidade</label>
+              <input type="text" class="form-control" formControlName="nacionalidade"  placeholder="Nacionalidade">
             </div>
           </div>
           <div class="row">
             <div class="form-group col-md-6">
-              <label for="exampleInputEmail1">Endereco</label>
-              <input type="text" class="form-control" formControlName="endereco" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Endereço">
+              <label >Endereço</label>
+              <input type="text" class="form-control" formControlName="endereco"  aria-describedby="emailHelp" placeholder="Endereço">
             </div>
             <div class="form-group col-md-6">
-              <label for="exampleInputPassword1">CEP</label>
-              <input type="text" class="form-control" formControlName="cep" id="exampleInputPassword1" placeholder="CEP" [dropSpecialCharacters]="false" mask="00000-000">
+              <label>CEP</label>
+              <input type="text" class="form-control" formControlName="cep"  placeholder="CEP" [dropSpecialCharacters]="false" mask="00000-000">
             </div>
           </div>
           <div class="row">

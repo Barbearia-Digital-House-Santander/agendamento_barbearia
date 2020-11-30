@@ -29,6 +29,8 @@ import { ServicosComponent } from './servicos/servicos.component';
 import { SobreComponent } from './sobre/sobre.component';
 import { AdmComponent } from './adm/adm.component';
 import { AjudaComponent } from './ajuda/ajuda.component';
+import { MeusDadosComponent } from './meus-dados/meus-dados.component';
+import { SenhaComponent } from './senha/senha.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -55,6 +57,8 @@ const maskConfig: Partial<IConfig> = {
     SobreComponent,
     AdmComponent,
     AjudaComponent,
+    MeusDadosComponent,
+    SenhaComponent,
     ],
   imports: [
     BrowserModule,

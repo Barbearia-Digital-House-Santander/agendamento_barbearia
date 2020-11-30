@@ -47,7 +47,7 @@ selecionar: any;
     cep: new FormControl('', Validators.nullValidator && Validators.required),
     genero: new FormControl('', Validators.nullValidator && Validators.required),
     nivels: new FormControl(''),
-    dtNasc: new FormControl('', Validators.nullValidator && Validators.required),
+    dtNasc: new FormControl('', Validators.nullValidator ),
     nacionalidade: new FormControl('Brasileira(o)'),
     nomeFuncLogado: new FormControl(''),
     nivelFuncLogado: new FormControl('')
@@ -115,6 +115,16 @@ selecionar: any;
   }
   pagFuncionarios(){
     this.router.navigate(['/', 'funcionarios']);
+    this.serviceAut.setUsuarioLogado(this.logado);
+  }
+
+  pagMeusDados(){
+    this.router.navigate(['/', 'meusDados']);
+    this.serviceAut.setUsuarioLogado(this.logado);
+  }
+
+  pagSenha(){
+    this.router.navigate(['/', 'senha']);
     this.serviceAut.setUsuarioLogado(this.logado);
   }
 

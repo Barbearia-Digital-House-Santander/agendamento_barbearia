@@ -18,6 +18,8 @@ import { ServicosComponent } from '../servicos/servicos.component';
 import { SobreComponent } from '../sobre/sobre.component';
 import { AdmComponent } from '../adm/adm.component';
 import { AjudaComponent } from '../ajuda/ajuda.component';
+import { MeusDadosComponent } from '../meus-dados/meus-dados.component';
+import { SenhaComponent } from '../senha/senha.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,7 +36,9 @@ const routes: Routes = [
   { path: 'servicos', component: ServicosComponent},
   { path: 'sobre', component: SobreComponent},
   { path: 'adm', component: AdmComponent},
-  { path: 'ajuda', component: AjudaComponent}
+  { path: 'ajuda', component: AjudaComponent},
+  { path: 'meusDados', component: MeusDadosComponent},
+  { path: 'senha', component: SenhaComponent}
   
 ];
 

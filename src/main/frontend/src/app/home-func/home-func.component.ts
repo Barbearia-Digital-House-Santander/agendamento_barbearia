@@ -64,6 +64,16 @@ export class HomeFuncComponent implements OnInit {
     this.service.setUsuarioLogado(this.logado);
   }
 
+  pagMeusDados(){
+    this.router.navigate(['/', 'meusDados']);
+    this.service.setUsuarioLogado(this.logado);
+  }
+
+  pagSenha(){
+    this.router.navigate(['/', 'senha']);
+    this.service.setUsuarioLogado(this.logado);
+  }
+
   naoExisteUsuarioLogado(){  
     Swal.fire({  
       

@@ -87,6 +87,37 @@ public class FuncionariosService {
 		  return "Funcionário não encontrado, faça o login novamente" ;}
 		return "Salvo com Sucesso";
 	}
+	
+	public Funcionario atualizarSenhaFunc(String nome, String senhaAtual, String novaSenha, String matricula) {
+
+	  List<Funcionario> funcionario = funcionarioRepository.findByMatricula(matricula);
+	  Funcionario func = new Funcionario();	  
+	  Boolean senha = this.verificarSenha(senhaAtual, funcionario.get(0).getSenha());
+			  
+	  if(senha.equals(true)) {
+		  func.setIdFuncionario(funcionario.get(0).getIdFuncionario());
+		  func.setMatricula(funcionario.get(0).getMatricula());
+		  func.setNome(funcionario.get(0).getNome());
+		  func.setCpf(funcionario.get(0).getCpf());
+		  func.setEmail(funcionario.get(0).getEmail());
+		  func.setTelefone(funcionario.get(0).getTelefone());
+		  func.setDtNasc(funcionario.get(0).getDtNasc());
+		  func.setCep(funcionario.get(0).getCep());
+		  func.setEndereco(funcionario.get(0).getEndereco());
+		  func.setCategorias(funcionario.get(0).getCategorias());
+		  func.setNivels(funcionario.get(0).getNivels());
+		  func.setUfs(funcionario.get(0).getUfs());
+		  func.setGenero(funcionario.get(0).getGenero());
+		  func.setNacionalidade(funcionario.get(0).getNacionalidade());
+		  func.setSenha(novaSenha);
+		  funcionarioRepository.save(func);
+		  func.setMsg("ok");
+	  }else {	 
+	  func.setMsg("erro");
+	  }
+	  return func;
+		}
+	
 	public List<Funcionario> buscarTodosFuncionarios() {
 		return funcionarioRepository.findAll();
 	}
@@ -151,6 +182,13 @@ public class FuncionariosService {
 	
 		LocalDate dataAtual = LocalDate.now();
 		if(dataInserida.isBefore(dataAtual)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public Boolean verificarSenha(String senhaAtual, String senhaRegistradaBD) {
+		if(Boolean.TRUE.equals(senhaAtual.equals(senhaRegistradaBD))) {
 			return true;
 		}
 		return false;

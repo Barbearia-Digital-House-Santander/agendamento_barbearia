@@ -1,10 +1,10 @@
 create table funcionarios (
 	 id_func int primary key auto_increment unique,
-     cpf varchar(15) not null ,
-     nome varchar(90) not null,
+     cpf varchar(15) ,
+     nome varchar(90) ,
      data_nasc varchar(12) , 
 	 genero varchar(10),
-     email varchar(50),
+     email varchar(90),
      telefone varchar(15) ,
      nacionalidade varchar(25) default("Brasileira(o)"),
      endereco varchar(45),
