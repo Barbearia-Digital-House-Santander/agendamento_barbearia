@@ -1,0 +1,62 @@
+<head>
+    <style>
+     @import url('../assets/css/fontawesome-all.min.css');
+    </style>
+    </head>
+    <body>
+    <div id='cssmenu'>
+      <ul>
+        <li (click)="pagHome()"><a >Home</a></li>
+        <li (click)="pagMarcacoes()"><a>Clientes</a></li>
+        <li (click)="pagMinhaAgenda()"><a>Minha Agenda</a></li>
+        <li  (click)="pagMeusDados()"><a >Meus Dados</a></li>
+        <li  class='active' (click)="pagSenha()"><a >Mudar Senha</a></li>
+        <li  (click)="pagFuncionarios()"><a>Funcionários</a></li>
+        <li *ngFor = "let  u of logado" style="left: 12em; text-align: center; top:15px;" >
+         Você está logado como:<br> {{u.nome}}
+        </li>
+       <li><a href='#' style="left: 36em;" (click)="logout()">SAIR<i class="fas fa-sign-out-alt"></i></a></li>
+        
+     </ul>
+    </div>
+  
+  <div class="container">
+      <div class="row">
+        <div class="col-md-7 mrgnbtm">
+         
+          <form [formGroup]="senhaForm" (ngSubmit)="onSubmit()">
+            
+            <h2>Mudança de senha:</h2><br>
+            <div class="row">
+                <div class="form-group col-md-9">
+                  <label >Você está logado como:</label>
+                  <input type="text" class="form-control" disabled formControlName="nomeFuncLogado" >
+                </div>
+                <div class="form-group col-md-3">
+                    <label >Matrícula:</label>
+                    <input type="text" class="form-control" disabled formControlName="matricula" >
+                  </div>
+            </div>
+              <br>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label >Senha Atual:</label>
+                <input type="password" class="form-control" maxlength="10"  formControlName="senha" >
+              </div>
+              <div class="form-group col-md-6">
+                <label >Nova Senha:</label>
+                <input type="password" class="form-control" maxlength="10" formControlName="novaSenha" >
+              </div>
+            </div>
+           
+     
+            <button type="submit" [disabled]="!senhaForm.valid" class="btn btn-danger">Mudar Senha</button>
+           
+          </form>
+        </div>
+       
+      </div>
+    </div>
+    
+    </body>
+    

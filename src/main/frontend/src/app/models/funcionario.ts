@@ -13,5 +13,7 @@ export interface Funcionario {
     dtNasc: string;
     matricula: string;
     senha: string;
+    endereco: string;
+    cep: string;
 
 }
