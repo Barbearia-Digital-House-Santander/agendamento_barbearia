@@ -11,7 +11,7 @@
         <li (click)="pagMinhaAgenda()"><a>Minha Agenda</a></li>
         <li  (click)="pagMeusDados()"><a >Meus Dados</a></li>
         <li  class='active' (click)="pagSenha()"><a >Mudar Senha</a></li>
-        <li  (click)="pagFuncionarios()"><a>Funcionários</a></li>
+        <li [hidden]="adicionaFunc == true" (click)="pagFuncionarios()"><a>Funcionários</a></li>
         <li *ngFor = "let  u of logado" style="left: 12em; text-align: center; top:15px;" >
          Você está logado como:<br> {{u.nome}}
         </li>

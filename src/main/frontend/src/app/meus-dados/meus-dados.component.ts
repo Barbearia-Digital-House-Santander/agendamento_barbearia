@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Funcionario } from '../models/funcionario';
 import { AutentificacaoService } from '../services/autentificacao.service';
+import { FuncionarioService } from '../services/funcionario.service';
 
 @Component({
   selector: 'app-meus-dados',
@@ -16,10 +17,11 @@ export class MeusDadosComponent implements OnInit {
   usuario: Funcionario;
   router: Router;
   logado:any;
+  adicionaFunc = true;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
   
-  constructor(private serviceAut: AutentificacaoService, router: Router){
+  constructor(private service: FuncionarioService, private serviceAut: AutentificacaoService, router: Router){
     this.router = router; }
 
   ngOnInit(): void {
@@ -29,6 +31,9 @@ export class MeusDadosComponent implements OnInit {
       this.naoExisteUsuarioLogado();
     }else{
     this.usuario = this.logado[0];
+    if(this.usuario.nivels == 1){
+      this.adicionaFunc = false;
+    }
     this.meusDadosForm.get('nome').setValue(this.usuario.nome);
     this.meusDadosForm.get('cpf').setValue(this.usuario.cpf);
     this.meusDadosForm.get('categoria').setValue(this.usuario.categorias);
@@ -60,16 +65,15 @@ export class MeusDadosComponent implements OnInit {
   });
 
   onSubmit() {
-     /* this.service.salvarFuncionario(this.userForm.value).pipe(takeUntil(this.destroy$)).subscribe((func: Funcionario) => {
+     this.service.atualizarDados(this.meusDadosForm.value).pipe(takeUntil(this.destroy$)).subscribe((func: Funcionario) => {
       if(func.msg == "ok"){
-        this.userCount = this.userCount + 1;
-        this.userForm.reset();
-        this.msgSalvoComSucesso(func.matricula, func.senha);
+        this.meusDadosForm.reset();
+        this.msgSalvoComSucesso();
       }else{
-        this.msgErroAoSalvar();
+        this.msgErroAoAtualizarDados();
       }
     
-  });  */
+  }); 
 }
 
 logout(){
@@ -118,4 +122,23 @@ naoExisteUsuarioLogado(){
     
   });  
 }  
+
+msgErroAoAtualizarDados(){  
+  Swal.fire({  
+    
+    title: 'Ops...',  
+    text: 'Ocorreu um erro ao tentar atualizar seus dados, por favor tente mais tarde.',  
+    icon: 'error' 
+    
+  });  
+}  
+
+msgSalvoComSucesso(){  
+  Swal.fire({  
+    
+    title: 'Sucesso',  
+    text: 'Dados atualizado com sucesso!',  
+    icon: 'success'       
+  });  
+} 
 }

@@ -27,6 +27,7 @@ selecionar: any;
   nivelList: any[];
   catCount = 0;
   nivelCount = 0;
+  adicionaFunc = true;
   
 
   constructor(private service: FuncionarioService,private serviceAut: AutentificacaoService,
@@ -90,6 +91,9 @@ selecionar: any;
       this.router.navigate(['/', 'inicio']);
       this.naoExisteUsuarioLogado();
     }else{
+      if(this.usuario.nivels == 1){
+        this.adicionaFunc = false;
+      }
     this.usuario = this.logado[0];
     this.userForm.get('categorias').setValue(this.buscarCategorias());
     this.userForm.get('ufs').setValue(this.buscarUF());
