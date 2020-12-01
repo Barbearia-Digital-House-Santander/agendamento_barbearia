@@ -30,7 +30,7 @@ export class SenhaComponent implements OnInit {
            this.router.navigate(['/', 'inicio']);
            this.naoExisteUsuarioLogado();
          }else{
-          if(this.usuario.nivels == 1){
+          if(this.logado.nivels == 1){
             this.adicionaFunc = false;
           }
          this.usuario = this.logado[0];

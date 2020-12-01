@@ -109,7 +109,10 @@ logout(){
   });
 }
 
-
+pagMeusDados(){
+  this.router.navigate(['/', 'meusDados']);
+  this.serviceAut.setUsuarioLogado(this.logado);
+}
 
 pagMinhaAgenda(){
   this.router.navigate(['/', 'minhaAgenda']);

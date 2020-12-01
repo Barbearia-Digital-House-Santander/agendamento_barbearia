@@ -60,7 +60,7 @@ public class FuncionariosService {
 			  func.setCep(cep);
 			  func.setUfs(uf);
 			  func.setMatricula(matricula);
-			  func.setSenha(Constantes.SENHA_PADRAO);
+			  func.setSenha(Password.encryptPassword(Constantes.SENHA_PADRAO));
 			  func.setNivels(nivel);
 			  func.setMsg("ok");
 			  funcionarioRepository.save(func);
@@ -127,8 +127,8 @@ public class FuncionariosService {
 		return horaRepository.findAll();
 	}
 	
-	public List<Funcionario> buscaFuncionarioEspecifico(String matricula, String senha){
-		 return funcionarioRepository.findByMatriculaAndSenha(matricula, senha);	
+	public List<Funcionario> buscaFuncionarioEspecifico(String matricula){
+		 return funcionarioRepository.findByMatricula(matricula);	
 	}
 	
 	public List<UF> buscarTodosUFs(){

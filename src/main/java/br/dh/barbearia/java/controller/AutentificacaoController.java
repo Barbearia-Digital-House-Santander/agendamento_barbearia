@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import br.dh.barbearia.java.config.Password;
 import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.service.FuncionariosService;
 import io.swagger.annotations.Api;
@@ -36,11 +37,15 @@ public class AutentificacaoController implements WebMvcConfigurer {
 	@GetMapping(value = "/login/{matricula}/{senha}")
 	public ResponseEntity<?> logarFuncionario(HttpSession session, @PathVariable("matricula") String matricula,
 			@PathVariable("senha") String senha) {
-	
-		List<Funcionario> funcionario = funcService.buscaFuncionarioEspecifico(matricula, senha);	
+		
+		List<Funcionario> funcionario = funcService.buscaFuncionarioEspecifico(matricula);	
 		  if(!funcionario.isEmpty()) {
-	          session.setAttribute("usuarioLogado", funcionario.get(0).getNome());
-	          return ResponseEntity.ok(funcionario);
+			  boolean senhaChecada = Password.checkPassword(senha, funcionario.get(0).getSenha());
+			  if(Boolean.TRUE.equals(senhaChecada)) {
+				  session.setAttribute("usuarioLogado", funcionario.get(0).getNome());
+		          return ResponseEntity.ok(funcionario);
+			  }
+	        
 	      }
 		  return ResponseEntity.ok(funcionario);
 	  }
