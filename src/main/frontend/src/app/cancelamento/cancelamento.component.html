@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Cancelamento </title>
+    <meta name="description" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+
+    <!-- Icons font CSS-->
+    <style type="text/css">
+        @import url('../../assets/js/vendor/agendamento/mdi-font/css/material-design-iconic-font.min.css');
+        @import url('../../assets/js/vendor/agendamento/font-awesome-4.7/css/font-awesome.min.css');
+        @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+        @import url('../../assets/css/bootstrap.min.css');
+        @import url('../assets/css/style.css');
+        @import url('../assets/css/slicknav.css');
+        @import url('../assets/css/magnific-popup.css');
+        @import url('../../assets/js/vendor/agendamento/select2/select2.min.css');
+        @import url('../../assets/js/vendor/agendamento/datepicker/daterangepicker.css');
+        @import url('../assets/css/agendamento.css');
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <!--? Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="#"><img src="../../assets/img/logo/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+            
+                                <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                                    <a href="agendaCentral" class="btn header-btn">Retornar</a>
+                                </div>
+                            </div>
+                        </div>   
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">CANCELE AGORA SUA MARCAÇÃO</h2>
+                     <form method="POST">
+                        <div class="input-group">
+                            <input class="input--style-3 " type="text" required="true" placeholder="Chave de Cancelamento:" name="chaveDeCancelamento">
+                            <a href="ajuda"><i class="zmdi zmdi-help input-icon js-btn-help"></i></a>
+                        </div>
+                        <div class="p-t-10">
+                            <button class="btn btn--pill btn--green" type="submit">Cancelar agendamento</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../../assets/js/vendor/agendamento/jquery/jquery.min.js"></script>
+    <!-- js/vendor/agendamento/ JS-->
+    <script src="../../assets/js/vendor/agendamento/select2/select2.min.js"></script>
+    <script src="../../assets/js/vendor/agendamento/datepicker/moment.min.js"></script>
+    <script src="../../assets/js/vendor/agendamento/datepicker/daterangepicker.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="../../assets/js/jquery.slicknav.min.js"></script>
+    <!-- Main JS-->
+    <script src="../../assets/js/global.js"></script>
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Scroll Up -->
+    
+
+    <!-- JS here -->
+
+    <script src="../../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="../../assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../../assets/js/popper.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="../../assets/js/jquery.slicknav.min.js"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="../../assets/js/owl.carousel.min.js"></script>
+    <script src="../../assets/js/slick.min.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="../../assets/js/wow.min.js"></script>
+    <script src="../../assets/js/animated.headline.js"></script>
+    <script src="../../assets/js/jquery.magnific-popup.js"></script>
+
+    <!-- Date Picker -->
+    <script src="../../assets/js/gijgo.min.js"></script>
+    <!-- Nice-select, sticky -->
+    <script src="../../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../assets/js/jquery.sticky.js"></script>
+    
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="../../assets/js/jquery.counterup.min.js"></script>
+    <script src="../../assets/js/waypoints.min.js"></script>
+    <script src="../../assets/js/jquery.countdown.min.js"></script>
+    <script src="../../assets/js/hover-direction-snake.min.js"></script>
+
+    <!-- contact js -->
+    <script src="../../assets/js/contact.js"></script>
+    <script src="../../assets/js/jquery.form.js"></script>
+    <script src="../../assets/js/jquery.validate.min.js"></script>
+    <script src="../../assets/js/mail-script.js"></script>
+    <script src="../../assets/js/jquery.ajaxchimp.min.js"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="../../assets/js/plugins.js"></script>
+    <script src="../../assets/js/main.js"></script>
+
+
+</body>
+
+</html>

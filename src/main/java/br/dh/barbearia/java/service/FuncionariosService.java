@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import br.dh.barbearia.java.commun.Constantes;
+import br.dh.barbearia.java.config.Password;
 import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
 import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.entity.Hora;
@@ -109,7 +110,7 @@ public class FuncionariosService {
 		  func.setUfs(funcionario.get(0).getUfs());
 		  func.setGenero(funcionario.get(0).getGenero());
 		  func.setNacionalidade(funcionario.get(0).getNacionalidade());
-		  func.setSenha(novaSenha);
+		  func.setSenha(Password.encryptPassword(novaSenha));
 		  funcionarioRepository.save(func);
 		  func.setMsg("ok");
 	  }else {	 
@@ -188,7 +189,7 @@ public class FuncionariosService {
 	}
 	
 	public Boolean verificarSenha(String senhaAtual, String senhaRegistradaBD) {
-		if(Boolean.TRUE.equals(senhaAtual.equals(senhaRegistradaBD))) {
+		if(Password.checkPassword(senhaAtual, senhaRegistradaBD)) {
 			return true;
 		}
 		return false;

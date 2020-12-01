@@ -20,6 +20,7 @@ import { AdmComponent } from '../adm/adm.component';
 import { AjudaComponent } from '../ajuda/ajuda.component';
 import { MeusDadosComponent } from '../meus-dados/meus-dados.component';
 import { SenhaComponent } from '../senha/senha.component';
+import { CancelamentoComponent } from '../cancelamento/cancelamento.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,7 +39,8 @@ const routes: Routes = [
   { path: 'adm', component: AdmComponent},
   { path: 'ajuda', component: AjudaComponent},
   { path: 'meusDados', component: MeusDadosComponent},
-  { path: 'senha', component: SenhaComponent}
+  { path: 'senha', component: SenhaComponent},
+  { path: 'cancelamento', component: CancelamentoComponent}
   
 ];
 
