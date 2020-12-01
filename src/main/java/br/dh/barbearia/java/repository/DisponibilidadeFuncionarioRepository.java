@@ -13,7 +13,7 @@ public interface DisponibilidadeFuncionarioRepository extends JpaRepository<Disp
 
 	List<DisponibilidadeFuncionario> findAll();
 	
-	List<DisponibilidadeFuncionario> findByFuncionarioAndDataAndHora(String funcionario, LocalDate data, Integer hora);
+	List<DisponibilidadeFuncionario> findByFuncionarioAndDataAndHora(String funcionario, String data, Integer hora);
 	
 	List<DisponibilidadeFuncionario> findByFuncionario(String funcionario);
 	

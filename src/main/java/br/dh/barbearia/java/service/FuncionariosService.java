@@ -66,7 +66,7 @@ public class FuncionariosService {
 			  return func;
 		}
 	
-	public String salvarNovaDisponibilidade(String funcionario, LocalDate data, Integer hora) {
+	public String salvarNovaDisponibilidade(String funcionario, String data, Integer hora) {
 		
 		DisponibilidadeFuncionario trabalhador = new DisponibilidadeFuncionario();
 		if(funcionario != null || !funcionario.isEmpty()) {
@@ -151,7 +151,7 @@ public class FuncionariosService {
 
 		for(int i = 0; i < dts.size(); i++) {
 			if(dts.get(i) != null && !dts.isEmpty()) {
-				LocalDate dt = dts.get(i).getData();
+				String dt = dts.get(i).getData();
 				for(DisponibilidadeFuncionario d : dados) {
 					if(!d.getData().equals(dt)) {
 						dts.add(d);

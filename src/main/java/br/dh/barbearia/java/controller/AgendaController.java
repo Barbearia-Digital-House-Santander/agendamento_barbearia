@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import br.dh.barbearia.java.commun.Constantes;
+import br.dh.barbearia.java.email.EnviarEmail;
 import br.dh.barbearia.java.entity.Agenda;
 import br.dh.barbearia.java.entity.Categoria;
 import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
@@ -42,6 +44,8 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/agenda")
 public class AgendaController implements WebMvcConfigurer{
 
+	private EnviarEmail enviarEmail;
+	
 	@Resource
 	private AgendaService agendaService;
 
@@ -68,7 +72,18 @@ public class AgendaController implements WebMvcConfigurer{
 		 agendaService.salvarMarcacaoNaAgenda(agenda.getCpf(), agenda.getNome(), agenda.getTelefone(), agenda.getCategorias(),
 				 agenda.getData(), agenda.getEmail(), agenda.getSexo(), agenda.getValor(), agenda.getFuncionario(),
 				 agenda.getHora(), agenda.getServicos());
-		 String filename = agendaService.agendamentoOK("recibo");
+		 
+		 List<Hora> hora = agendaService.buscarHoras();
+				for(Hora y : hora) {
+					if(y.getIdHora().equals(agenda.getHora())) {
+						agenda.setHoras(y.getHora());
+					}
+				
+				}
+		String msg = agendaService.mensagemEmail(agenda.getNome(),  agenda.getData(), agenda.getHoras(),  agenda.getFuncionario());
+
+		 enviarEmail.enviarGmail(agenda.getEmail(), Constantes.ASSUNTO_AGENDAMENTO, msg);
+		 //String filename = agendaService.agendamentoOK("recibo");
 		 return ResponseEntity.ok("OK");
 	}
 

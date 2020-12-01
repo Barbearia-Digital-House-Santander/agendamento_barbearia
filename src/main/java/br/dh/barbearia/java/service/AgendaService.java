@@ -151,7 +151,7 @@ public class AgendaService {
 		
 		for(int i = 0; i < dts.size(); i++) {
 			if(dts.get(i) != null && !dts.isEmpty()) {
-				LocalDate dt = dts.get(i).getData();
+				String dt = dts.get(i).getData();
 				for(DisponibilidadeFuncionario d : dados) {
 					if(!d.getData().equals(dt)) {
 						dts.add(d);
@@ -170,5 +170,16 @@ public class AgendaService {
 				  return "OK";
 			  }
 	  return "erro";
+	}
+	
+	public String mensagemEmail(String nomeCliente, String dataAgendada, String horaAgendada, String funcionario) {
+		String msg = "Olá " + nomeCliente + ",\n \n Sabemos o quão dificil está sendo este momento de pandemia e ficamos felizes em saber que"
+				+ "você não deixou de lado seus cuidados com a beleza. \n \n" 
+				+ "Esperamos você em nossa barbearia na:  \n \n"+
+				"Data: "+ dataAgendada + "\n Hora: " + horaAgendada +
+				"\n \n Você será atendido(a): " + funcionario +
+				"\n \n Agradecemos imensamente por sua preferência.";
+		
+		return msg;
 	}
 }

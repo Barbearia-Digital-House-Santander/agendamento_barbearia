@@ -15,4 +15,6 @@ public class Constantes {
 		public static int NIVEL_COMUM = 2;
 		
 		public static String SENHA_PADRAO = "12345";
+		
+		public static String ASSUNTO_AGENDAMENTO = "BARBER DIGITAL HOUSE - AGENDAMENTO";
 }

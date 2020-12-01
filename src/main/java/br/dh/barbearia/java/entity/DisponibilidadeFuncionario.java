@@ -25,7 +25,7 @@ public class DisponibilidadeFuncionario {
 	private String funcionario;
 
 	@Column(name = "data")
-	private LocalDate data;
+	private String data;
 	
 	@Column(name = "hora")
 	private Integer hora;
