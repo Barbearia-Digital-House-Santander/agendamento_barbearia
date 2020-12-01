@@ -7,8 +7,7 @@ import { Categoria } from '../models/categoria';
 @Injectable({
   providedIn: 'root'
 })
-export class FuncionarioService {
-  
+export class FuncionarioService {  
 
   private headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
   private urlFuncionario:string;
@@ -24,6 +23,10 @@ export class FuncionarioService {
 
   atualizarSenha(usuario: any){
     return this.http.post(this.urlFuncionario +'/atualizarSenha',usuario,{headers: this.headers});
+  }
+
+  atualizarDados(usuario: any){
+    return this.http.post(this.urlFuncionario +'/atualizarDados',usuario,{headers: this.headers});
   }
 
   salvarDisponibilidadeDoFuncionario(agenda: any){

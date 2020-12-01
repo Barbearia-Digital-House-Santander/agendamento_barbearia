@@ -193,4 +193,31 @@ public class FuncionariosService {
 		}
 		return false;
 	}
+
+	public Funcionario atualizarDadosFunc( String nome, String matricula, String endereco, String cep, String email, String telefone) {
+		List<Funcionario> funcionario = funcionarioRepository.findByMatricula(matricula);
+		  Funcionario func = new Funcionario();	  
+				  
+		  if(!funcionario.isEmpty()) {
+			  func.setIdFuncionario(funcionario.get(0).getIdFuncionario());
+			  func.setMatricula(funcionario.get(0).getMatricula());
+			  func.setNome(nome);
+			  func.setCpf(funcionario.get(0).getCpf());
+			  func.setEmail(email);
+			  func.setTelefone(telefone);
+			  func.setDtNasc(funcionario.get(0).getDtNasc());
+			  func.setCep(cep);
+			  func.setEndereco(endereco);
+			  func.setCategorias(funcionario.get(0).getCategorias());
+			  func.setNivels(funcionario.get(0).getNivels());
+			  func.setGenero(funcionario.get(0).getGenero());
+			  func.setNacionalidade(funcionario.get(0).getNacionalidade());
+			  
+			  funcionarioRepository.save(func);
+			  func.setMsg("ok");
+		  }else {	 
+		  func.setMsg("erro");
+		  }
+		  return func;
+	}
 }

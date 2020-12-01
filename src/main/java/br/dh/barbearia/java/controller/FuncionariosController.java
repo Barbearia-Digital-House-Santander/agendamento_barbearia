@@ -75,6 +75,14 @@ public class FuncionariosController implements WebMvcConfigurer  {
 		 return ResponseEntity.ok(funcio);
 	}
 	
+	@ApiOperation(value = "atualiza dados do funcionário")
+	@PostMapping(value = "/atualizarDados",  consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> atualizarDados(@RequestBody  Funcionario func) {
+			Funcionario funcio = funcService.atualizarDadosFunc(func.getNome(),func.getMatricula(),func.getEndereco(), func.getCep(), func.getEmail(), func.getTelefone());
+	
+		 return ResponseEntity.ok(funcio);
+	}
+	
 	@ApiOperation(value = "Cria disponilidade")
 	@PostMapping(value = "/salvarDisponibilidade",  consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> adicionaFuncionario(@RequestBody  DisponibilidadeFuncionario disp) {
