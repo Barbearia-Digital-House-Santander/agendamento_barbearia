@@ -17,6 +17,7 @@ export class MeusDadosComponent implements OnInit {
   usuario: Funcionario;
   router: Router;
   logado:any;
+  adicionaFunc = true;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
   
@@ -30,6 +31,9 @@ export class MeusDadosComponent implements OnInit {
       this.naoExisteUsuarioLogado();
     }else{
     this.usuario = this.logado[0];
+    if(this.usuario.nivels == 1){
+      this.adicionaFunc = false;
+    }
     this.meusDadosForm.get('nome').setValue(this.usuario.nome);
     this.meusDadosForm.get('cpf').setValue(this.usuario.cpf);
     this.meusDadosForm.get('categoria').setValue(this.usuario.categorias);

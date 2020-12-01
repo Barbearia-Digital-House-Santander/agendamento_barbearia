@@ -8,7 +8,7 @@ export interface Funcionario {
     sexo: string;
     categorias: string;
     servicos: string;
-    nivels: string;
+    nivels: number;
     msg : string;
     dtNasc: string;
     matricula: string;

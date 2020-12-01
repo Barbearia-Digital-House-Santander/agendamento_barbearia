@@ -17,7 +17,8 @@ export class HomeFuncComponent implements OnInit {
 
   logado:any;
   subject = new BehaviorSubject([]);
-
+  adicionaFunc = true;
+  
   destroy$: Subject<boolean> = new Subject<boolean>();
   router: Router;
 
@@ -31,6 +32,9 @@ export class HomeFuncComponent implements OnInit {
       this.router.navigate(['/', 'inicio']);
       this.naoExisteUsuarioLogado();
     }else{
+      if(this.usuario.nivels == 1){
+        this.adicionaFunc = false;
+      }
     this.usuario = this.logado;
     this.subject.subscribe(a => a = this.logado);
     this.usuario;

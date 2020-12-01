@@ -20,7 +20,8 @@ export class ClientesListaComponent implements OnInit {
   usuario: Funcionario;
   router: Router;
   logado:any;
-
+  adicionaFunc = true;
+  
   destroy$: Subject<boolean> = new Subject<boolean>();
 
     constructor(
@@ -36,6 +37,9 @@ export class ClientesListaComponent implements OnInit {
           this.router.navigate(['/', 'inicio']);
           this.naoExisteUsuarioLogado();
         }else{
+          if(this.usuario.nivels == 1){
+            this.adicionaFunc = false;
+          }
         this.usuario = this.logado; 
 
         this.agendaService.getClientes()

@@ -17,7 +17,8 @@ export class SenhaComponent implements OnInit {
   usuario: Funcionario;
   router: Router;
   logado:any;
-
+  adicionaFunc = true;
+  
   destroy$: Subject<boolean> = new Subject<boolean>();
   
   constructor(private service: FuncionarioService, private serviceAut: AutentificacaoService, router: Router){
@@ -29,6 +30,9 @@ export class SenhaComponent implements OnInit {
            this.router.navigate(['/', 'inicio']);
            this.naoExisteUsuarioLogado();
          }else{
+          if(this.usuario.nivels == 1){
+            this.adicionaFunc = false;
+          }
          this.usuario = this.logado[0];
          this.senhaForm.get('matricula').setValue(this.usuario.matricula);
         
