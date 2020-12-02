@@ -43,10 +43,12 @@ public class AutentificacaoController implements WebMvcConfigurer {
 			  boolean senhaChecada = Password.checkPassword(senha, funcionario.get(0).getSenha());
 			  if(Boolean.TRUE.equals(senhaChecada)) {
 				  session.setAttribute("usuarioLogado", funcionario.get(0).getNome());
+				  funcionario.get(0).setMsg("ok");
 		          return ResponseEntity.ok(funcionario);
 			  }
 	        
 	      }
+		  funcionario.get(0).setMsg("erro");
 		  return ResponseEntity.ok(funcionario);
 	  }
 	

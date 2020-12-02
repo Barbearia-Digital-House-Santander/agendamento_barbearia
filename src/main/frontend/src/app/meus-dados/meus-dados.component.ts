@@ -31,7 +31,7 @@ export class MeusDadosComponent implements OnInit {
       this.naoExisteUsuarioLogado();
     }else{
     this.usuario = this.logado[0];
-    if(this.logado.nivels == 1){
+    if(this.logado[0].nivels == 1){
       this.adicionaFunc = false;
     }
     this.meusDadosForm.get('nome').setValue(this.usuario.nome);

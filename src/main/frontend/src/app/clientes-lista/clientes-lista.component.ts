@@ -37,7 +37,7 @@ export class ClientesListaComponent implements OnInit {
           this.router.navigate(['/', 'inicio']);
           this.naoExisteUsuarioLogado();
         }else{
-          if(this.logado.nivels == 1){
+          if(this.logado[0].nivels == 1){
             this.adicionaFunc = false;
           }
         this.usuario = this.logado; 

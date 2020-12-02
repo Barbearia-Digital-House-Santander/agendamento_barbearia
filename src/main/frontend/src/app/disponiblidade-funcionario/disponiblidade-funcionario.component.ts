@@ -27,6 +27,7 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
   router: Router;
   logado:any;
   dataPassada = false;
+  adicionaFunc = true;
 
   constructor(private service: FuncionarioService, private serviceAut: AutentificacaoService, 
     private selects: SelectService, router: Router){
@@ -41,6 +42,9 @@ export class DisponiblidadeFuncionarioComponent implements OnDestroy {
       this.router.navigate(['/', 'inicio']);
       this.naoExisteUsuarioLogado();
     }else{
+      if(this.logado[0].nivels == 1){
+        this.adicionaFunc = false;
+      }
       this.usuario = this.logado[0] ;
     this.disponivelForm.get('funcionario').setValue(this.usuario.nome);
     this.disponivelForm.get('hora').setValue(this.buscarHoras());

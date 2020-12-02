@@ -10,11 +10,11 @@
         <li (click)="pagMarcacoes()"><a>Clientes</a></li>
         <li class='active'  (click)="pagMinhaAgenda()"><a>Minha Agenda</a></li>
         <li  (click)="pagMeusDados()"><a>Meus Dados</a></li>
-        <li (click)="pagFuncionarios()"><a>Funcionários</a></li>
+        <li (click)="pagFuncionarios()" [hidden]="adicionaFunc == true"><a>Funcionários</a></li>
         <li *ngFor = "let  u of logado" style="left: 12em; text-align: center; top:15px;" >
          Você está logado como:<br> {{u.nome}}
         </li>
-       <li><a href='#' style="left: 36em;" (click)="logout()">SAIR<i class="fas fa-sign-out-alt"></i></a></li>
+       <li><a href='#' style="left: 35em;" (click)="logout()">SAIR<i class="fas fa-sign-out-alt"></i></a></li>
         
      </ul>
     </div>
