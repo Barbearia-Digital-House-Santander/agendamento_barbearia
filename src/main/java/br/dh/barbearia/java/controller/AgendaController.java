@@ -26,7 +26,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import br.dh.barbearia.java.commun.Constantes;
-import br.dh.barbearia.java.email.EnviarEmail;
+import br.dh.barbearia.java.commun.EnviarEmail;
 import br.dh.barbearia.java.entity.Agenda;
 import br.dh.barbearia.java.entity.Categoria;
 import br.dh.barbearia.java.entity.DisponibilidadeFuncionario;
@@ -69,7 +69,7 @@ public class AgendaController implements WebMvcConfigurer{
 	@RequestMapping(value = "/salvarAgenda", method = RequestMethod.POST)
 	public  ResponseEntity<?> adicionaAgenda(@RequestBody  Agenda agenda) {
 
-		 agendaService.salvarMarcacaoNaAgenda(agenda.getCpf(), agenda.getNome(), agenda.getTelefone(), agenda.getCategorias(),
+		String retorno = agendaService.salvarMarcacaoNaAgenda(agenda.getCpf(), agenda.getNome(), agenda.getTelefone(), agenda.getCategorias(),
 				 agenda.getData(), agenda.getEmail(), agenda.getSexo(), agenda.getValor(), agenda.getFuncionario(),
 				 agenda.getHora(), agenda.getServicos());
 		 
@@ -82,9 +82,9 @@ public class AgendaController implements WebMvcConfigurer{
 				}
 		String msg = agendaService.mensagemEmail(agenda.getNome(),  agenda.getData(), agenda.getHoras(),  agenda.getFuncionario());
 
-		 enviarEmail.enviarGmail(agenda.getEmail(), Constantes.ASSUNTO_AGENDAMENTO, msg);
+		 //enviarEmail.enviarGmail(agenda.getEmail(), Constantes.ASSUNTO_AGENDAMENTO, msg);
 		 //String filename = agendaService.agendamentoOK("recibo");
-		 return ResponseEntity.ok("OK");
+		 return ResponseEntity.ok(retorno);
 	}
 
 	@ApiOperation(value = "Verifica se pode salvar agendamento")

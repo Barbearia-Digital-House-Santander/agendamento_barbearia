@@ -46,8 +46,9 @@ public class AgendaService {
 		return agendaRepository.findByChaveDeCancelamento(chaveDeCancelamento);
 	}
 	
-	public void salvarMarcacaoNaAgenda(String cpf, String nome, String telefone, Integer categoria, String dataAgendamento, String email, String genero, String valor, String nomeFunc, Integer hora, Integer servico) {
+	public String salvarMarcacaoNaAgenda(String cpf, String nome, String telefone, Integer categoria, String dataAgendamento, String email, String genero, String valor, String nomeFunc, Integer hora, Integer servico) {
 
+		if(cpf != null && nome != null && genero != null && email != null && hora != null && categoria != null && dataAgendamento != null){
 		  Agenda agenda = new Agenda();
 		  agenda.setCpf(cpf);
 		  agenda.setNome(nome);
@@ -63,8 +64,11 @@ public class AgendaService {
 		  agenda.setCancelado(Constantes.NAO);
 		  agenda.setChaveDeCancelamento(geradorAleatorio());
 		  agendaRepository.save(agenda);
+		  return "ok";
+		}else{
+			return "erro";
+		}
 	
-        //  return "redirect:/barbearia/notificacaoAgendamentoOK";
 	}
 	
 	public String setarFuncionario(String nomeFunc, Integer categoria) {
@@ -80,7 +84,7 @@ public class AgendaService {
 		return nomeFunc;
 	}
 	
-	public String atualizarMarcacaoNaAgenda(String chaveDeCancelamento) {
+	public String atualizarMarcacaoNaAgendaCancelamento(String chaveDeCancelamento) {
 		List<Agenda> dados = buscaDadosClientePelaChaveDeCancelamento(chaveDeCancelamento);
 	    Agenda agenda = new Agenda();
 
@@ -98,10 +102,10 @@ public class AgendaService {
 			  agenda.setCancelado(Constantes.SIM);
 			  agenda.setDataCancelamento(LocalDate.now());
 			  agendaRepository.save(agenda);
-	          return "cancelamentoEfetuado";
+	          return "OK";
 		  }
 		  else {
-			  return "redirect:/barbearia/cancelamento/falha";
+			  return "erro";
         }
 	}
 	

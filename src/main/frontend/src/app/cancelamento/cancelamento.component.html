@@ -63,13 +63,13 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">CANCELE AGORA SUA MARCAÇÃO</h2>
-                     <form method="POST">
+                     <form [formGroup]="cancelamentoForm" (ngSubmit)="onSubmit()">
                         <div class="input-group">
-                            <input class="input--style-3 " type="text" required="true" placeholder="Chave de Cancelamento:" name="chaveDeCancelamento">
+                            <input class="input--style-3 " type="text" required="true"  formControlName="chaveDeCancelamento" placeholder="Chave de Cancelamento:" name="chaveDeCancelamento">
                             <a href="ajuda"><i class="zmdi zmdi-help input-icon js-btn-help"></i></a>
                         </div>
                         <div class="p-t-10">
-                            <button class="btn btn--pill btn--green" type="submit">Cancelar agendamento</button>
+                            <button class="btn btn--pill btn--green"  [disabled]="!cancelamentoForm.valid"  type="submit">Cancelar agendamento</button>
                         </div>
                     </form>
                 </div>
