@@ -44,7 +44,9 @@ export class MeusDadosComponent implements OnInit {
     this.meusDadosForm.get('cep').setValue(this.usuario.cep)
     this.meusDadosForm.get('email').setValue(this.usuario.email);
     this.meusDadosForm.get('endereco').setValue(this.usuario.endereco);
-    this.meusDadosForm.get('telefone').setValue(this.usuario.telefone)
+    this.meusDadosForm.get('telefone').setValue(this.usuario.telefone);
+    this.meusDadosForm.get('nivel').setValue(this.usuario.nivels);
+    this.meusDadosForm.get('nacionalidade').setValue(this.usuario.nacionalidade);
    }
   }
 

@@ -15,5 +15,6 @@ export interface Funcionario {
     senha: string;
     endereco: string;
     cep: string;
+    nacionalidade: string;
 
 }

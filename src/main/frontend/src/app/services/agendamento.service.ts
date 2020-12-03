@@ -21,7 +21,7 @@ export class AgendamentoService {
     
 
     getClientes(){
-      return this.http.get(this.urlAgenda + '/agendamentos/',{headers: this.headers});
+      return this.http.get(this.urlAgenda + '/agendamentos',{headers: this.headers});
     }
 
     update(cliente: Agendamento): Promise<Agendamento> {

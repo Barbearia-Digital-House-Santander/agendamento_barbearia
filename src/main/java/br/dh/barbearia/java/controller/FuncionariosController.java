@@ -29,6 +29,7 @@ import br.dh.barbearia.java.entity.Funcionario;
 import br.dh.barbearia.java.entity.Hora;
 import br.dh.barbearia.java.entity.NivelHierarquico;
 import br.dh.barbearia.java.entity.UF;
+import br.dh.barbearia.java.service.AgendaService;
 import br.dh.barbearia.java.service.CategoriaService;
 import br.dh.barbearia.java.service.FuncionariosService;
 import io.swagger.annotations.Api;
@@ -41,6 +42,9 @@ public class FuncionariosController implements WebMvcConfigurer  {
 	
 	@Resource
 	private FuncionariosService funcService;
+	
+	@Resource
+	private AgendaService agendaService;
 	
 	@Resource
 	private CategoriaService catService;
@@ -95,6 +99,7 @@ public class FuncionariosController implements WebMvcConfigurer  {
 	public  ResponseEntity<?> buscarFuncionarios() {
 		List<Categoria> categoria = catService.buscarCategoria();
 		List<Funcionario> func = funcService.buscarTodosFuncionarios();
+		
 		categoria.stream().filter(f -> f.getIdCategoria().equals(func.get(0).getCategorias())).collect(Collectors.toList());
 		func.get(0).setCategoriass(categoria.get(0).getNome());
 		
@@ -129,9 +134,17 @@ public class FuncionariosController implements WebMvcConfigurer  {
 	@GetMapping(value = "/getDisponibilidadeDoFuncionario/{funcionario}")
 	public  ResponseEntity<?> buscarDisponibilidadeDoFuncionario(@PathVariable("funcionario") String funcionario) {
 		List<DisponibilidadeFuncionario> disp = funcService.buscarTodasDisponibilidadeDoFuncionario(funcionario);
-		List<DisponibilidadeFuncionario> dt = funcService.datasNaoRepetidasFuncEsp(disp);
+		//List<DisponibilidadeFuncionario> dt = funcService.datasNaoRepetidasFuncEsp(disp);
+		 List<Hora> hora = agendaService.buscarHoras();
+			for(DisponibilidadeFuncionario d : disp) {
+				Integer h = d.getHora();
+				for(Hora y : hora) {
+					if(y.getIdHora().equals(h)) {
+						d.setHoraS(y.getHora());
+					}
 				
-		return ResponseEntity.ok(dt);
+				}}
+		return ResponseEntity.ok(disp);
   }
 	
 	@ApiOperation(value = "Lista todas disponibilidades do funcionario")

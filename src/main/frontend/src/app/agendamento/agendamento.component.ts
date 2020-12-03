@@ -11,6 +11,7 @@ import { SelectService } from '../services/selects.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';  
 import { Agendamento } from '../models/agendamento';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { Funcionario } from '../models/funcionario';
 
 @Component({
   selector: 'app-agendamento',
@@ -19,6 +20,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 })
 export class AgendamentoComponent implements OnInit {
   d: Disponibilidades[];
+  funcis: Funcionario;
   categoriaList: any[];
   servicoList: any[];
   horaList: any[];
@@ -229,7 +231,7 @@ export class AgendamentoComponent implements OnInit {
   }
 
   controleFuncionarios(){
-    this.agendamentoForm.get('funcionario').valueChanges.subscribe(selectedValue => {
+    this.agendamentoForm.get('funcionario').valueChanges.subscribe((selectedValue: Funcionario) => {
       this.isHidden2 = false;
       this.agendamentoForm.get('categorias').enable();
       this.agendamentoForm.get('data').enable();

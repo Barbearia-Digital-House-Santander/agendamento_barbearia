@@ -65,6 +65,9 @@ selecionar: any;
           this.userCount = this.userCount + 1;
           this.userForm.reset();
           this.msgSalvoComSucesso(func.matricula, func.senha);
+          this.userForm.get('nivelFuncLogado').setValue(this.usuario.nivels);
+          this.userForm.get('nomeFuncLogado').setValue(this.usuario.nome);
+          this.userForm.get('nacionalidade').setValue('Brasileira(o)');
         }else{
           this.msgErroAoSalvar();
         }
@@ -179,7 +182,7 @@ selecionar: any;
     Swal.fire({  
       
       title: 'Salvo',  
-      text: 'O Funcionário foi registrado \n \n <strong> MATRICULA: </strong>' + matricula +'\n \n \n <strong>SENHA:</strong>' + senha,  
+      text: 'O Funcionário foi registrado MATRICULA:' + matricula + 'e a  SENHA:' + senha,  
       icon: 'success'       
     });  
   } 
